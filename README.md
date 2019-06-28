@@ -8,22 +8,12 @@
 
 > Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
 
-[![Sponsored by DigitalOcean](/sponsored_by_DigitalOcean.png)](https://www.digitalocean.com)
-
-#### Guide
-
 * Use <kbd>Ctrl</kbd> + <kbd>F</kbd> or <kbd>command</kbd> + <kbd>F</kbd> to search for a snippet.
 * Contributions welcome, please read the [contribution guide](CONTRIBUTING.md).
 * Snippets are written in ES6, use the [Babel transpiler](https://babeljs.io/) to ensure backwards-compatibility.
 * You can import these snippets into VSCode, by following the instructions found [here](https://github.com/30-seconds/30-seconds-of-code/tree/master/vscode_snippets).
 * You can search, view and copy these snippets from a terminal, using the CLI application from [this repo](https://github.com/sQVe/30s).
 * If you want to follow 30-seconds-of-code on social media, you can find us on [Facebook](https://www.facebook.com/30secondsofcode), [Instagram](https://www.instagram.com/30secondsofcode) and [Twitter](https://twitter.com/30secondsofcode).
-
-这个项目中的代码片段有以下几个特点：
-
-* 具有实用性，这点作为代码贡献规则被要求
-* 精简，实用箭头函数、无return的返回精简代码格式；通过最精简的方法实现逻辑；尽量将多步逻辑合并到一步完成
-* 
 
 #### Related projects
 
@@ -3379,14 +3369,14 @@ uniqueElementsBy(
 
 ### uniqueElementsByRight
 
-Returns all unique values of an array, based on a provided comparator function.
+Returns all unique values of an array, based on a provided comparator function, starting from the right.
 
-基于给定的比较函数判重，返回数组中所有唯一的元素。（使结果中有相同比较结果的元素唯一，只保留一个）（只是计算顺序从后向前）
+从右侧开始，基于给定的比较函数判重，返回数组中所有唯一的值。（使结果中有相同比较结果的元素唯一，只保留一个）（只是计算顺序从后向前）
 
-Use `Array.prototype.reduce()` and `Array.prototype.some()` for an array containing only the last unique occurrence of each value, based on the comparator function, `fn`.
+Use `Array.prototype.reduceRight()` and `Array.prototype.some()` for an array containing only the last unique occurrence of each value, based on the comparator function, `fn`.
 The comparator function takes two arguments: the values of the two elements being compared.
 
-使用`Array.prototype.reduce()`和`Array.prototype.some()`基于给定比较函数`fn`创建一个只包含每个值最后一次出现的数组（每个值只包含一次）。比较函数有两个参数：分别是用来比较的两个值。
+使用`Array.prototype.reduceRight()`和`Array.prototype.some()`基于给定比较函数`fn`创建一个只包含每个值最后一次出现的数组（每个值只包含一次）。比较函数有两个参数：分别是用来比较的两个值。
 
 ```js
 const uniqueElementsByRight = (arr, fn) =>
@@ -5123,14 +5113,12 @@ isSameDate(new Date(2010, 10, 20), new Date(2010, 10, 20)); // true
 
 Returns the maximum of the given dates.
 
-返回给定日期中最大的一个。
+Use the ES6 spread syntax with `Math.max` to find the maximum date value, `new Date()` to convert it to a `Date` object.
 
-Use `Math.max.apply()` to find the maximum date value, `new Date()` to convert it to a `Date` object.
-
-使用`Math.max.apply()`来找到最大的日期值，用`new Date()`把它们转为一个`Date`对象。
+使用ES6的展开操作符配合`Math.max`来找到最大的日期值，用`new Date()`把它们转为一个`Date`对象。
 
 ```js
-const maxDate = (...dates) => new Date(Math.max.apply(null, ...dates));
+const maxDate = dates => new Date(Math.max(...dates));
 ```
 
 <details>
@@ -5154,14 +5142,12 @@ maxDate(array); // 2018-03-11T22:00:00.000Z
 
 Returns the minimum of the given dates.
 
-返回给定日期中最小的一个。
+Use the ES6 spread syntax to find the minimum date value, `new Date()` to convert it to a `Date` object.
 
-Use `Math.min.apply()` to find the minimum date value, `new Date()` to convert it to a `Date` object.
-
-使用`Math.min.apply()`来找到最小的日期值，用`new Date()`把它们转为一个`Date`对象。
+使用ES6的展开操作符来找到最小的日期值，用`new Date()`把它们转为一个`Date`对象。
 
 ```js
-const minDate = (...dates) => new Date(Math.min.apply(null, ...dates));
+const minDate = dates => new Date(Math.min(...dates));
 ```
 
 <details>
@@ -5374,14 +5360,6 @@ const checkProp = (predicate, prop) => obj => !!predicate(obj[prop]);
 <summary>Examples</summary>
 
 ```js
-
-
-
-
-
-
-
-
 
 
 
@@ -6388,8 +6366,8 @@ Throws an exception if `n` is a negative number.
 const factorial = n =>
   n < 0
     ? (() => {
-        throw new TypeError('Negative numbers are not allowed!');
-      })()
+      throw new TypeError('Negative numbers are not allowed!');
+    })()
     : n <= 1
       ? 1
       : n * factorial(n - 1);
@@ -8009,9 +7987,9 @@ const dig = (obj, target) =>
   target in obj
     ? obj[target]
     : Object.values(obj).reduce((acc, val) => {
-        if (acc !== undefined) return acc;
-        if (typeof val === 'object') return dig(val, target);
-      }, undefined);
+      if (acc !== undefined) return acc;
+      if (typeof val === 'object') return dig(val, target);
+    }, undefined);
 ```
 
 <details>
@@ -8233,7 +8211,7 @@ Returns an array of function property names from own (and optionally inherited) 
 从一个对象的自有的（可选的从继承属性）可枚举属性中返回一个函数属性名字的数组。
 
 Use `Object.keys(obj)` to iterate over the object's own properties.
-If `inherited` is `true`, use `Object.getPrototypeOf(obj)` to also get the object's inherited properties.
+If `inherited` is `true`, use `Object.get.PrototypeOf(obj)` to also get the object's inherited properties.
 Use `Array.prototype.filter()` to keep only those properties that are functions.
 Omit the second argument, `inherited`, to not include inherited properties by default.
 
@@ -9013,10 +8991,8 @@ Omit the `lowerRest` parameter to keep the rest of the string intact, or set it 
 使用数组解构和`String.prototype.toUpperCase()`来大写化第一个字母，使用`...rest`来获取第一个字母后的字符数组，然后用`Array.prototype.join('')`把它们重新连结为字符串。如果不传`lowerRest`参数，则原封不动的保留字符串剩余的字符，如果设置`lowerRest`为`true`则把剩余的字符转换为小写。
 
 ```js
-const capitalize = (
-  [first, ...rest],
-  lowerRest = false // [first, ...rest]解构的巧妙应用，不光是对象和数组才能解构
-) => first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
+const capitalize = ([first, ...rest], lowerRest = false) =>   // [first, ...rest]解构的巧妙应用，不光是对象和数组才能解构
+  first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
 ```
 
 <details>
