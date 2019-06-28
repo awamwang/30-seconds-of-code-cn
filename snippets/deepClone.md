@@ -2,9 +2,13 @@
 
 Creates a deep clone of an object.
 
+创建一个对象的深拷贝。
+
 Use recursion.
 Use `Object.assign()` and an empty object (`{}`) to create a shallow clone of the original.
 Use `Object.keys()` and `Array.prototype.forEach()` to determine which key-value pairs need to be deep cloned.
+
+使用递归。使用`Object.assign()`和一个空对象(`{}`)来创建一个原始对象的浅拷贝。使用`Object.keys()`和`Array.prototype.forEach()`来确定哪个键值对需要深拷贝。
 
 ```js
 const deepClone = obj => {

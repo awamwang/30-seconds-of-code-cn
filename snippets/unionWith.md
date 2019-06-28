@@ -2,7 +2,11 @@
 
 Returns every element that exists in any of the two arrays once, using a provided comparator function.
 
+对两个数组中元素比较函数判断相等，返回不重复（判断相等的就视为重复）元素构成的数组（具有集合不重复的特性）。
+
 Create a `Set` with all values of `a` and values in `b` for which the comparator finds no matches in `a`, using `Array.prototype.findIndex()`.
+
+用所有`a`中的值，加上用`Array.prototype.findIndex()`找到的`b`中使用比较函数判断后与`a`中元素不重复的元素创建一个`Set`。
 
 ```js
 const unionWith = (a, b, comp) =>

@@ -2,7 +2,11 @@
 
 Converts a string to camelcase.
 
+把字符串转换为驼峰形式。
+
 Break the string into words and combine them capitalizing the first letter of each word, using a regexp.
+
+使用正则表达式把字符串拆分为单词列表，并在大写化每个词的首字母后合并它们。
 
 ```js
 const toCamelCase = str => {

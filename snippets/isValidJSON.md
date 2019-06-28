@@ -2,7 +2,11 @@
 
 Checks if the provided string is a valid JSON.
 
+检查给出的字符串是否是一个合法的JSON。
+
 Use `JSON.parse()` and a `try... catch` block to check if the provided string is a valid JSON.
+
+使用`JSON.parse()`和一个`try... catch`代码块来检查给出的字符串是否是一个合法的JSON。
 
 ```js
 const isValidJSON = str => {

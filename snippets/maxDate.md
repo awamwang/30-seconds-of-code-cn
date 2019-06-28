@@ -4,6 +4,8 @@ Returns the maximum of the given dates.
 
 Use the ES6 spread syntax with `Math.max` to find the maximum date value, `new Date()` to convert it to a `Date` object.
 
+使用ES6的展开操作符配合`Math.max`来找到最大的日期值，用`new Date()`把它们转为一个`Date`对象。
+
 ```js
 const maxDate = dates => new Date(Math.max(...dates));
 ```

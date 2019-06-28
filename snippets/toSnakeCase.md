@@ -2,7 +2,11 @@
 
 Converts a string to snake case.
 
+把字符串转换为下划线形式。
+
 Break the string into words and combine them adding `_` as a separator, using a regexp.
+
+使用正则表达式把字符串拆分为单词列表，并在添加`_`作为分隔符后合并它们。
 
 ```js
 const toSnakeCase = str =>

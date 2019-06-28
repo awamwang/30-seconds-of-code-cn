@@ -2,8 +2,12 @@
 
 Returns a sorted array of objects ordered by properties and orders.
 
+返回一个根据属性列表和顺序列表来排序的对象数组。
+
 Uses `Array.prototype.sort()`, `Array.prototype.reduce()` on the `props` array with a default value of `0`, use array destructuring to swap the properties position depending on the order passed.
 If no `orders` array is passed it sort by `'asc'` by default.
+
+对`props`（默认值为`0`）数组使用`Array.prototype.sort()`, `Array.prototype.reduce()`，使用数组解构来根据传入的顺序交换属性的位置。如果`orders`数组不传，默认按照`'asc'`顺序排序。
 
 ```js
 const orderBy = (arr, props, orders) =>

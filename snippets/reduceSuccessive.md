@@ -2,7 +2,11 @@
 
 Applies a function against an accumulator and each element in the array (from left to right), returning an array of successively reduced values.
 
+对一个累加器和数组中每一个元素应用给定函数（从左向右），返回每一步累加值组成的数组。
+
 Use `Array.prototype.reduce()` to apply the given function to the given array, storing each new result.
+
+使用`Array.prototype.reduce()`来对给定的数组应用给定的函数，存储每一次新的累加结果。
 
 ```js
 const reduceSuccessive = (arr, fn, acc) =>

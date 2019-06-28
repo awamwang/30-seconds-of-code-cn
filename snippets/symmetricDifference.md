@@ -2,7 +2,11 @@
 
 Returns the symmetric difference between two arrays, without filtering out duplicate values.
 
+不过滤掉重复元素，返回两个数组中全部的差异（每个数组中不存在在对方中的元素合集）。
+
 Create a `Set` from each array, then use `Array.prototype.filter()` on each of them to only keep values not contained in the other.
+
+从给定的两个数组创建一个`Set`，然后对它们分别使用`Array.prototype.filter()`来只保留不包含在另一个数组中的元素。
 
 ```js
 const symmetricDifference = (a, b) => {

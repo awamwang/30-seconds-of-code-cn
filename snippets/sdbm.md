@@ -2,7 +2,11 @@
 
 Hashes the input string into a whole number.
 
+把输入hash成一个完整数字。
+
 Use `String.prototype.split('')` and `Array.prototype.reduce()` to create a hash of the input string, utilizing bit shifting.
+
+使用`String.prototype.split('')`和`Array.prototype.reduce()`来创建一个输入字符串的hash，使用位移操作。
 
 ```js
 const sdbm = str => {
