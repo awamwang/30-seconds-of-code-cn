@@ -15,6 +15,11 @@
 * You can search, view and copy these snippets from a terminal, using the CLI application from [this repo](https://github.com/sQVe/30s).
 * If you want to follow 30-seconds-of-code on social media, you can find us on [Facebook](https://www.facebook.com/30secondsofcode), [Instagram](https://www.instagram.com/30secondsofcode) and [Twitter](https://twitter.com/30secondsofcode).
 
+这个项目中的代码片段有以下几个特点：
+
+* 具有实用性，这点作为代码贡献规则被要求
+* 精简，实用箭头函数、无return的返回精简代码格式；通过最精简的方法实现逻辑；尽量将多步逻辑合并到一步完成
+
 #### Related projects
 
 * [30 Seconds of CSS](https://30-seconds.github.io/30-seconds-of-css/)
