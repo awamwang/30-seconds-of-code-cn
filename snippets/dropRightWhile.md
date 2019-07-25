@@ -13,7 +13,7 @@ Returns the remaining elements.
 const dropRightWhile = (arr, func) => {
   let rightIndex = arr.length;
   while (rightIndex-- && !func(arr[rightIndex]));
-  return arr.slice(0, rightIndex + 1);  // 返回一个新的数组
+  return arr.slice(0, rightIndex + 1); // 返回一个新的数组
 };
 ```
 

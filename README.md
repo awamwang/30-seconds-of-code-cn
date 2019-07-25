@@ -3,7 +3,7 @@
 # 30 seconds of code
 
 [![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/30-seconds/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Known Vulnerabilities](https://snyk.io/test/github/30-seconds/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/30-seconds/30-seconds-of-code?targetFile=package.json) <br/> 
-[![Travis Build](https://travis-ci.org/keepgoingwm/30-seconds-of-code-cn.svg?branch=master)](https://travis-ci.org/keepgoingwm/30-seconds-of-code) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ab7791fb1ea40b4a576d658fb96807f)](https://www.codacy.com/app/Chalarangelo/30-seconds-of-code?utm_source=github.com&utm_medium=referral&utm_content=30-seconds/30-seconds-of-code&utm_campaign=Badge_Grade) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) <br/>
+[![Travis Build](https://travis-ci.org/keepgoingwm/30-seconds-of-code-cn.svg?branch=master)](https://travis-ci.com/keepgoingwm/30-seconds-of-code) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ab7791fb1ea40b4a576d658fb96807f)](https://www.codacy.com/app/Chalarangelo/30-seconds-of-code?utm_source=github.com&utm_medium=referral&utm_content=30-seconds/30-seconds-of-code&utm_campaign=Badge_Grade) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) <br/>
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 > Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
@@ -1331,7 +1331,7 @@ Returns the remaining elements.
 const dropRightWhile = (arr, func) => {
   let rightIndex = arr.length;
   while (rightIndex-- && !func(arr[rightIndex]));
-  return arr.slice(0, rightIndex + 1);  // 返回一个新的数组
+  return arr.slice(0, rightIndex + 1); // 返回一个新的数组
 };
 ```
 
@@ -5455,6 +5455,7 @@ const checkProp = (predicate, prop) => obj => !!predicate(obj[prop]);
 
 
 
+
 const lengthIs4 = checkProp(l => l === 4, 'length');
 lengthIs4([]); // false
 lengthIs4([1,2,3,4]); // true
@@ -9081,8 +9082,10 @@ Omit the `lowerRest` parameter to keep the rest of the string intact, or set it 
 使用数组解构和`String.prototype.toUpperCase()`来大写化第一个字母，使用`...rest`来获取第一个字母后的字符数组，然后用`Array.prototype.join('')`把它们重新连结为字符串。如果不传`lowerRest`参数，则原封不动的保留字符串剩余的字符，如果设置`lowerRest`为`true`则把剩余的字符转换为小写。
 
 ```js
-const capitalize = ([first, ...rest], lowerRest = false) =>   // [first, ...rest]解构的巧妙应用，不光是对象和数组才能解构
-  first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
+const capitalize = (
+  [first, ...rest],
+  lowerRest = false // [first, ...rest]解构的巧妙应用，不光是对象和数组才能解构
+) => first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
 ```
 
 <details>
