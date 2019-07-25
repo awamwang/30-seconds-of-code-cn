@@ -1331,7 +1331,7 @@ Returns the remaining elements.
 const dropRightWhile = (arr, func) => {
   let rightIndex = arr.length;
   while (rightIndex-- && !func(arr[rightIndex]));
-  return arr.slice(0, rightIndex + 1);  // 返回一个新的数组
+  return arr.slice(0, rightIndex + 1); // 返回一个新的数组
 };
 ```
 
@@ -5455,6 +5455,7 @@ const checkProp = (predicate, prop) => obj => !!predicate(obj[prop]);
 
 
 
+
 const lengthIs4 = checkProp(l => l === 4, 'length');
 lengthIs4([]); // false
 lengthIs4([1,2,3,4]); // true
@@ -9081,8 +9082,10 @@ Omit the `lowerRest` parameter to keep the rest of the string intact, or set it 
 使用数组解构和`String.prototype.toUpperCase()`来大写化第一个字母，使用`...rest`来获取第一个字母后的字符数组，然后用`Array.prototype.join('')`把它们重新连结为字符串。如果不传`lowerRest`参数，则原封不动的保留字符串剩余的字符，如果设置`lowerRest`为`true`则把剩余的字符转换为小写。
 
 ```js
-const capitalize = ([first, ...rest], lowerRest = false) =>   // [first, ...rest]解构的巧妙应用，不光是对象和数组才能解构
-  first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
+const capitalize = (
+  [first, ...rest],
+  lowerRest = false // [first, ...rest]解构的巧妙应用，不光是对象和数组才能解构
+) => first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
 ```
 
 <details>
