@@ -13,8 +13,6 @@ Use `Math.floor()` to appropriately round the resulting day count to an integer.
 const dayOfYear = date =>
   Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 // 直接给参数一个默认值，计算当天
-const dayOfYear = (date = new Date()) =>
-  Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 ```
 
 ```js
