@@ -25,10 +25,10 @@
 * [30 Seconds of CSS](https://30-seconds.github.io/30-seconds-of-css/)
 * [30 Seconds of Interviews](https://30secondsofinterviews.org/)
 * [30 Seconds of React](https://github.com/30-seconds/30-seconds-of-react)
-* [30 Seconds of Python](https://github.com/kriadmin/30-seconds-of-python-code) _(unofficial)_
-* [30 Seconds of PHP](https://github.com/appzcoder/30-seconds-of-php-code) _(unofficial)_
+* [30 Seconds of Python](https://github.com/30-seconds/30-seconds-of-python-code)
+* [30 Seconds of PHP](https://github.com/30-seconds/30-seconds-of-php-code)
+* [30 Seconds of Knowledge](https://chrome.google.com/webstore/detail/30-seconds-of-knowledge/mmgplondnjekobonklacmemikcnhklla)
 * [30 Seconds of Kotlin](https://github.com/IvanMwiruki/30-seconds-of-kotlin) _(unofficial)_
-* [30 Seconds of Knowledge](https://chrome.google.com/webstore/detail/30-seconds-of-knowledge/mmgplondnjekobonklacmemikcnhklla) _(unofficial)_
 
 #### Package
 
@@ -1074,11 +1074,11 @@ chunk([1, 2, 3, 4, 5], 2); // [[1,2],[3,4],[5]]
 
 ### compact
 
-Removes falsey values from an array.
+Removes falsy values from an array.
 
 把数组中所有假值移除掉。
 
-Use `Array.prototype.filter()` to filter out falsey values (`false`, `null`, `0`, `""`, `undefined`, and `NaN`).
+Use `Array.prototype.filter()` to filter out falsy values (`false`, `null`, `0`, `""`, `undefined`, and `NaN`).
 
 使用`Array.prototype.filter()`来过滤掉假值(`false`, `null`, `0`, `""`, `undefined`, and `NaN`)。
 
@@ -1492,7 +1492,7 @@ Returns the last element for which the provided function returns a truthy value.
 
 返回最后一个被给定函数作用后返回真值的元素。
 
-Use `Array.prototype.filter()` to remove elements for which `fn` returns falsey values, `Array.prototype.pop()` to get the last one.
+Use `Array.prototype.filter()` to remove elements for which `fn` returns falsy values, `Array.prototype.pop()` to get the last one.
 
 使用`Array.prototype.filter()`过滤掉`fn`作用后返回假值的元素，再使用`Array.prototype.pop()`来获取其中最后一个元素。
 
@@ -1518,7 +1518,7 @@ Returns the index of the last element for which the provided function returns a 
 返回被给定函数作用后返回真值的元素的序号。
 
 Use `Array.prototype.map()` to map each element to an array with its index and value.
-Use `Array.prototype.filter()` to remove elements for which `fn` returns falsey values, `Array.prototype.pop()` to get the last one.
+Use `Array.prototype.filter()` to remove elements for which `fn` returns falsy values, `Array.prototype.pop()` to get the last one.
 
 使用`Array.prototype.map()`来遍历数组中每个元素的序号和值。使用`Array.prototype.filter()`来过滤掉`fn`作用后返回假值的元素，再使用`Array.prototype.pop()`来获取其中最后一个元素。
 
@@ -5117,6 +5117,54 @@ isSameDate(new Date(2010, 10, 20), new Date(2010, 10, 20)); // true
 
 <br>[⬆ Back to top](#contents)
 
+### isWeekday
+
+Results in a boolean representation of a specific date.
+
+Pass the specific date object firstly.
+Use `Date.getDay()` to check weekday by using a modulo operator and then returning a boolean.
+
+```js
+const isWeekday = (t = new Date()) => {
+  return t.getDay() % 6 !== 0;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isWeekday(); // true (if current date is 2019-07-19)
+```
+
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### isWeekend
+
+Results in a boolean representation of a specific date.
+
+Pass the specific date object firstly.
+Use `Date.getDay()` to check weekend based on the day being returned as 0 - 6 using a modulo operation then return a boolean.
+
+```js
+const isWeekend = (t = new Date()) => {
+  return t.getDay() % 6 === 0;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isWeekend(); // 2018-10-19 (if current date is 2018-10-18)
+```
+
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### maxDate
 
 Returns the maximum of the given dates.
@@ -5394,6 +5442,16 @@ const checkProp = (predicate, prop) => obj => !!predicate(obj[prop]);
 <summary>Examples</summary>
 
 ```js
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8666,7 +8724,7 @@ omit({ a: 1, b: '2', c: 3 }, ['b']); // { 'a': 1, 'c': 3 }
 
 ### omitBy
 
-Creates an object composed of the properties the given function returns falsey for. The function is invoked with two arguments: (value, key).
+Creates an object composed of the properties the given function returns falsy for. The function is invoked with two arguments: (value, key).
 
 创建一个由给出的函数作用后返回假值的属性组成的对象。这个函数执行时有两个参数：(value, key)。
 
@@ -8762,7 +8820,7 @@ Creates an object composed of the properties the given function returns truthy f
 
 创建一个给定的函数返回真值的属性组成的对象。这个函数接受两个参数：(value, key)。
 
-Use `Object.keys(obj)` and `Array.prototype.filter()`to remove the keys for which `fn` returns a falsey value.
+Use `Object.keys(obj)` and `Array.prototype.filter()`to remove the keys for which `fn` returns a falsy value.
 Use `Array.prototype.reduce()` to convert the filtered keys back to an object with the corresponding key-value pairs.
 
 使用`Object.keys(obj)`和`Array.prototype.filter()`来把`fn`返回假值的键删除。使用`Array.prototype.reduce()`把过滤出来的键列表用相应的键值对转换回一个新对象中。
