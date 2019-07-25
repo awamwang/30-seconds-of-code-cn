@@ -1,6 +1,6 @@
 ### mapObject
 
-Maps the values of an array to an object using a function, where the key-value pairs consist of the original value as the key and the mapped value.
+Maps the values of an array to an object using a function, where the key-value pairs consist of the stringified value as the key and the mapped value.
 
 应用一个函数把数组中的值映射到一个以原始值作为key、函数结果作为value的key-value对象中。
 

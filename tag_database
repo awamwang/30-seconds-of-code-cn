@@ -172,6 +172,8 @@ isTravisCI:node,intermediate
 isUndefined:type,beginner
 isUpperCase:string,utility,beginner
 isValidJSON:type,json,intermediate
+isWeekday:date,beginner
+isWeekend:date,beginner
 isWritableStream:node,type,intermediate
 join:array,intermediate
 JSONtoCSV:array,string,object,advanced
@@ -342,6 +344,7 @@ without:array,beginner
 words:string,regexp,intermediate
 xProd:array,math,intermediate
 yesNo:utility,regexp,intermediate
+yesterday:date,intermediate
 zip:array,intermediate
 zipObject:array,object,intermediate
 zipWith:array,function,advanced

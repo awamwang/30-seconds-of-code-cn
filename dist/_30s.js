@@ -660,6 +660,12 @@
       return false;
     }
   };
+  const isWeekday = (t = new Date()) => {
+    return t.getDay() % 6 !== 0;
+  };
+  const isWeekend = (t = new Date()) => {
+    return t.getDay() % 6 === 0;
+  };
   const isWritableStream = val =>
     val !== null &&
     typeof val === 'object' &&
@@ -1356,6 +1362,11 @@
   const xProd = (a, b) => a.reduce((acc, x) => acc.concat(b.map(y => [x, y])), []);
   const yesNo = (val, def = false) =>
     /^(y|yes)$/i.test(val) ? true : /^(n|no)$/i.test(val) ? false : def;
+  const yesterday = () => {
+    let t = new Date();
+    t.setDate(t.getDate() - 1);
+    return t.toISOString().split('T')[0];
+  };
   const zip = (...arrays) => {
     const maxLength = Math.max(...arrays.map(x => x.length));
     return Array.from({ length: maxLength }).map((_, i) => {
@@ -1552,6 +1563,8 @@
   exports.isUndefined = isUndefined;
   exports.isUpperCase = isUpperCase;
   exports.isValidJSON = isValidJSON;
+  exports.isWeekday = isWeekday;
+  exports.isWeekend = isWeekend;
   exports.isWritableStream = isWritableStream;
   exports.join = join;
   exports.last = last;
@@ -1716,6 +1729,7 @@
   exports.words = words;
   exports.xProd = xProd;
   exports.yesNo = yesNo;
+  exports.yesterday = yesterday;
   exports.zip = zip;
   exports.zipObject = zipObject;
   exports.zipWith = zipWith;

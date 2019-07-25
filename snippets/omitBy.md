@@ -1,6 +1,6 @@
 ### omitBy
 
-Creates an object composed of the properties the given function returns falsey for. The function is invoked with two arguments: (value, key).
+Creates an object composed of the properties the given function returns falsy for. The function is invoked with two arguments: (value, key).
 
 创建一个由给出的函数作用后返回假值的属性组成的对象。这个函数执行时有两个参数：(value, key)。
 

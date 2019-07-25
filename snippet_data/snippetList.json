@@ -386,7 +386,7 @@
         "archived": false
       },
       "meta": {
-        "hash": "a54a645ae51358e2a652adcd19b465e5da0c39d1ebf7a3a393b92cb2c8762883"
+        "hash": "8dcc260ee20fc2b7e5a17785db0c0b4ff357cea38a488d5219e47f93805bcade"
       }
     },
     {
@@ -503,7 +503,7 @@
         "archived": false
       },
       "meta": {
-        "hash": "0f631b67b8460ed99917ff1468051e1e075ef02b280838ec14ad3fede2f48c7f"
+        "hash": "5f18ea75907a547630e110bc9a8d31528c87761d276b392e1aa660094745b078"
       }
     },
     {
@@ -1279,7 +1279,7 @@
         "archived": false
       },
       "meta": {
-        "hash": "d9b9b99af0ced3ae231521d4100dc5779436dbd624a2c3b9aa11a3ef9fb2edb6"
+        "hash": "c12bc2939629a3722f41100035c7aaccae5b970b46071c2ebccecef0d3246462"
       }
     },
     {
@@ -1294,7 +1294,7 @@
         "archived": false
       },
       "meta": {
-        "hash": "99268ad91de24fd7c06a35e0e401603da2087fe4b3ec349d6aebe0ae89a579a8"
+        "hash": "579dc87863861d3e586fe7f0c707779fe45704612108c6b0bbed5b643126ab40"
       }
     },
     {
@@ -2574,6 +2574,34 @@
       }
     },
     {
+      "id": "isWeekday",
+      "type": "snippetListing",
+      "attributes": {
+        "tags": [
+          "date",
+          "beginner"
+        ],
+        "archived": false
+      },
+      "meta": {
+        "hash": "930437470e6f5e631df8fcc8df406babf81968e9ad11b1646d24383dec372520"
+      }
+    },
+    {
+      "id": "isWeekend",
+      "type": "snippetListing",
+      "attributes": {
+        "tags": [
+          "date",
+          "beginner"
+        ],
+        "archived": false
+      },
+      "meta": {
+        "hash": "710980ffa0d9cca0fe0a898b6f2991613d3ea1afd665b14642ca06e2c5003170"
+      }
+    },
+    {
       "id": "isWritableStream",
       "type": "snippetListing",
       "attributes": {
@@ -2748,7 +2776,7 @@
         "archived": false
       },
       "meta": {
-        "hash": "c7f0f9b6b22590a17c41057c56ea5cf14e74dfbbd4fb7e4bc5c08db3760ef76d"
+        "hash": "94eff16e1bc342c92f429cfd48c9cdd045b117e8228956b190f19fbabcfda89c"
       }
     },
     {
@@ -3184,7 +3212,7 @@
         "archived": false
       },
       "meta": {
-        "hash": "359fd8eb0861de57213387e715687174cf671e22e9b66e358ac28364ad1b2be2"
+        "hash": "a8a85f1eb2f89c50916c6d0cf31e6f450cf66805e14fd412c94a7da182cd27b7"
       }
     },
     {
@@ -3420,7 +3448,7 @@
         "archived": false
       },
       "meta": {
-        "hash": "0842f93bde56f28c9663d341314b7e27b71a686784e7276b34909b0fa5551502"
+        "hash": "3aa7586a3e6019aa38e153e958d5d7966fd257fac6c1a132474a50bd610d6ae5"
       }
     },
     {
@@ -5096,6 +5124,20 @@
       },
       "meta": {
         "hash": "86e7f2674d08de8520abe029aa6be760449367102a6578bb8efd9703508c63a2"
+      }
+    },
+    {
+      "id": "yesterday",
+      "type": "snippetListing",
+      "attributes": {
+        "tags": [
+          "date",
+          "intermediate"
+        ],
+        "archived": false
+      },
+      "meta": {
+        "hash": "bfee3d3ba5931074247e1161a92d1c708a5693ae28962ee01da1046b1e0ad183"
       }
     },
     {
