@@ -7,66 +7,21 @@
   const fs = typeof require !== "undefined" && require('fs');
   const crypto = typeof require !== "undefined" && require('crypto');
 
-  const CSVToArray = (data, delimiter = ',', omitFirstRow = false) =>
-    data
-      .slice(omitFirstRow ? data.indexOf('\n') + 1 : 0)
-      .split('\n')
-      .map(v => v.split(delimiter));
-  const CSVToJSON = (data, delimiter = ',') => {
-    const titles = data.slice(0, data.indexOf('\n')).split(delimiter);
-    return data
-      .slice(data.indexOf('\n') + 1)
-      .split('\n')
-      .map(v => {
-        const values = v.split(delimiter);
-        return titles.reduce((obj, title, index) => ((obj[title] = values[index]), obj), {});
-      });
-  };
-  const JSONToFile = (obj, filename) =>
-    fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2));
-  const JSONtoCSV = (arr, columns, delimiter = ',') =>
-    [
-      columns.join(delimiter),
-      ...arr.map(obj =>
-        columns.reduce(
-          (acc, key) => `${acc}${!acc.length ? '' : delimiter}"${!obj[key] ? '' : obj[key]}"`,
-          ''
-        )
-      )
-    ].join('\n');
-  const RGBToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
-  const URLJoin = (...args) =>
-    args
-      .join('/')
-      .replace(/[\/]+/g, '/')
-      .replace(/^(.+):\//, '$1://')
-      .replace(/^file:/, 'file:/')
-      .replace(/\/(\?|&|#[^!])/g, '$1')
-      .replace(/\?/g, '&')
-      .replace('&', '?');
-  const UUIDGeneratorBrowser = () =>
-    ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-      (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
-    );
-  const UUIDGeneratorNode = () =>
-    ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-      (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
-    );
   const all = (arr, fn = Boolean) => arr.every(fn);
   const allEqual = arr => arr.every(val => val === arr[0]);
   const any = (arr, fn = Boolean) => arr.some(fn);
-  const approximatelyEqual = (v1, v2, epsilon = 0.001) => Math.abs(v1 - v2) < epsilon;
+  const approximatelyEqual = (v1, v2, epsilon = 0.001) => Math.abs(v1 - v2) < epsilon; // 程序中比较近似相等的通用思路，epsilon可以被看做一个比较精度
   const arrayToCSV = (arr, delimiter = ',') =>
     arr
       .map(v => v.map(x => (isNaN(x) ? `"${x.replace(/"/g, '""')}"` : x)).join(delimiter))
-      .join('\n');
+      .join('\n'); // 先把数字转字符串；再把每行的字符串拼接；再把每一行拼接（其中的“"”按照CSV的规则进行转义）
   const arrayToHtmlList = (arr, listID) =>
     (el => (
       (el = document.querySelector('#' + listID)),
       (el.innerHTML += arr.map(item => `<li>${item}</li>`).join(''))
     ))();
   const ary = (fn, n) => (...args) => fn(...args.slice(0, n));
-  const atob = str => Buffer.from(str, 'base64').toString('binary');
+  const atob = str => Buffer.from(str, 'base64').toString('binary'); // 不支持中文；Buffer是Node中处理编码转换的以一个好工具；
   const attempt = (fn, ...args) => {
     try {
       return fn(...args);
@@ -79,7 +34,7 @@
     arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val) => acc + val, 0) /
     arr.length;
   const bifurcate = (arr, filter) =>
-    arr.reduce((acc, val, i) => (acc[filter[i] ? 0 : 1].push(val), acc), [[], []]);
+    arr.reduce((acc, val, i) => (acc[filter[i] ? 0 : 1].push(val), acc), [[], []]); // 巧妙的用reduce初始化分组[[], []]，然后在累加过程中把每个元素放到相应分组，精简了代码
   const bifurcateBy = (arr, fn) =>
     arr.reduce((acc, val, i) => (acc[fn(val, i) ? 0 : 1].push(val), acc), [[], []]);
   const bind = (fn, context, ...boundArgs) => (...args) => fn.apply(context, [...boundArgs, ...args]);
@@ -101,16 +56,16 @@
     if (k === 1 || k === n - 1) return n;
     if (n - k < k) k = n - k;
     let res = n;
-    for (let j = 2; j <= k; j++) res *= (n - j + 1) / j;
+    for (let j = 2; j <= k; j++) res *= (n - j + 1) / j; // 这一步也是计算组合数的代码片段
     return Math.round(res);
   };
   const bottomVisible = () =>
     document.documentElement.clientHeight + window.scrollY >=
-    (document.documentElement.scrollHeight || document.documentElement.clientHeight);
+    (document.documentElement.scrollHeight || document.documentElement.clientHeight); // 是否已经向下滚动了足够的距离window.scrollY，使的页面最下面（在document.documentElement.scrollHeight位置）的已经被显示到视窗高度内了（document.documentElement.clientHeight）；另一种情况是页面不不需要滚动，已经完全显示了
   const btoa = str => Buffer.from(str, 'binary').toString('base64');
   const byteSize = str => new Blob([str]).size;
   const call = (key, ...args) => context => context[key](...args);
-  const capitalize = ([first, ...rest], lowerRest = false) =>
+  const capitalize = ([first, ...rest], lowerRest = false) =>   // [first, ...rest]解构的巧妙应用，不光是对象和数组才能解构
     first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
   const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());
   const castArray = val => (Array.isArray(val) ? val : [val]);
@@ -125,13 +80,14 @@
   };
   const checkProp = (predicate, prop) => obj => !!predicate(obj[prop]);
   const chunk = (arr, size) =>
-    Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
-      arr.slice(i * size, i * size + size)
+    Array.from(
+      { length: Math.ceil(arr.length / size) },
+      (v, i) => arr.slice(i * size, i * size + size) // slice会处理长度不足的情况，JS不存在越界错误
     );
-  const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
+  const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b)); // 画个数轴可以想明白这个代码的逻辑，通过min/max的组合使用把代码精简到一行，且没有分支
   const cloneRegExp = regExp => new RegExp(regExp.source, regExp.flags);
   const coalesce = (...args) => args.find(_ => ![undefined, null].includes(_));
-  const coalesceFactory = valid => (...args) => args.find(valid);
+  const coalesceFactory = valid => (...args) => args.find(valid); // 建立了一个找到第一符合条件元素的通用方法
   const collectInto = fn => (...args) => fn(args);
   const colorize = (...args) => ({
     black: `\x1b[30m${args.join(' ')}`,
@@ -151,11 +107,12 @@
     bgCyan: `\x1b[46m${args.join(' ')}\x1b[0m`,
     bgWhite: `\x1b[47m${args.join(' ')}\x1b[0m`
   });
-  const compact = arr => arr.filter(Boolean);
+  const compact = arr => arr.filter(Boolean); // 因为filter参数为必传，这里用Boolean作为过滤函数传入，即省事又合理
   const compactWhitespace = str => str.replace(/\s{2,}/g, ' ');
   const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
   const composeRight = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
   const converge = (converger, fns) => (...args) => converger(...fns.map(fn => fn.apply(null, args)));
+  // 返回结果是一个函数，这个函数接受的参数传给分支函数，每个分支函数处理后把结果列表作为聚合函数的参数。
   const copyToClipboard = str => {
     const el = document.createElement('textarea');
     el.value = str;
@@ -165,8 +122,8 @@
     document.body.appendChild(el);
     const selected =
       document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
-    el.select();
-    document.execCommand('copy');
+    el.select(); // 选中创建的textarea
+    document.execCommand('copy'); // 执行copy
     document.body.removeChild(el);
     if (selected) {
       document.getSelection().removeAllRanges();
@@ -178,7 +135,6 @@
       acc[val] = (acc[val] || 0) + 1;
       return acc;
     }, {});
-  const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
   const counter = (selector, start, end, step = 1, duration = 2000) => {
     let current = start,
       _step = (end - start) * step < 0 ? -step : step,
@@ -190,6 +146,7 @@
       }, Math.abs(Math.floor(duration / (end - start))));
     return timer;
   };
+  const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
   const createDirIfNotExists = dir => (!fs.existsSync(dir) ? fs.mkdirSync(dir) : undefined);
   const createElement = str => {
     const el = document.createElement('div');
@@ -211,11 +168,28 @@
       if (this.hub[event].length === 0) delete this.hub[event];
     }
   });
+  const CSVToArray = (data, delimiter = ',', omitFirstRow = false) =>
+    data
+      .slice(omitFirstRow ? data.indexOf('\n') + 1 : 0)
+      .split('\n')
+      .map(v => v.split(delimiter));
+  const CSVToJSON = (data, delimiter = ',') => {
+    const titles = data.slice(0, data.indexOf('\n')).split(delimiter);
+    return data
+      .slice(data.indexOf('\n') + 1)
+      .split('\n')
+      .map(v => {
+        const values = v.split(delimiter);
+        return titles.reduce((obj, title, index) => ((obj[title] = values[index]), obj), {});
+      });
+  };
   const currentURL = () => window.location.href;
   const curry = (fn, arity = fn.length, ...args) =>
-    arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args);
+    // fn.length可以取得fn的参数数目
+    arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args); // 已经有的参数先绑上；bind一方面绑上下文this，一方面绑参数
   const dayOfYear = date =>
     Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+  // 直接给参数一个默认值，计算当天
   const debounce = (fn, ms = 0) => {
     let timeoutId;
     return function(...args) {
@@ -285,7 +259,7 @@
   const dropRightWhile = (arr, func) => {
     let rightIndex = arr.length;
     while (rightIndex-- && !func(arr[rightIndex]));
-    return arr.slice(0, rightIndex + 1);
+    return arr.slice(0, rightIndex + 1);  // 返回一个新的数组
   };
   const dropWhile = (arr, func) => {
     while (arr.length > 0 && !func(arr[0])) arr = arr.slice(1);
@@ -390,19 +364,6 @@
       .slice(0)
       .reverse()
       .forEach(callback);
-  const forOwn = (obj, fn) => Object.keys(obj).forEach(key => fn(obj[key], key, obj));
-  const forOwnRight = (obj, fn) =>
-    Object.keys(obj)
-      .reverse()
-      .forEach(key => fn(obj[key], key, obj));
-  const formToObject = form =>
-    Array.from(new FormData(form)).reduce(
-      (acc, [key, value]) => ({
-        ...acc,
-        [key]: value
-      }),
-      {}
-    );
   const formatDuration = ms => {
     if (ms < 0) ms = -ms;
     const time = {
@@ -417,6 +378,19 @@
       .map(([key, val]) => `${val} ${key}${val !== 1 ? 's' : ''}`)
       .join(', ');
   };
+  const formToObject = form =>
+    Array.from(new FormData(form)).reduce(
+      (acc, [key, value]) => ({
+        ...acc,
+        [key]: value
+      }),
+      {}
+    );
+  const forOwn = (obj, fn) => Object.keys(obj).forEach(key => fn(obj[key], key, obj));
+  const forOwnRight = (obj, fn) =>
+    Object.keys(obj)
+      .reverse()
+      .forEach(key => fn(obj[key], key, obj));
   const fromCamelCase = (str, separator = '_') =>
     str
       .replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2')
@@ -545,10 +519,6 @@
     for (let i = 0; i < iterations; i++) fn();
     return (1000 * iterations) / (performance.now() - before);
   };
-  const inRange = (n, start, end = null) => {
-    if (end && start > end) [end, start] = [start, end];
-    return end == null ? n >= 0 && n < start : n >= start && n < end;
-  };
   const indentString = (str, count, indent = ' ') => str.replace(/^/gm, indent.repeat(count));
   const indexOfAll = (arr, val) => arr.reduce((acc, el, i) => (el === val ? [...acc, i] : acc), []);
   const initial = arr => arr.slice(0, -1);
@@ -565,6 +535,10 @@
     args.length === 0
       ? val
       : Array.from({ length: args[0] }).map(() => initializeNDArray(val, ...args.slice(1)));
+  const inRange = (n, start, end = null) => {
+    if (end && start > end) [end, start] = [start, end];
+    return end == null ? n >= 0 && n < start : n >= start && n < end;
+  };
   const insertAfter = (el, htmlString) => el.insertAdjacentHTML('afterend', htmlString);
   const insertBefore = (el, htmlString) => el.insertAdjacentHTML('beforebegin', htmlString);
   const intersection = (a, b) => {
@@ -682,6 +656,18 @@
             : acc + val + separator,
       ''
     );
+  const JSONtoCSV = (arr, columns, delimiter = ',') =>
+    [
+      columns.join(delimiter),
+      ...arr.map(obj =>
+        columns.reduce(
+          (acc, key) => `${acc}${!acc.length ? '' : delimiter}"${!obj[key] ? '' : obj[key]}"`,
+          ''
+        )
+      )
+    ].join('\n');
+  const JSONToFile = (obj, filename) =>
+    fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2));
   const last = arr => arr[arr.length - 1];
   const lcm = (...arr) => {
     const gcd = (x, y) => (!y ? x : gcd(y, x % y));
@@ -816,6 +802,14 @@
     el.addEventListener(evt, opts.target ? delegatorFn : fn, opts.options || false);
     if (opts.target) return delegatorFn;
   };
+  const once = fn => {
+    let called = false;
+    return function(...args) {
+      if (called) return;
+      called = true;
+      return fn.apply(this, args);
+    };
+  };
   const onUserInputChange = callback => {
     let type = 'mouse',
       lastTime = 0;
@@ -829,14 +823,6 @@
       if (type === 'touch') return;
       (type = 'touch'), callback(type), document.addEventListener('mousemove', mousemoveHandler);
     });
-  };
-  const once = fn => {
-    let called = false;
-    return function(...args) {
-      if (called) return;
-      called = true;
-      return fn.apply(this, args);
-    };
   };
   const orderBy = (arr, props, orders) =>
     [...arr].sort((a, b) =>
@@ -893,7 +879,7 @@
       .filter(k => fn(obj[k], k))
       .reduce((acc, key) => ((acc[key] = obj[key]), acc), {});
   const pipeAsyncFunctions = (...fns) => arg => fns.reduce((p, f) => p.then(f), Promise.resolve(arg));
-  const pipeFunctions = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
+  const pipeFunctions = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args))); // 把前一个函数的返回值作为当前函数的参数
   const pluralize = (val, word, plural = word + 's') => {
     const _pluralize = (num, word, plural = word + 's') =>
       [1, -1].includes(Number(num)) ? word : plural;
@@ -996,10 +982,6 @@
   };
   const redirect = (url, asLink = true) =>
     asLink ? (window.location.href = url) : window.location.replace(url);
-  const reduceSuccessive = (arr, fn, acc) =>
-    arr.reduce((res, val, i, arr) => (res.push(fn(res.slice(-1)[0], val, i, arr)), res), [acc]);
-  const reduceWhich = (arr, comparator = (a, b) => a - b) =>
-    arr.reduce((a, b) => (comparator(a, b) >= 0 ? b : a));
   const reducedFilter = (data, keys, fn) =>
     data.filter(fn).map(el =>
       keys.reduce((acc, key) => {
@@ -1007,6 +989,10 @@
         return acc;
       }, {})
     );
+  const reduceSuccessive = (arr, fn, acc) =>
+    arr.reduce((res, val, i, arr) => (res.push(fn(res.slice(-1)[0], val, i, arr)), res), [acc]);
+  const reduceWhich = (arr, comparator = (a, b) => a - b) =>
+    arr.reduce((a, b) => (comparator(a, b) >= 0 ? b : a));
   const reject = (pred, array) => array.filter((...args) => !pred(...args));
   const remove = (arr, func) =>
     Array.isArray(arr)
@@ -1025,6 +1011,7 @@
       {}
     );
   const reverseString = str => [...str].reverse().join('');
+  const RGBToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
   const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);
   const runAsync = fn => {
     const worker = new Worker(
@@ -1201,15 +1188,15 @@
       }
     };
   };
+  const times = (n, fn, context = undefined) => {
+    let i = 0;
+    while (fn.call(context, i) !== false && ++i < n) {}
+  };
   const timeTaken = callback => {
     console.time('timeTaken');
     const r = callback();
     console.timeEnd('timeTaken');
     return r;
-  };
-  const times = (n, fn, context = undefined) => {
-    let i = 0;
-    while (fn.call(context, i) !== false && ++i < n) {}
   };
   const toCamelCase = str => {
     let s =
@@ -1223,6 +1210,7 @@
   const toCurrency = (n, curr, LanguageFormat = undefined) =>
     Intl.NumberFormat(LanguageFormat, { style: 'currency', currency: curr }).format(n);
   const toDecimalMark = num => num.toLocaleString('en-US');
+  const toggleClass = (el, className) => el.classList.toggle(className);
   const toHash = (object, key) =>
     Array.prototype.reduce.call(
       object,
@@ -1235,6 +1223,11 @@
       .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
       .map(x => x.toLowerCase())
       .join('-');
+  const tomorrow = () => {
+    let t = new Date();
+    t.setDate(t.getDate() + 1);
+    return t.toISOString().split('T')[0];
+  };
   const toOrdinalSuffix = num => {
     const int = parseInt(num),
       digits = [int % 10, int % 100],
@@ -1258,12 +1251,6 @@
       .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
       .map(x => x.charAt(0).toUpperCase() + x.slice(1))
       .join(' ');
-  const toggleClass = (el, className) => el.classList.toggle(className);
-  const tomorrow = () => {
-    let t = new Date();
-    t.setDate(t.getDate() + 1);
-    return t.toISOString().split('T')[0];
-  };
   const transform = (obj, fn, acc) => Object.keys(obj).reduce((a, k) => fn(a, obj[k], k, obj), acc);
   const triggerEvent = (el, eventType, detail) =>
     el.dispatchEvent(new CustomEvent(eventType, { detail }));
@@ -1348,6 +1335,23 @@
         }).map(x => [])
       )
       .map(val => fn(...val));
+  const URLJoin = (...args) =>
+    args
+      .join('/')
+      .replace(/[\/]+/g, '/')
+      .replace(/^(.+):\//, '$1://')
+      .replace(/^file:/, 'file:/')
+      .replace(/\/(\?|&|#[^!])/g, '$1')
+      .replace(/\?/g, '&')
+      .replace('&', '?');
+  const UUIDGeneratorBrowser = () =>
+    ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+      (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
+    );
+  const UUIDGeneratorNode = () =>
+    ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+      (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
+    );
   const validateNumber = n => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) == n;
   const vectorDistance = (...coords) => {
     let pointLength = Math.trunc(coords.length / 2);
@@ -1383,14 +1387,6 @@
     );
   };
 
-  exports.CSVToArray = CSVToArray;
-  exports.CSVToJSON = CSVToJSON;
-  exports.JSONToFile = JSONToFile;
-  exports.JSONtoCSV = JSONtoCSV;
-  exports.RGBToHex = RGBToHex;
-  exports.URLJoin = URLJoin;
-  exports.UUIDGeneratorBrowser = UUIDGeneratorBrowser;
-  exports.UUIDGeneratorNode = UUIDGeneratorNode;
   exports.all = all;
   exports.allEqual = allEqual;
   exports.any = any;
@@ -1431,11 +1427,13 @@
   exports.converge = converge;
   exports.copyToClipboard = copyToClipboard;
   exports.countBy = countBy;
-  exports.countOccurrences = countOccurrences;
   exports.counter = counter;
+  exports.countOccurrences = countOccurrences;
   exports.createDirIfNotExists = createDirIfNotExists;
   exports.createElement = createElement;
   exports.createEventHub = createEventHub;
+  exports.CSVToArray = CSVToArray;
+  exports.CSVToJSON = CSVToJSON;
   exports.currentURL = currentURL;
   exports.curry = curry;
   exports.dayOfYear = dayOfYear;
@@ -1482,10 +1480,10 @@
   exports.flattenObject = flattenObject;
   exports.flip = flip;
   exports.forEachRight = forEachRight;
+  exports.formatDuration = formatDuration;
+  exports.formToObject = formToObject;
   exports.forOwn = forOwn;
   exports.forOwnRight = forOwnRight;
-  exports.formToObject = formToObject;
-  exports.formatDuration = formatDuration;
   exports.fromCamelCase = fromCamelCase;
   exports.functionName = functionName;
   exports.functions = functions;
@@ -1513,7 +1511,6 @@
   exports.httpPost = httpPost;
   exports.httpsRedirect = httpsRedirect;
   exports.hz = hz;
-  exports.inRange = inRange;
   exports.indentString = indentString;
   exports.indexOfAll = indexOfAll;
   exports.initial = initial;
@@ -1522,6 +1519,7 @@
   exports.initializeArrayWithRangeRight = initializeArrayWithRangeRight;
   exports.initializeArrayWithValues = initializeArrayWithValues;
   exports.initializeNDArray = initializeNDArray;
+  exports.inRange = inRange;
   exports.insertAfter = insertAfter;
   exports.insertBefore = insertBefore;
   exports.intersection = intersection;
@@ -1567,6 +1565,8 @@
   exports.isWeekend = isWeekend;
   exports.isWritableStream = isWritableStream;
   exports.join = join;
+  exports.JSONtoCSV = JSONtoCSV;
+  exports.JSONToFile = JSONToFile;
   exports.last = last;
   exports.lcm = lcm;
   exports.longestItem = longestItem;
@@ -1605,8 +1605,8 @@
   exports.omit = omit;
   exports.omitBy = omitBy;
   exports.on = on;
-  exports.onUserInputChange = onUserInputChange;
   exports.once = once;
+  exports.onUserInputChange = onUserInputChange;
   exports.orderBy = orderBy;
   exports.over = over;
   exports.overArgs = overArgs;
@@ -1641,14 +1641,15 @@
   exports.rearg = rearg;
   exports.recordAnimationFrames = recordAnimationFrames;
   exports.redirect = redirect;
+  exports.reducedFilter = reducedFilter;
   exports.reduceSuccessive = reduceSuccessive;
   exports.reduceWhich = reduceWhich;
-  exports.reducedFilter = reducedFilter;
   exports.reject = reject;
   exports.remove = remove;
   exports.removeNonASCII = removeNonASCII;
   exports.renameKeys = renameKeys;
   exports.reverseString = reverseString;
+  exports.RGBToHex = RGBToHex;
   exports.round = round;
   exports.runAsync = runAsync;
   exports.runPromisesInSeries = runPromisesInSeries;
@@ -1690,19 +1691,19 @@
   exports.takeRightWhile = takeRightWhile;
   exports.takeWhile = takeWhile;
   exports.throttle = throttle;
-  exports.timeTaken = timeTaken;
   exports.times = times;
+  exports.timeTaken = timeTaken;
   exports.toCamelCase = toCamelCase;
   exports.toCurrency = toCurrency;
   exports.toDecimalMark = toDecimalMark;
+  exports.toggleClass = toggleClass;
   exports.toHash = toHash;
   exports.toKebabCase = toKebabCase;
+  exports.tomorrow = tomorrow;
   exports.toOrdinalSuffix = toOrdinalSuffix;
   exports.toSafeInteger = toSafeInteger;
   exports.toSnakeCase = toSnakeCase;
   exports.toTitleCase = toTitleCase;
-  exports.toggleClass = toggleClass;
-  exports.tomorrow = tomorrow;
   exports.transform = transform;
   exports.triggerEvent = triggerEvent;
   exports.truncateString = truncateString;
@@ -1722,6 +1723,9 @@
   exports.untildify = untildify;
   exports.unzip = unzip;
   exports.unzipWith = unzipWith;
+  exports.URLJoin = URLJoin;
+  exports.UUIDGeneratorBrowser = UUIDGeneratorBrowser;
+  exports.UUIDGeneratorNode = UUIDGeneratorNode;
   exports.validateNumber = validateNumber;
   exports.vectorDistance = vectorDistance;
   exports.when = when;
