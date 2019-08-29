@@ -1,4 +1,7 @@
-### isUpperCase
+---
+title: isUpperCase
+tags: string,utility,beginner
+---
 
 Checks if a string is upper case.
 

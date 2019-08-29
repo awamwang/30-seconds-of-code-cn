@@ -1,4 +1,7 @@
-### checkProp
+---
+title: checkProp
+tags: function,object,utility,beginner
+---
 
 Given a `predicate` function and a `prop` string, this curried function will then take an `object` to inspect by calling the property and passing it to the predicate.
 
@@ -9,14 +12,6 @@ const checkProp = (predicate, prop) => obj => !!predicate(obj[prop]);
 ```
 
 ```js
-
-
-
-
-
-
-
-
 
 
 

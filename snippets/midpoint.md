@@ -1,4 +1,7 @@
-### midpoint
+---
+title: midpoint
+tags: math,array,beginner
+---
 
 Calculates the midpoint between two pairs of (x,y) points.
 
@@ -17,4 +20,3 @@ midpoint([2, 2], [4, 4]); // [3, 3]
 midpoint([4, 4], [6, 6]); // [5, 5]
 midpoint([1, 3], [2, 4]); // [1.5, 3.5]
 ```
-

@@ -1,57 +1,36 @@
 ![Logo](/logo.png)
 # Snippets Archive
 These snippets, while useful and interesting, didn't quite make it into the repository due to either having very specific use-cases or being outdated. However we felt like they might still be useful to some readers, so here they are.
-## Table of Contents
-* [`JSONToDate`](#jsontodate)
-* [`binarySearch`](#binarysearch)
-* [`celsiusToFahrenheit`](#celsiustofahrenheit)
-* [`cleanObj`](#cleanobj)
-* [`collatz`](#collatz)
-* [`countVowels`](#countvowels)
-* [`factors`](#factors)
-* [`fahrenheitToCelsius`](#fahrenheittocelsius)
-* [`fibonacciCountUntilNum`](#fibonaccicountuntilnum)
-* [`fibonacciUntilNum`](#fibonacciuntilnum)
-* [`heronArea`](#heronarea)
-* [`howManyTimes`](#howmanytimes)
-* [`httpDelete`](#httpdelete)
-* [`httpPut`](#httpput)
-* [`isArmstrongNumber`](#isarmstrongnumber)
-* [`isSimilar`](#issimilar)
-* [`kmphToMph`](#kmphtomph)
-* [`levenshteinDistance`](#levenshteindistance)
-* [`mphToKmph`](#mphtokmph)
-* [`pipeLog`](#pipelog)
-* [`quickSort`](#quicksort)
-* [`removeVowels`](#removevowels)
-* [`solveRPN`](#solverpn)
-* [`speechSynthesis`](#speechsynthesis)
-* [`squareSum`](#squaresum)
+## Contents
 
----
-### JSONToDate
-
-Converts a JSON object to a date.
-
-Use `Date()`, to convert dates in JSON format to readable format (`dd/mm/yyyy`).
-
-```js
-const JSONToDate = arr => {
-  const dt = new Date(parseInt(arr.toString().substr(6)));
-  return `${dt.getDate()}/${dt.getMonth() + 1}/${dt.getFullYear()}`;
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-JSONToDate(/Date(1489525200000)/); // "14/3/2017"
-```
-
-</details>
-
-<br>[⬆ Back to top](#contents)
+- [Snippets Archive](#snippets-archive)
+  - [Contents](#contents)
+    - [binarySearch](#binarysearch)
+    - [celsiusToFahrenheit](#celsiustofahrenheit)
+    - [cleanObj](#cleanobj)
+    - [collatz](#collatz)
+    - [countVowels](#countvowels)
+    - [factors](#factors)
+    - [fahrenheitToCelsius](#fahrenheittocelsius)
+    - [fibonacciCountUntilNum](#fibonaccicountuntilnum)
+    - [fibonacciUntilNum](#fibonacciuntilnum)
+    - [heronArea](#heronarea)
+    - [howManyTimes](#howmanytimes)
+    - [httpDelete](#httpdelete)
+    - [httpDelete](#httpdelete-1)
+    - [httpPut](#httpput)
+    - [isArmstrongNumber](#isarmstrongnumber)
+    - [isSimilar](#issimilar)
+    - [JSONToDate](#jsontodate)
+    - [kmphToMph](#kmphtomph)
+    - [levenshteinDistance](#levenshteindistance)
+    - [mphToKmph](#mphtokmph)
+    - [pipeLog](#pipelog)
+    - [quickSort](#quicksort)
+    - [removeVowels](#removevowels)
+    - [solveRPN](#solverpn)
+    - [speechSynthesis](#speechsynthesis)
+    - [squareSum](#squaresum)
 
 ### binarySearch
 
@@ -80,7 +59,6 @@ const binarySearch = (arr, val, start = 0, end = arr.length - 1) => {
 binarySearch([1, 4, 6, 7, 12, 13, 15, 18, 19, 20, 22, 24], 6); // 2
 binarySearch([1, 4, 6, 7, 12, 13, 15, 18, 19, 20, 22, 24], 21); // -1
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -101,7 +79,6 @@ const celsiusToFahrenheit = degrees => 1.8 * degrees + 32;
 ```js
 celsiusToFahrenheit(33) // 91.4
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -133,7 +110,6 @@ const cleanObj = (obj, keysToKeep = [], childIndicator) => {
 const testObj = { a: 1, b: 2, children: { a: 1, b: 2 } };
 cleanObj(testObj, ['a'], 'children'); // { a: 1, children : { a: 1}}
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -154,7 +130,6 @@ const collatz = n => (n % 2 === 0 ? n / 2 : 3 * n + 1);
 ```js
 collatz(8); // 4
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -176,7 +151,6 @@ const countVowels = str => (str.match(/[aeiou]/gi) || []).length;
 countVowels('foobar'); // 3
 countVowels('gym'); // 0
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -226,7 +200,6 @@ factors(12, true); // [2,3]
 factors(-12); // [2, -2, 3, -3, 4, -4, 6, -6, 12, -12]
 factors(-12, true); // [2,3]
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -247,7 +220,6 @@ const fahrenheitToCelsius = degrees => (degrees - 32) * 5/9;
 ```js
 fahrenheitToCelsius(32); // 0
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -269,7 +241,6 @@ const fibonacciCountUntilNum = num =>
 ```js
 fibonacciCountUntilNum(10); // 7
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -298,7 +269,6 @@ const fibonacciUntilNum = num => {
 ```js
 fibonacciUntilNum(10); // [ 0, 1, 1, 2, 3, 5, 8 ]
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -310,7 +280,6 @@ Returns the area of a triangle using only the 3 side lengths, Heron's formula. A
 More information on what Heron's formula is and why it works available here: https://en.wikipedia.org/wiki/Heron%27s_formula.
 
 Uses `Math.sqrt()` to find the square root of a value.
-
 
 ```js
 const heronArea = (side_a, side_b, side_c) => {
@@ -325,7 +294,6 @@ const heronArea = (side_a, side_b, side_c) => {
 ```js
 heronArea(3, 4, 5); // 6
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -362,7 +330,37 @@ howManyTimes(100, 2.5); // 2
 howManyTimes(100, 0); // 0
 howManyTimes(100, -1); // Infinity
 ```
+</details>
 
+<br>[⬆ Back to top](#contents)
+
+### httpDelete
+
+Makes a `DELETE` request to the passed URL.
+
+Use `XMLHttpRequest` web api to make a `delete` request to the given `url`.
+Handle the `onload` event, by running the provided `callback` function.
+Handle the `onerror` event, by running the provided `err` function.
+Omit the third argument, `err` to log the request to the console's error stream by default.
+
+```js
+const httpDelete = (url, callback, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('DELETE', url, true);
+  request.onload = () => callback(request);
+  request.onerror = () => err(request);
+  request.send();
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+httpDelete('https://website.com/users/123', request => {
+  console.log(request.responseText);
+}); // 'Deletes a user from the database'
+```
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -430,7 +428,6 @@ httpPut('https://website.com/users/123', data, request => {
   console.log(request.responseText);
 }); // 'Updates a user's password in database'
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -455,7 +452,6 @@ const isArmstrongNumber = digits =>
 isArmstrongNumber(1634); // true
 isArmstrongNumber(56); // false
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -485,7 +481,29 @@ const isSimilar = (pattern, str) =>
 isSimilar('rt','Rohit'); // true
 isSimilar('tr','Rohit'); // false
 ```
+</details>
 
+<br>[⬆ Back to top](#contents)
+
+### JSONToDate
+
+Converts a JSON object to a date.
+
+Use `Date()`, to convert dates in JSON format to readable format (`dd/mm/yyyy`).
+
+```js
+const JSONToDate = arr => {
+  const dt = new Date(parseInt(arr.toString().substr(6)));
+  return `${dt.getDate()}/${dt.getMonth() + 1}/${dt.getFullYear()}`;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+JSONToDate(/Date(1489525200000)/); // "14/3/2017"
+```
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -507,7 +525,6 @@ const kmphToMph = (kmph) => 0.621371192 * kmph;
 kmphToMph(10); // 16.09344000614692
 kmphToMph(345.4); // 138.24264965280207
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -554,7 +571,6 @@ levenshteinDistance('30-seconds-of-code','30-seconds-of-python-code'); // 7
 const compareStrings = (string1,string2) => (100 - levenshteinDistance(string1,string2) / Math.max(string1.length,string2.length));
 compareStrings('30-seconds-of-code', '30-seconds-of-python-code'); // 99.72 (%)
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -576,7 +592,6 @@ const mphToKmph = (mph) => 1.6093440006146922 * mph;
 mphToKmph(10); // 16.09344000614692
 mphToKmph(85.9); // 138.24264965280207
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -586,8 +601,6 @@ mphToKmph(85.9); // 138.24264965280207
 Logs a value and returns it.
 
 Use `console.log` to log the supplied value, combined with the `||` operator to return it.
-
-
 
 ```js
 const pipeLog = data => console.log(data) || data;
@@ -599,7 +612,6 @@ const pipeLog = data => console.log(data) || data;
 ```js
 pipeLog(1); // logs `1` and returns `1`
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -630,7 +642,6 @@ const quickSort = ([n, ...nums], desc) =>
 quickSort([4, 1, 3, 2]); // [1,2,3,4]
 quickSort([4, 1, 3, 2], true); // [4,3,2,1]
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -653,7 +664,6 @@ const removeVowels = (str, repl = '') => str.replace(/[aeiou]/gi, repl);
 removeVowels("foobAr"); // "fbr"
 removeVowels("foobAr","*"); // "f**b*r"
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -706,7 +716,6 @@ const solveRPN = rpn => {
 solveRPN('15 7 1 1 + - / 3 * 2 1 1 + + -'); // 5
 solveRPN('2 3 ^'); // 8
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -734,7 +743,6 @@ const speechSynthesis = message => {
 ```js
 speechSynthesis('Hello, World'); // // plays the message
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
@@ -755,8 +763,6 @@ const squareSum = (...args) => args.reduce((squareSum, number) => squareSum + Ma
 ```js
 squareSum(1, 2, 2); // 9
 ```
-
 </details>
 
 <br>[⬆ Back to top](#contents)
-

@@ -1,4 +1,7 @@
-### dig
+---
+title: dig
+tags: object,recursion,intermediate
+---
 
 Returns the target value in a nested JSON object, based on the given key.
 
@@ -10,6 +13,7 @@ If found, return the value of `obj[target]`, otherwise use `Object.values(obj)` 
 使用`in`操作符来检查`obj`中是否存在`target`。如果找到了，返回`obj[target]`的值，否则使用`Object.values(obj)`和`Array.prototype.reduce()`来对嵌套对象递归调用`dig`直到第一个匹配的键值对被找到。
 
 ```js
+
 const dig = (obj, target) =>
   target in obj
     ? obj[target]

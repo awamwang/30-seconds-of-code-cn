@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global._30s = {})));
+  (factory((global[''] = global[''] || {}, global['']['/_30s'] = {})));
 }(this, (function (exports) { 'use strict';
 
   function _typeof(obj) {
@@ -33,20 +33,35 @@
     return obj;
   }
 
-  function _objectSpread(target) {
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
-      var ownKeys = Object.keys(source);
 
-      if (typeof Object.getOwnPropertySymbols === 'function') {
-        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-        }));
+      if (i % 2) {
+        ownKeys(source, true).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys(source).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
       }
-
-      ownKeys.forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
     }
 
     return target;
@@ -213,7 +228,7 @@
         args[_key5] = arguments[_key5];
       }
 
-      return fn.apply(context, boundArgs.concat(args));
+      return fn.apply(context, [].concat(boundArgs, args));
     };
   };
   var bindAll = function bindAll(obj) {
@@ -237,7 +252,7 @@
         args[_key8] = arguments[_key8];
       }
 
-      return context[fn].apply(context, boundArgs.concat(args));
+      return context[fn].apply(context, [].concat(boundArgs, args));
     };
   };
   var binomialCoefficient = function binomialCoefficient(n, k) {
@@ -285,8 +300,8 @@
     );
   };
   var capitalizeEveryWord = function capitalizeEveryWord(str) {
-    return str.replace(/\b[a-z]/g, function (char) {
-      return char.toUpperCase();
+    return str.replace(/\b[a-z]/g, function (_char) {
+      return _char.toUpperCase();
     });
   };
   var castArray = function castArray(val) {
@@ -861,7 +876,7 @@
           key = _ref13[0],
           value = _ref13[1];
 
-      return _objectSpread({}, acc, _defineProperty({}, key, value));
+      return _objectSpread2({}, acc, _defineProperty({}, key, value));
     }, {});
   };
   var forOwn = function forOwn(obj, fn) {
@@ -883,7 +898,7 @@
   };
   var functions = function functions(obj) {
     var inherited = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    return (inherited ? _toConsumableArray(Object.keys(obj)).concat(_toConsumableArray(Object.keys(Object.getPrototypeOf(obj)))) : Object.keys(obj)).filter(function (key) {
+    return (inherited ? [].concat(_toConsumableArray(Object.keys(obj)), _toConsumableArray(Object.keys(Object.getPrototypeOf(obj)))) : Object.keys(obj)).filter(function (key) {
       return typeof obj[key] === 'function';
     });
   };
@@ -896,7 +911,7 @@
       arr[_key23] = arguments[_key23];
     }
 
-    return arr.concat().reduce(function (a, b) {
+    return [].concat(arr).reduce(function (a, b) {
       return _gcd(a, b);
     });
   };
@@ -914,7 +929,7 @@
       selectors[_key24 - 1] = arguments[_key24];
     }
 
-    return selectors.concat().map(function (s) {
+    return [].concat(selectors).map(function (s) {
       return s.replace(/\[([^\[\]]*)\]/g, '.$1.').split('.').filter(function (t) {
         return t !== '';
       }).reduce(function (prev, cur) {
@@ -1017,7 +1032,7 @@
       el[_key26] = arguments[_key26];
     }
 
-    return el.concat().forEach(function (e) {
+    return [].concat(el).forEach(function (e) {
       return e.style.display = 'none';
     });
   };
@@ -1071,7 +1086,7 @@
   };
   var indexOfAll = function indexOfAll(arr, val) {
     return arr.reduce(function (acc, el, i) {
-      return el === val ? _toConsumableArray(acc).concat([i]) : acc;
+      return el === val ? [].concat(_toConsumableArray(acc), [i]) : acc;
     }, []);
   };
   var initial = function initial(arr) {
@@ -1275,8 +1290,8 @@
       _iteratorError = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
+        if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+          _iterator["return"]();
         }
       } finally {
         if (_didIteratorError) {
@@ -1356,7 +1371,7 @@
       arr[_key28] = arguments[_key28];
     }
 
-    return arr.concat().reduce(function (a, b) {
+    return [].concat(arr).reduce(function (a, b) {
       return _lcm(a, b);
     });
   };
@@ -1465,7 +1480,7 @@
       objs[_key30] = arguments[_key30];
     }
 
-    return objs.concat().reduce(function (acc, obj) {
+    return [].concat(objs).reduce(function (acc, obj) {
       return Object.keys(obj).reduce(function (a, k) {
         acc[k] = acc.hasOwnProperty(k) ? [].concat(acc[k]).concat(obj[k]) : obj[k];
         return acc;
@@ -1521,7 +1536,7 @@
     return items.filter(function (item) {
       return item[link] === id;
     }).map(function (item) {
-      return _objectSpread({}, item, {
+      return _objectSpread2({}, item, {
         children: nest(items, item.id)
       });
     });
@@ -1581,7 +1596,7 @@
     return el.removeEventListener(evt, fn, opts);
   };
   var offset = function offset(arr, _offset) {
-    return _toConsumableArray(arr.slice(_offset)).concat(_toConsumableArray(arr.slice(0, _offset)));
+    return [].concat(_toConsumableArray(arr.slice(_offset)), _toConsumableArray(arr.slice(0, _offset)));
   };
   var omit = function omit(obj, arr) {
     return Object.keys(obj).filter(function (k) {
@@ -1678,8 +1693,9 @@
     };
   };
   var pad = function pad(str, length) {
-    var char = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ' ';
-    return str.padStart((str.length + length) / 2, char).padEnd(length, char);
+    var _char2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ' ';
+
+    return str.padStart((str.length + length) / 2, _char2).padEnd(length, _char2);
   };
   var palindrome = function palindrome(str) {
     var s = str.toLowerCase().replace(/[\W_]/g, '');
@@ -1733,7 +1749,7 @@
   var permutations = function permutations(arr) {
     if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr;
     return arr.reduce(function (acc, item, i) {
-      return acc.concat(permutations(_toConsumableArray(arr.slice(0, i)).concat(_toConsumableArray(arr.slice(i + 1)))).map(function (val) {
+      return acc.concat(permutations([].concat(_toConsumableArray(arr.slice(0, i)), _toConsumableArray(arr.slice(i + 1)))).map(function (val) {
         return [item].concat(_toConsumableArray(val));
       }));
     }, []);
@@ -2006,7 +2022,7 @@
   };
   var renameKeys = function renameKeys(keysMap, obj) {
     return Object.keys(obj).reduce(function (acc, key) {
-      return _objectSpread({}, acc, _defineProperty({}, keysMap[key] || key, obj[key]));
+      return _objectSpread2({}, acc, {}, _defineProperty({}, keysMap[key] || key, obj[key]));
     }, {});
   };
   var reverseString = function reverseString(str) {
@@ -2101,7 +2117,7 @@
       el[_key47] = arguments[_key47];
     }
 
-    return el.concat().forEach(function (e) {
+    return [].concat(el).forEach(function (e) {
       return e.style.display = '';
     });
   };
@@ -2221,7 +2237,7 @@
       arr[_key48] = arguments[_key48];
     }
 
-    return arr.concat().reduce(function (acc, val) {
+    return [].concat(arr).reduce(function (acc, val) {
       return acc + val;
     }, 0);
   };
@@ -2244,9 +2260,9 @@
   var symmetricDifference = function symmetricDifference(a, b) {
     var sA = new Set(a),
         sB = new Set(b);
-    return _toConsumableArray(a.filter(function (x) {
+    return [].concat(_toConsumableArray(a.filter(function (x) {
       return !sB.has(x);
-    })).concat(_toConsumableArray(b.filter(function (x) {
+    })), _toConsumableArray(b.filter(function (x) {
       return !sA.has(x);
     })));
   };
@@ -2257,18 +2273,18 @@
         sB = new Set(b.map(function (v) {
       return fn(v);
     }));
-    return _toConsumableArray(a.filter(function (x) {
+    return [].concat(_toConsumableArray(a.filter(function (x) {
       return !sB.has(fn(x));
-    })).concat(_toConsumableArray(b.filter(function (x) {
+    })), _toConsumableArray(b.filter(function (x) {
       return !sA.has(fn(x));
     })));
   };
   var symmetricDifferenceWith = function symmetricDifferenceWith(arr, val, comp) {
-    return _toConsumableArray(arr.filter(function (a) {
+    return [].concat(_toConsumableArray(arr.filter(function (a) {
       return val.findIndex(function (b) {
         return comp(a, b);
       }) === -1;
-    })).concat(_toConsumableArray(val.filter(function (a) {
+    })), _toConsumableArray(val.filter(function (a) {
       return arr.findIndex(function (b) {
         return comp(a, b);
       }) === -1;
@@ -2308,8 +2324,8 @@
       _iteratorError2 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-          _iterator2.return();
+        if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+          _iterator2["return"]();
         }
       } finally {
         if (_didIteratorError2) {
@@ -2388,12 +2404,13 @@
     return t.toISOString().split('T')[0];
   };
   var toOrdinalSuffix = function toOrdinalSuffix(num) {
-    var int = parseInt(num),
-        digits = [int % 10, int % 100],
+    var _int = parseInt(num),
+        digits = [_int % 10, _int % 100],
         ordinals = ['st', 'nd', 'rd', 'th'],
         oPattern = [1, 2, 3, 4],
         tPattern = [11, 12, 13, 14, 15, 16, 17, 18, 19];
-    return oPattern.includes(digits[0]) && !tPattern.includes(digits[1]) ? int + ordinals[digits[0] - 1] : int + ordinals[3];
+
+    return oPattern.includes(digits[0]) && !tPattern.includes(digits[1]) ? _int + ordinals[digits[0] - 1] : _int + ordinals[3];
   };
   var toSafeInteger = function toSafeInteger(num) {
     return Math.round(Math.max(Math.min(num, Number.MAX_SAFE_INTEGER), Number.MIN_SAFE_INTEGER));
@@ -2484,16 +2501,16 @@
     return result;
   };
   var union = function union(a, b) {
-    return Array.from(new Set(_toConsumableArray(a).concat(_toConsumableArray(b))));
+    return Array.from(new Set([].concat(_toConsumableArray(a), _toConsumableArray(b))));
   };
   var unionBy = function unionBy(a, b, fn) {
     var s = new Set(a.map(fn));
-    return Array.from(new Set(_toConsumableArray(a).concat(_toConsumableArray(b.filter(function (x) {
+    return Array.from(new Set([].concat(_toConsumableArray(a), _toConsumableArray(b.filter(function (x) {
       return !s.has(fn(x));
     })))));
   };
   var unionWith = function unionWith(a, b, comp) {
-    return Array.from(new Set(_toConsumableArray(a).concat(_toConsumableArray(b.filter(function (x) {
+    return Array.from(new Set([].concat(_toConsumableArray(a), _toConsumableArray(b.filter(function (x) {
       return a.findIndex(function (y) {
         return comp(x, y);
       }) === -1;
@@ -2519,9 +2536,9 @@
     }, []);
   };
   var uniqueSymmetricDifference = function uniqueSymmetricDifference(a, b) {
-    return _toConsumableArray(new Set(_toConsumableArray(a.filter(function (v) {
+    return _toConsumableArray(new Set([].concat(_toConsumableArray(a.filter(function (v) {
       return !b.includes(v);
-    })).concat(_toConsumableArray(b.filter(function (v) {
+    })), _toConsumableArray(b.filter(function (v) {
       return !a.includes(v);
     })))));
   };
@@ -2661,6 +2678,239 @@
         return a[i];
       });
     });
+  };
+  var binarySearch = function binarySearch(arr, val) {
+    var start = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    var end = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : arr.length - 1;
+    if (start > end) return -1;
+    var mid = Math.floor((start + end) / 2);
+    if (arr[mid] > val) return binarySearch(arr, val, start, mid - 1);
+    if (arr[mid] < val) return binarySearch(arr, val, mid + 1, end);
+    return mid;
+  };
+  var celsiusToFahrenheit = function celsiusToFahrenheit(degrees) {
+    return 1.8 * degrees + 32;
+  };
+  var cleanObj = function cleanObj(obj) {
+    var keysToKeep = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+    var childIndicator = arguments.length > 2 ? arguments[2] : undefined;
+    Object.keys(obj).forEach(function (key) {
+      if (key === childIndicator) {
+        cleanObj(obj[key], keysToKeep, childIndicator);
+      } else if (!keysToKeep.includes(key)) {
+        delete obj[key];
+      }
+    });
+    return obj;
+  };
+  var collatz = function collatz(n) {
+    return n % 2 === 0 ? n / 2 : 3 * n + 1;
+  };
+  var countVowels = function countVowels(str) {
+    return (str.match(/[aeiou]/gi) || []).length;
+  };
+  var factors = function factors(num) {
+    var primes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    var isPrime = function isPrime(num) {
+      var boundary = Math.floor(Math.sqrt(num));
+
+      for (var i = 2; i <= boundary; i++) {
+        if (num % i === 0) return false;
+      }
+
+      return num >= 2;
+    };
+
+    var isNeg = num < 0;
+    num = isNeg ? -num : num;
+    var array = Array.from({
+      length: num - 1
+    }).map(function (val, i) {
+      return num % (i + 2) === 0 ? i + 2 : false;
+    }).filter(function (val) {
+      return val;
+    });
+    if (isNeg) array = array.reduce(function (acc, val) {
+      acc.push(val);
+      acc.push(-val);
+      return acc;
+    }, []);
+    return primes ? array.filter(isPrime) : array;
+  };
+  var fahrenheitToCelsius = function fahrenheitToCelsius(degrees) {
+    return (degrees - 32) * 5 / 9;
+  };
+  var fibonacciCountUntilNum = function fibonacciCountUntilNum(num) {
+    return Math.ceil(Math.log(num * Math.sqrt(5) + 1 / 2) / Math.log((Math.sqrt(5) + 1) / 2));
+  };
+  var fibonacciUntilNum = function fibonacciUntilNum(num) {
+    var n = Math.ceil(Math.log(num * Math.sqrt(5) + 1 / 2) / Math.log((Math.sqrt(5) + 1) / 2));
+    return Array.from({
+      length: n
+    }).reduce(function (acc, val, i) {
+      return acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i);
+    }, []);
+  };
+  var heronArea = function heronArea(side_a, side_b, side_c) {
+    var p = (side_a + side_b + side_c) / 2;
+    return Math.sqrt(p * (p - side_a) * (p - side_b) * (p - side_c));
+  };
+  var howManyTimes = function howManyTimes(num, divisor) {
+    if (divisor === 1 || divisor === -1) return Infinity;
+    if (divisor === 0) return 0;
+    var i = 0;
+
+    while (Number.isInteger(num / divisor)) {
+      i++;
+      num = num / divisor;
+    }
+
+    return i;
+  };
+  var httpDelete = function httpDelete(url, callback) {
+    var err = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : console.error;
+    var request = new XMLHttpRequest();
+    request.open('DELETE', url, true);
+
+    request.onload = function () {
+      return callback(request);
+    };
+
+    request.onerror = function () {
+      return err(request);
+    };
+
+    request.send();
+  };
+  var httpPut = function httpPut(url, data, callback) {
+    var err = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : console.error;
+    var request = new XMLHttpRequest();
+    request.open("PUT", url, true);
+    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+    request.onload = function () {
+      return callback(request);
+    };
+
+    request.onerror = function () {
+      return err(request);
+    };
+
+    request.send(data);
+  };
+  var isArmstrongNumber = function isArmstrongNumber(digits) {
+    return function (arr) {
+      return arr.reduce(function (a, d) {
+        return a + Math.pow(parseInt(d), arr.length);
+      }, 0) == digits;
+    }((digits + '').split(''));
+  };
+  var isSimilar = function isSimilar(pattern, str) {
+    return _toConsumableArray(str).reduce(function (matchIndex, _char3) {
+      return _char3.toLowerCase() === (pattern[matchIndex] || '').toLowerCase() ? matchIndex + 1 : matchIndex;
+    }, 0) === pattern.length;
+  };
+  var JSONToDate = function JSONToDate(arr) {
+    var dt = new Date(parseInt(arr.toString().substr(6)));
+    return "".concat(dt.getDate(), "/").concat(dt.getMonth() + 1, "/").concat(dt.getFullYear());
+  };
+  var kmphToMph = function kmphToMph(kmph) {
+    return 0.621371192 * kmph;
+  };
+  var levenshteinDistance = function levenshteinDistance(string1, string2) {
+    if (string1.length === 0) return string2.length;
+    if (string2.length === 0) return string1.length;
+    var matrix = Array(string2.length + 1).fill(0).map(function (x, i) {
+      return [i];
+    });
+    matrix[0] = Array(string1.length + 1).fill(0).map(function (x, i) {
+      return i;
+    });
+
+    for (var i = 1; i <= string2.length; i++) {
+      for (var j = 1; j <= string1.length; j++) {
+        if (string2[i - 1] === string1[j - 1]) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j] + 1);
+        }
+      }
+    }
+
+    return matrix[string2.length][string1.length];
+  };
+  var mphToKmph = function mphToKmph(mph) {
+    return 1.6093440006146922 * mph;
+  };
+  var pipeLog = function pipeLog(data) {
+    return console.log(data) || data;
+  };
+  var quickSort = function quickSort(_ref31, desc) {
+    var _ref32 = _toArray(_ref31),
+        n = _ref32[0],
+        nums = _ref32.slice(1);
+
+    return isNaN(n) ? [] : [].concat(_toConsumableArray(quickSort(nums.filter(function (v) {
+      return desc ? v > n : v <= n;
+    }), desc)), [n], _toConsumableArray(quickSort(nums.filter(function (v) {
+      return !desc ? v > n : v <= n;
+    }), desc)));
+  };
+  var removeVowels = function removeVowels(str) {
+    var repl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    return str.replace(/[aeiou]/gi, repl);
+  };
+  var solveRPN = function solveRPN(rpn) {
+    var OPERATORS = {
+      '*': function _(a, b) {
+        return a * b;
+      },
+      '+': function _(a, b) {
+        return a + b;
+      },
+      '-': function _(a, b) {
+        return a - b;
+      },
+      '/': function _(a, b) {
+        return a / b;
+      },
+      '**': function _(a, b) {
+        return Math.pow(a, b);
+      }
+    };
+    var _ref33 = [[], rpn.replace(/\^/g, '**').split(/\s+/g).filter(function (el) {
+      return !/\s+/.test(el) && el !== '';
+    })],
+        stack = _ref33[0],
+        solve = _ref33[1];
+    solve.forEach(function (symbol) {
+      if (!isNaN(parseFloat(symbol)) && isFinite(symbol)) {
+        stack.push(symbol);
+      } else if (Object.keys(OPERATORS).includes(symbol)) {
+        var _ref34 = [stack.pop(), stack.pop()],
+            a = _ref34[0],
+            b = _ref34[1];
+        stack.push(OPERATORS[symbol](parseFloat(b), parseFloat(a)));
+      } else {
+        throw "".concat(symbol, " is not a recognized symbol");
+      }
+    });
+    if (stack.length === 1) return stack.pop();else throw "".concat(rpn, " is not a proper RPN. Please check it and try again");
+  };
+  var speechSynthesis = function speechSynthesis(message) {
+    var msg = new SpeechSynthesisUtterance(message);
+    msg.voice = window.speechSynthesis.getVoices()[0];
+    window.speechSynthesis.speak(msg);
+  };
+  var squareSum = function squareSum() {
+    for (var _len55 = arguments.length, args = new Array(_len55), _key55 = 0; _key55 < _len55; _key55++) {
+      args[_key55] = arguments[_key55];
+    }
+
+    return args.reduce(function (squareSum, number) {
+      return squareSum + Math.pow(number, 2);
+    }, 0);
   };
 
   exports.all = all;
@@ -3013,6 +3263,31 @@
   exports.zip = zip;
   exports.zipObject = zipObject;
   exports.zipWith = zipWith;
+  exports.binarySearch = binarySearch;
+  exports.celsiusToFahrenheit = celsiusToFahrenheit;
+  exports.cleanObj = cleanObj;
+  exports.collatz = collatz;
+  exports.countVowels = countVowels;
+  exports.factors = factors;
+  exports.fahrenheitToCelsius = fahrenheitToCelsius;
+  exports.fibonacciCountUntilNum = fibonacciCountUntilNum;
+  exports.fibonacciUntilNum = fibonacciUntilNum;
+  exports.heronArea = heronArea;
+  exports.howManyTimes = howManyTimes;
+  exports.httpDelete = httpDelete;
+  exports.httpPut = httpPut;
+  exports.isArmstrongNumber = isArmstrongNumber;
+  exports.isSimilar = isSimilar;
+  exports.JSONToDate = JSONToDate;
+  exports.kmphToMph = kmphToMph;
+  exports.levenshteinDistance = levenshteinDistance;
+  exports.mphToKmph = mphToKmph;
+  exports.pipeLog = pipeLog;
+  exports.quickSort = quickSort;
+  exports.removeVowels = removeVowels;
+  exports.solveRPN = solveRPN;
+  exports.speechSynthesis = speechSynthesis;
+  exports.squareSum = squareSum;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

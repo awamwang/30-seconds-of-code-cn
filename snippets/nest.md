@@ -1,4 +1,7 @@
-### nest
+---
+title: nest
+tags: object,intermediate
+---
 
 Given a flat array of objects linked to one another, it will nest them recursively.
 Useful for nesting comments, such as the ones on reddit.com.
@@ -30,4 +33,3 @@ const comments = [
 ];
 const nestedComments = nest(comments); // [{ id: 1, parent_id: null, children: [...] }]
 ```
-

@@ -1,6 +1,9 @@
-### deepMapKeys
+---
+title: deepMapKeys
+tags: object,recursion,advanced
+---
 
-Deep maps an object keys.
+Deep maps an object's keys.
 
 建立一个对象键列表的深度映射。（对对象中每个key都应用指定函数）
 
@@ -14,6 +17,7 @@ Use `Array.prototype.reduce()` to create a new object with the same values and m
 使用`Object.keys(obj)`来遍历对象的键列表。使用`Array.prototype.reduce()`来用相同的值和用`fn`映射后的键来创建一个新对象。
 
 ```js
+
 const deepMapKeys = (obj, f) =>
   Array.isArray(obj)
     ? obj.map(val => deepMapKeys(val, f))
@@ -21,7 +25,7 @@ const deepMapKeys = (obj, f) =>
       ? Object.keys(obj).reduce((acc, current) => {
         const val = obj[current];
         acc[f(current)] =
-            val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
+          val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
         return acc;
       }, {})
       : obj;
