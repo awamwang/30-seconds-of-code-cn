@@ -2,9 +2,8 @@
 
 # 30 seconds of code
 
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/30-seconds/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Known Vulnerabilities](https://snyk.io/test/github/30-seconds/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/30-seconds/30-seconds-of-code?targetFile=package.json) <br/> 
-[![Travis Build](https://travis-ci.org/keepgoingwm/30-seconds-of-code-cn.svg?branch=master)](https://travis-ci.org/keepgoingwm/30-seconds-of-code) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ab7791fb1ea40b4a576d658fb96807f)](https://www.codacy.com/app/Chalarangelo/30-seconds-of-code?utm_source=github.com&utm_medium=referral&utm_content=30-seconds/30-seconds-of-code&utm_campaign=Badge_Grade) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) <br/>
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/30-seconds/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Known Vulnerabilities](https://snyk.io/test/github/30-seconds/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/30-seconds/30-seconds-of-code?targetFile=package.json) [![Travis Build](https://travis-ci.org/keepgoingwm/30-seconds-of-code-cn.svg?branch=master)](https://travis-ci.org/keepgoingwm/30-seconds-of-code) <br/>
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 > Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
 
@@ -543,7 +542,6 @@ const firstTwoMax = ary(Math.max, 2);
 
 <br>[⬆ Back to top](#contents)
 
-<<<<<<< HEAD
 ### call
 
 Given a key and a set of arguments, call them when given a context. Primarily useful in composition.
@@ -554,14 +552,6 @@ Use a closure to call a stored key with stored arguments.
 
 用闭包把`key`名称和传入的参数存储，在更换`context`可以方便的调用。
 
-=======
-### call
-
-Given a key and a set of arguments, call them when given a context. Primarily useful in composition.
-
-Use a closure to call a stored key with stored arguments.
-
->>>>>>> real_master
 ```js
 const call = (key, ...args) => context => context[key](...args);
 ```
@@ -582,7 +572,6 @@ Promise.resolve([1, 2, 3])
 
 <br>[⬆ Back to top](#contents)
 
-<<<<<<< HEAD
 ### collectInto
 
 Changes a function that accepts an array into a variadic function.
@@ -593,14 +582,6 @@ Given a function, return a closure that collects all inputs into an array-accept
 
 传入一个接受数组参数的函数，返回一个把所有参数收集到一个array后传给这个函数调用的闭包。
 
-=======
-### collectInto
-
-Changes a function that accepts an array into a variadic function.
-
-Given a function, return a closure that collects all inputs into an array-accepting function.
-
->>>>>>> real_master
 ```js
 const collectInto = fn => (...args) => fn(args);
 ```
@@ -619,7 +600,6 @@ Pall(p1, p2, p3).then(console.log); // [1, 2, 3] (after about 2 seconds)
 
 <br>[⬆ Back to top](#contents)
 
-<<<<<<< HEAD
 ### flip
 
 Flip takes a function as an argument, then makes the first argument the last.
@@ -630,14 +610,6 @@ Return a closure that takes variadic inputs, and splices the last argument to ma
 
 返回一个接受可变数量参数，把第一个参数放到其余参数后面（即最后）的闭包（英文好像有错误）
 
-=======
-### flip
-
-Flip takes a function as an argument, then makes the first argument the last.
-
-Return a closure that takes variadic inputs, and splices the last argument to make it the first argument before applying the rest.
-
->>>>>>> real_master
 ```js
 const flip = fn => (first, ...rest) => fn(...rest, first);
 ```
@@ -779,24 +751,16 @@ multiplyAndAdd5(5, 2); // 15
 
 Converts an asynchronous function to return a promise.
 
-<<<<<<< HEAD
 把一个异步函数转换为返回promise的函数（很适合将Node中回调模式的函数转为promise）。
-=======
+
 *In Node 8+, you can use [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*
->>>>>>> real_master
+*在Node 8+环境，你可以直接使用[`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*
 
 Use currying to return a function returning a `Promise` that calls the original function.
 Use the `...rest` operator to pass in all the parameters.
 
-<<<<<<< HEAD
 使用柯里化来返回一个调用原函数并且返回`Promise`的函数。使用 `...rest` 操作符来传入所有参数。
 
-*In Node 8+, you can use [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*
-
-*在Node 8+环境，你可以直接使用[`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*
-
-=======
->>>>>>> real_master
 ```js
 const promisify = func => (...args) =>
   new Promise((resolve, reject) =>
@@ -845,7 +809,6 @@ rearged('b', 'c', 'a'); // ['a', 'b', 'c']
 
 <br>[⬆ Back to top](#contents)
 
-<<<<<<< HEAD
 ### spreadOver
 
 Takes a variadic function and returns a closure that accepts an array of arguments to map to the inputs of the function.
@@ -856,14 +819,6 @@ Use closures and the spread operator (`...`) to map the array of arguments to th
 
 使用闭包和展开操作符(`...`)来把参数数组映射给函数输入。
 
-=======
-### spreadOver
-
-Takes a variadic function and returns a closure that accepts an array of arguments to map to the inputs of the function.
-
-Use closures and the spread operator (`...`) to map the array of arguments to the inputs of the function.
-
->>>>>>> real_master
 ```js
 const spreadOver = fn => argsArr => fn(...argsArr);
 ```
@@ -1413,7 +1368,6 @@ everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]
 
 <br>[⬆ Back to top](#contents)
 
-<<<<<<< HEAD
 ### filterFalsy
 
 Filters out the falsy values in an array.
@@ -1424,14 +1378,6 @@ Use `Array.prototype.filter()` to get an array containing only truthy values.
 
 使用`Array.prototype.filter()`来获取一个只包含真值的数组。
 
-=======
-### filterFalsy
-
-Filters out the falsy values in an array.
-
-Use `Array.prototype.filter()` to get an array containing only truthy values.
-
->>>>>>> real_master
 ```js
 const filterFalsy = arr => arr.filter(Boolean);
 ```
@@ -1994,8 +1940,8 @@ const join = (arr, separator = ',', end = separator) =>
       i === arr.length - 2
         ? acc + val + end
         : i === arr.length - 1
-          ? acc + val
-          : acc + val + separator,
+        ? acc + val
+        : acc + val + separator,
     ''
   );
 ```
@@ -2349,15 +2295,12 @@ Mutates the original array to filter out the values specified.
 Use `Array.prototype.filter()` and `Array.prototype.includes()` to pull out the values that are not needed.
 Use `Array.prototype.length = 0` to mutate the passed in an array by resetting it's length to zero and `Array.prototype.push()` to re-populate it with only the pulled values.
 
-<<<<<<< HEAD
 使用`Array.prototype.filter()`和`Array.prototype.includes()`把不需要的值去掉。使用`Array.prototype.length = 0`，通过把数组的长度置为0重置传入的值，再使用`Array.prototype.push()`，用提取出来的值来重新建立数组。
 
 _(For a snippet that does not mutate the original array see [`without`](#without))_
 
 _(不改变原始数组的代码片段参见 [`without`](#without))_
 
-=======
->>>>>>> real_master
 ```js
 const pull = (arr, ...args) => {
   let argState = Array.isArray(args[0]) ? args[0] : args;
@@ -3476,15 +3419,12 @@ Filters out the elements of an array, that have one of the specified values.
 
 Use `Array.prototype.filter()` to create an array excluding(using `!Array.includes()`) all given values.
 
-<<<<<<< HEAD
 使用`Array.prototype.filter()`来构造一个排除(使用`!Array.includes()`)所有给出的值后的数组。
 
 _(For a snippet that mutates the original array see [`pull`](#pull))_
 
 _(改变原始数组的版本，参加 [`pull`](#pull))_
 
-=======
->>>>>>> real_master
 ```js
 const without = (arr, ...args) => arr.filter(v => !args.includes(v));
 ```
@@ -4933,10 +4873,10 @@ const getMeridiemSuffixOfInteger = num =>
   num === 0 || num === 24
     ? 12 + 'am'
     : num === 12
-      ? 12 + 'pm'
-      : num < 12
-        ? (num % 12) + 'am'
-        : (num % 12) + 'pm';
+    ? 12 + 'pm'
+    : num < 12
+    ? (num % 12) + 'am'
+    : (num % 12) + 'pm';
 ```
 
 <details>
@@ -5339,26 +5279,6 @@ const checkProp = (predicate, prop) => obj => !!predicate(obj[prop]);
 <summary>Examples</summary>
 
 ```js
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> real_master
 const lengthIs4 = checkProp(l => l === 4, 'length');
 lengthIs4([]); // false
 lengthIs4([1,2,3,4]); // true
@@ -6329,11 +6249,11 @@ Throws an exception if `n` is a negative number.
 const factorial = n =>
   n < 0
     ? (() => {
-      throw new TypeError('Negative numbers are not allowed!');
-    })()
+        throw new TypeError('Negative numbers are not allowed!');
+      })()
     : n <= 1
-      ? 1
-      : n * factorial(n - 1);
+    ? 1
+    : n * factorial(n - 1);
 ```
 
 <details>
@@ -6637,11 +6557,8 @@ Use `Array.prototype.splice(0,1)` to obtain the last digit.
 Use `Array.prototype.reduce()` to implement the Luhn Algorithm.
 Return `true` if `sum` is divisible by `10`, `false` otherwise.
 
-<<<<<<< HEAD
 使用`String.prototype.split('')`, `Array.prototype.reverse()`和`Array.prototype.map()`结合`parseInt()`来获取一个十进制数的数组。使用`Array.prototype.splice(0,1)`来获取十进制数的最后一位。使用`Array.prototype.reduce()`来实行Luhn算法。如果`sum`可以被`10`整除则返回`true`，否则返回`false`。
 
-=======
->>>>>>> real_master
 ```js
 const luhnCheck = num => {
   let arr = (num + '')
@@ -7712,8 +7629,8 @@ const deepClone = obj => {
   return Array.isArray(obj) && obj.length
     ? (clone.length = obj.length) && Array.from(clone)
     : Array.isArray(obj)
-      ? Array.from(obj)
-      : clone;
+    ? Array.from(obj)
+    : clone;
 };
 ```
 
@@ -7799,12 +7716,9 @@ Deep maps an object's keys.
 建立一个对象键列表的深度映射。（对对象中每个key都应用指定函数）
 
 Creates an object with the same values as the provided object and keys generated by running the provided function for each key.
-<<<<<<< HEAD
 
 用和给出的对象相同的值和对每个键应用给出的函数后的新键，创建一个对象。
 
-=======
->>>>>>> real_master
 Use `Object.keys(obj)` to iterate over the object's keys. 
 Use `Array.prototype.reduce()` to create a new object with the same values and mapped keys using `fn`.
 
@@ -7815,13 +7729,13 @@ const deepMapKeys = (obj, f) =>
   Array.isArray(obj)
     ? obj.map(val => deepMapKeys(val, f))
     : typeof obj === 'object'
-      ? Object.keys(obj).reduce((acc, current) => {
+    ? Object.keys(obj).reduce((acc, current) => {
         const val = obj[current];
         acc[f(current)] =
           val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
         return acc;
       }, {})
-      : obj;
+    : obj;
 ```
 
 <details>
@@ -7900,9 +7814,9 @@ const dig = (obj, target) =>
   target in obj
     ? obj[target]
     : Object.values(obj).reduce((acc, val) => {
-      if (acc !== undefined) return acc;
-      if (typeof val === 'object') return dig(val, target);
-    }, undefined);
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
 ```
 
 <details>
@@ -8705,12 +8619,9 @@ Get type of `val` (`array`, `object` or `string`).
 Use `length` property for arrays.
 Use `length` or `size` value if available or number of keys for objects.
 Use `size` of a [`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob) created from `val` for strings.
-<<<<<<< HEAD
 
 获取`val`的类型 (`array`, `object`或者`string`)。对于数组则使用`length`，对于对象则使用`length`或`size`或者键列表的数目这三个值中可用的。对于字符串则使用从`val`创建的[`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob)的`size`。
 
-=======
->>>>>>> real_master
 Split strings into array of characters with `split('')` and return its length.
 
 ```js
@@ -9247,11 +9158,8 @@ Checks if a string is upper case.
 
 Convert the given string to upper case, using `String.prototype.toUpperCase()` and compare it to the original.
 
-<<<<<<< HEAD
 使用`String.toLowerCase()`把给定的字符串转换为大写格式，并把它和原始字符串比较。
 
-=======
->>>>>>> real_master
 ```js
 const isUpperCase = str => str === str.toUpperCase();
 ```
@@ -10951,13 +10859,9 @@ toCurrency(322342436423.2435, 'JPY', 'fi'); // 322 342 436 423 ¥ | currency: Ja
 
 Use `toLocaleString()` to convert a float-point arithmetic to the [Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark) form. It makes a comma separated string from a number.
 
-<<<<<<< HEAD
 使用`toLocaleString()`来把一个浮点数转换为[Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark)格式。它从数字创建一个用逗号分隔的字符串。
 
  ```js
-=======
-```js
->>>>>>> real_master
 const toDecimalMark = num => num.toLocaleString('en-US');
 ```
 
