@@ -109,7 +109,7 @@
         ]
       },
       "meta": {
-        "hash": "918d65f04bafeb3ee0b855a52805773e8a8dc818fec1daa4ad0940dba32de9e8"
+        "hash": "57689352bb9f04442813775a9f9c40d5c2a711c6397b8b03947f83c29fc9ab78"
       }
     },
     {
@@ -412,7 +412,7 @@
         ]
       },
       "meta": {
-        "hash": "2b8f1754ab9a71a7733243ff9dbc8ac4c9c8379ed583858afe70ef41200517b1"
+        "hash": "ba7a2908d8ec2f04f9734a12a4f71d3f5706f5b92e13b5716ebd43f97df4313c"
       }
     },
     {
@@ -827,7 +827,7 @@
       "type": "snippetListing",
       "title": "deepClone",
       "attributes": {
-        "text": "Creates a deep clone of an object.\n\nUse recursion.\nUse `Object.assign()` and an empty object (`{}`) to create a shallow clone of the original.\nUse `Object.keys()` and `Array.prototype.forEach()` to determine which key-value pairs need to be deep cloned.\n\n",
+        "text": "Creates a deep clone of an object.\n\nUse recursion.\nCheck if the passed object is `null` and, if so, return `null`.\nUse `Object.assign()` and an empty object (`{}`) to create a shallow clone of the original.\nUse `Object.keys()` and `Array.prototype.forEach()` to determine which key-value pairs need to be deep cloned.\n\n",
         "tags": [
           "object",
           "recursion",
@@ -835,7 +835,7 @@
         ]
       },
       "meta": {
-        "hash": "e45dca3875c65fe1af16b1dc48e9dd8264f4ab397994e6bbbd19741940ac7d4d"
+        "hash": "5ab25ab96afd4f1f481fc318b5b290ba8c57a468ef6bca0ca200cfb7fcf3ba9f"
       }
     },
     {
@@ -2525,6 +2525,21 @@
       }
     },
     {
+      "id": "isOdd",
+      "type": "snippetListing",
+      "title": "isOdd",
+      "attributes": {
+        "text": "Returns `true` if the given number is odd, `false` otherwise.\n\nChecks whether a number is odd or even using the modulo (`%`) operator.\nReturns `true` if the number is odd, `false` if the number is even.\n\n",
+        "tags": [
+          "math",
+          "beginner"
+        ]
+      },
+      "meta": {
+        "hash": "9d259b2877b38e255222f876d6f00247b6449da44082d24eadd48f46d71ccd9d"
+      }
+    },
+    {
       "id": "isPlainObject",
       "type": "snippetListing",
       "title": "isPlainObject",
@@ -2728,7 +2743,7 @@
         ]
       },
       "meta": {
-        "hash": "0f90daea28e858946e4c2cb642a84189b47872dfe42c29f708b0aedcf76bc8dd"
+        "hash": "e9f213bd74fba0cfc5e7706967f03dee72ee516e213715dab97c5fd32ba7f4f3"
       }
     },
     {
@@ -4073,14 +4088,14 @@
       "type": "snippetListing",
       "title": "reject",
       "attributes": {
-        "text": "Takes a predicate and array, like `Array.prototype.filter()`, but only keeps `x` if `pred(x) === false`.\n\n",
+        "text": "Filters an array's values based on a predicate function, returning only values for which the predicate function returns `true`.\n\nUse `Array.prototype.filter()` in combination with the predicate function, `pred`, to return only the values for which `pred()` returns `true`.\n\n",
         "tags": [
           "array",
           "beginner"
         ]
       },
       "meta": {
-        "hash": "dd81177b97db5628ce070cf138e38f6c51ecb82790609e2b939c45b769942407"
+        "hash": "64c311bfab7115cd3df81172f9ed524a1f71e1d57100f8b003830ca41d9fd77f"
       }
     },
     {

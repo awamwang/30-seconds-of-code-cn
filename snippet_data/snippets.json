@@ -142,7 +142,7 @@
         "codeBlocks": {
           "es6": "const ary = (fn, n) => (...args) => fn(...args.slice(0, n));",
           "es5": "function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }\n\nfunction _nonIterableSpread() { throw new TypeError(\"Invalid attempt to spread non-iterable instance\"); }\n\nfunction _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === \"[object Arguments]\") return Array.from(iter); }\n\nfunction _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }\n\nvar ary = function ary(fn, n) {\n  return function () {\n    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {\n      args[_key] = arguments[_key];\n    }\n\n    return fn.apply(void 0, _toConsumableArray(args.slice(0, n)));\n  };\n};",
-          "example": "const firstTwoMax = ary(Math.max, 2);\n[[2, 6, 'a'], [8, 4, 6], [10]].map(x => firstTwoMax(...x)); // [6, 8, 10]"
+          "example": "const firstTwoMax = ary(Math.max, 2);\n[[2, 6, 'a'], [6, 4, 8], [10]].map(x => firstTwoMax(...x)); // [6, 6, 10]"
         },
         "tags": [
           "adapter",
@@ -151,7 +151,7 @@
         ]
       },
       "meta": {
-        "hash": "918d65f04bafeb3ee0b855a52805773e8a8dc818fec1daa4ad0940dba32de9e8"
+        "hash": "57689352bb9f04442813775a9f9c40d5c2a711c6397b8b03947f83c29fc9ab78"
       }
     },
     {
@@ -568,7 +568,7 @@
         ]
       },
       "meta": {
-        "hash": "2b8f1754ab9a71a7733243ff9dbc8ac4c9c8379ed583858afe70ef41200517b1"
+        "hash": "ba7a2908d8ec2f04f9734a12a4f71d3f5706f5b92e13b5716ebd43f97df4313c"
       }
     },
     {
@@ -1140,10 +1140,10 @@
       "type": "snippet",
       "attributes": {
         "fileName": "deepClone.md",
-        "text": "Creates a deep clone of an object.\n\nUse recursion.\nUse `Object.assign()` and an empty object (`{}`) to create a shallow clone of the original.\nUse `Object.keys()` and `Array.prototype.forEach()` to determine which key-value pairs need to be deep cloned.\n\n",
+        "text": "Creates a deep clone of an object.\n\nUse recursion.\nCheck if the passed object is `null` and, if so, return `null`.\nUse `Object.assign()` and an empty object (`{}`) to create a shallow clone of the original.\nUse `Object.keys()` and `Array.prototype.forEach()` to determine which key-value pairs need to be deep cloned.\n\n",
         "codeBlocks": {
-          "es6": "const deepClone = obj => {\n  let clone = Object.assign({}, obj);\n  Object.keys(clone).forEach(\n    key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])\n  );\n  return Array.isArray(obj) && obj.length\n    ? (clone.length = obj.length) && Array.from(clone)\n    : Array.isArray(obj)\n      ? Array.from(obj)\n      : clone;\n};",
-          "es5": "function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar deepClone = function deepClone(obj) {\n  var clone = Object.assign({}, obj);\n  Object.keys(clone).forEach(function (key) {\n    return clone[key] = _typeof(obj[key]) === 'object' ? deepClone(obj[key]) : obj[key];\n  });\n  return Array.isArray(obj) && obj.length ? (clone.length = obj.length) && Array.from(clone) : Array.isArray(obj) ? Array.from(obj) : clone;\n};",
+          "es6": "const deepClone = obj => {\n  if (obj === null) return null;\n  let clone = Object.assign({}, obj);\n  Object.keys(clone).forEach(\n    key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])\n  );\n  return Array.isArray(obj) && obj.length\n    ? (clone.length = obj.length) && Array.from(clone)\n    : Array.isArray(obj)\n      ? Array.from(obj)\n      : clone;\n};",
+          "es5": "function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar deepClone = function deepClone(obj) {\n  if (obj === null) return null;\n  var clone = Object.assign({}, obj);\n  Object.keys(clone).forEach(function (key) {\n    return clone[key] = _typeof(obj[key]) === 'object' ? deepClone(obj[key]) : obj[key];\n  });\n  return Array.isArray(obj) && obj.length ? (clone.length = obj.length) && Array.from(clone) : Array.isArray(obj) ? Array.from(obj) : clone;\n};",
           "example": "const a = { foo: 'bar', obj: { a: 1, b: 2 } };\nconst b = deepClone(a); // a !== b, a.obj !== b.obj"
         },
         "tags": [
@@ -1153,7 +1153,7 @@
         ]
       },
       "meta": {
-        "hash": "e45dca3875c65fe1af16b1dc48e9dd8264f4ab397994e6bbbd19741940ac7d4d"
+        "hash": "5ab25ab96afd4f1f481fc318b5b290ba8c57a468ef6bca0ca200cfb7fcf3ba9f"
       }
     },
     {
@@ -3485,6 +3485,27 @@
       }
     },
     {
+      "id": "isOdd",
+      "title": "isOdd",
+      "type": "snippet",
+      "attributes": {
+        "fileName": "isOdd.md",
+        "text": "Returns `true` if the given number is odd, `false` otherwise.\n\nChecks whether a number is odd or even using the modulo (`%`) operator.\nReturns `true` if the number is odd, `false` if the number is even.\n\n",
+        "codeBlocks": {
+          "es6": "const isOdd = num => num % 2 === 1;",
+          "es5": "var isOdd = function isOdd(num) {\n  return num % 2 === 1;\n};",
+          "example": "isOdd(3); // true"
+        },
+        "tags": [
+          "math",
+          "beginner"
+        ]
+      },
+      "meta": {
+        "hash": "9d259b2877b38e255222f876d6f00247b6449da44082d24eadd48f46d71ccd9d"
+      }
+    },
+    {
       "id": "isPlainObject",
       "title": "isPlainObject",
       "type": "snippet",
@@ -3757,7 +3778,7 @@
         "codeBlocks": {
           "es6": "const isUpperCase = str => str === str.toUpperCase();",
           "es5": "var isUpperCase = function isUpperCase(str) {\n  return str === str.toUpperCase();\n};",
-          "example": "isUpperCase('ABC'); // true\nisLowerCase('A3@$'); // true\nisLowerCase('aB4'); // false"
+          "example": "isUpperCase('ABC'); // true\nisUpperCase('A3@$'); // true\nisUpperCase('aB4'); // false"
         },
         "tags": [
           "string",
@@ -3766,7 +3787,7 @@
         ]
       },
       "meta": {
-        "hash": "0f90daea28e858946e4c2cb642a84189b47872dfe42c29f708b0aedcf76bc8dd"
+        "hash": "e9f213bd74fba0cfc5e7706967f03dee72ee516e213715dab97c5fd32ba7f4f3"
       }
     },
     {
@@ -5616,7 +5637,7 @@
       "type": "snippet",
       "attributes": {
         "fileName": "reject.md",
-        "text": "Takes a predicate and array, like `Array.prototype.filter()`, but only keeps `x` if `pred(x) === false`.\n\n",
+        "text": "Filters an array's values based on a predicate function, returning only values for which the predicate function returns `true`.\n\nUse `Array.prototype.filter()` in combination with the predicate function, `pred`, to return only the values for which `pred()` returns `true`.\n\n",
         "codeBlocks": {
           "es6": "const reject = (pred, array) => array.filter((...args) => !pred(...args));",
           "es5": "var reject = function reject(pred, array) {\n  return array.filter(function () {\n    return !pred.apply(void 0, arguments);\n  });\n};",
@@ -5628,7 +5649,7 @@
         ]
       },
       "meta": {
-        "hash": "dd81177b97db5628ce070cf138e38f6c51ecb82790609e2b939c45b769942407"
+        "hash": "64c311bfab7115cd3df81172f9ed524a1f71e1d57100f8b003830ca41d9fd77f"
       }
     },
     {

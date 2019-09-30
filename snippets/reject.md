@@ -3,7 +3,9 @@ title: reject
 tags: array,beginner
 ---
 
-Takes a predicate and array, like `Array.prototype.filter()`, but only keeps `x` if `pred(x) === false`.
+Filters an array's values based on a predicate function, returning only values for which the predicate function returns `true`.
+
+Use `Array.prototype.filter()` in combination with the predicate function, `pred`, to return only the values for which `pred()` returns `true`.
 
 接受一个断言函数和数组，有点类似`Array.prototype.filter()`，但在`pred(x) === false`时保留`x`（就是过滤掉pred(x)为真的`x`）。
 

@@ -319,6 +319,7 @@ _30s.average(1, 2, 3);
 * [`isDivisible`](#isdivisible)
 * [`isEven`](#iseven)
 * [`isNegativeZero`](#isnegativezero)
+* [`isOdd`](#isodd)
 * [`isPrime`](#isprime)
 * [`lcm`](#lcm)
 * [`luhnCheck`](#luhncheck-)
@@ -536,7 +537,7 @@ const ary = (fn, n) => (...args) => fn(...args.slice(0, n));
 
 ```js
 const firstTwoMax = ary(Math.max, 2);
-[[2, 6, 'a'], [8, 4, 6], [10]].map(x => firstTwoMax(...x)); // [6, 8, 10]
+[[2, 6, 'a'], [6, 4, 8], [10]].map(x => firstTwoMax(...x)); // [6, 6, 10]
 ```
 </details>
 
@@ -2528,7 +2529,9 @@ reduceWhich(
 
 ### reject
 
-Takes a predicate and array, like `Array.prototype.filter()`, but only keeps `x` if `pred(x) === false`.
+Filters an array's values based on a predicate function, returning only values for which the predicate function returns `true`.
+
+Use `Array.prototype.filter()` in combination with the predicate function, `pred`, to return only the values for which `pred()` returns `true`.
 
 接受一个断言函数和数组，有点类似`Array.prototype.filter()`，但在`pred(x) === false`时保留`x`（就是过滤掉pred(x)为真的`x`）。
 
@@ -6487,6 +6490,27 @@ isNegativeZero(0); // false
 
 <br>[⬆ Back to top](#contents)
 
+### isOdd
+
+Returns `true` if the given number is odd, `false` otherwise.
+
+Checks whether a number is odd or even using the modulo (`%`) operator.
+Returns `true` if the number is odd, `false` if the number is even.
+
+```js
+const isOdd = num => num % 2 === 1;
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isOdd(3); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### isPrime
 
 Checks if the provided integer is a prime number.
@@ -7615,6 +7639,7 @@ Creates a deep clone of an object.
 创建一个对象的深拷贝。
 
 Use recursion.
+Check if the passed object is `null` and, if so, return `null`.
 Use `Object.assign()` and an empty object (`{}`) to create a shallow clone of the original.
 Use `Object.keys()` and `Array.prototype.forEach()` to determine which key-value pairs need to be deep cloned.
 
@@ -7622,6 +7647,7 @@ Use `Object.keys()` and `Array.prototype.forEach()` to determine which key-value
 
 ```js
 const deepClone = obj => {
+  if (obj === null) return null;
   let clone = Object.assign({}, obj);
   Object.keys(clone).forEach(
     key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
@@ -9169,8 +9195,8 @@ const isUpperCase = str => str === str.toUpperCase();
 
 ```js
 isUpperCase('ABC'); // true
-isLowerCase('A3@$'); // true
-isLowerCase('aB4'); // false
+isUpperCase('A3@$'); // true
+isUpperCase('aB4'); // false
 ```
 </details>
 
