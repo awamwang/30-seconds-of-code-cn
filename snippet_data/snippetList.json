@@ -101,7 +101,7 @@
       "type": "snippetListing",
       "title": "ary",
       "attributes": {
-        "text": "Creates a function that accepts up to `n` arguments, ignoring any additional arguments.\n\nCall the provided function, `fn`, with up to `n` arguments, using `Array.prototype.slice(0, n)` and the spread operator (`...`).\n\n",
+        "text": "Creates a function that accepts up to `n` arguments, ignoring any additional arguments.\n\n创建一个最多`n`个参数的函数，它会忽略其他参数。\n\nCall the provided function, `fn`, with up to `n` arguments, using `Array.prototype.slice(0, n)` and the spread operator (`...`).\n\n使用`Array.prototype.slice(0, n)`和展开操作符(`...`)提取最多`n`个参数，传给`fn`并调用。\n\n",
         "tags": [
           "adapter",
           "function",
@@ -109,7 +109,7 @@
         ]
       },
       "meta": {
-        "hash": "533ab7f8259624322b5911b076d8e6fcd08f2fd396e9e0bec85449fc42769d9b"
+        "hash": "e09f0bbf2a55fa2f0767e620d40dfb72c680515f35cf6f7f6bd48faa8e2a7401"
       }
     },
     {
@@ -606,7 +606,7 @@
       "type": "snippetListing",
       "title": "copyToClipboard",
       "attributes": {
-        "text": "Copy a string to the clipboard. \nOnly works as a result of user action (i.e. inside a `click` event listener).\n\n⚠️ **NOTICE:** The same functionality can be easily implemented by using the new asynchronous Clipboard API, which is still experimental but should be used in the future instead of this snippet. Find out more about it [here](https://github.com/w3c/clipboard-apis/blob/master/explainer.adoc#writing-to-the-clipboard).\n\nCreate a new `<textarea>` element, fill it with the supplied data and add it to the HTML document.\nUse `Selection.getRangeAt()`to store the selected range (if any).\nUse `document.execCommand('copy')` to copy to the clipboard.\nRemove the `<textarea>` element from the HTML document.\nFinally, use `Selection().addRange()` to recover the original selected range (if any).\n\n",
+        "text": "Copy a string to the clipboard. \nOnly works as a result of user action (i.e. inside a `click` event listener).\n\n把一个字符串拷贝到剪切板。只有在用户操作时才生效（i.e. 在一个`click`事件的监听函数中）。\n\n⚠️ **NOTICE:** The same functionality can be easily implemented by using the new asynchronous Clipboard API, which is still experimental but should be used in the future instead of this snippet. Find out more about it [here](https://github.com/w3c/clipboard-apis/blob/master/explainer.adoc#writing-to-the-clipboard).\n\n⚠️ **NOTICE:** 相同的功能可以很容易的用还在实验阶段但未来可能替代本代码片段的新异步剪切板API实现。更多信息参见[here](https://github.com/w3c/clipboard-apis/blob/master/explainer.adoc#writing-to-the-clipboard).\n\nCreate a new `<textarea>` element, fill it with the supplied data and add it to the HTML document.\nUse `Selection.getRangeAt()`to store the selected range (if any).\nUse `document.execCommand('copy')` to copy to the clipboard.\nRemove the `<textarea>` element from the HTML document.\nFinally, use `Selection().addRange()` to recover the original selected range (if any).\n\n创建一个`<textarea>`元素，用提供的数据填充它，并把它添加到HTML的文档流中。使用 `Selection.getRangeAt()`来存储选中的区域（如果有的话）。使用`document.execCommand('copy')`来把内容拷贝到剪切板。把`<textarea>`从HTML的文档流中删除。最后，使用`Selection().addRange()`来恢复原始选择的区域（如果有）。\n\n",
         "tags": [
           "browser",
           "string",
@@ -614,7 +614,7 @@
         ]
       },
       "meta": {
-        "hash": "33014c31be5dadcdb16c56726db905ff10b9878a5f4e85f23d9ee303e71f0039"
+        "hash": "44720538964ca509f7678cabe9850e3b0e3aafd27ddd131dfe1d958e8df90383"
       }
     },
     {
@@ -835,7 +835,7 @@
         ]
       },
       "meta": {
-        "hash": "77a01af8797ecbe71b9c9412d21c144c03a46a49dd3d0e7d869c3df38b39b2b4"
+        "hash": "ce565ca7f89a51cb0c9a05e398487f367bd46c8a7659d983d2c590b52be667c1"
       }
     },
     {
@@ -898,7 +898,7 @@
         ]
       },
       "meta": {
-        "hash": "c361dd1ce5441e2f91e62284e5a39ec1534f254148c237d54f3139ca9008a8be"
+        "hash": "182caacd82320d8fa01208c5136f5a4020d416e8e067d2bfd7cb1f2d6ebd02fe"
       }
     },
     {
@@ -1037,7 +1037,7 @@
         ]
       },
       "meta": {
-        "hash": "633b31cbc5e6772a4edd12296f47d3b28bd87e63f4576cc2c70c3481a26dce27"
+        "hash": "69a5691755444cefcc9bd5b81d0316b89dc71f1799d0dd988b8541d539254a96"
       }
     },
     {
@@ -1273,7 +1273,7 @@
         ]
       },
       "meta": {
-        "hash": "6628745a84935221c9e3263bdf6cba78fb0d34791d670ea513858f623f473578"
+        "hash": "237bf8fda09baabc36ff63ad4c3148c87bd2311f60deef3225db29c83785ef70"
       }
     },
     {
@@ -1678,7 +1678,7 @@
         ]
       },
       "meta": {
-        "hash": "16c3b724b653dcb31f3e59f1664a59951abb15a93eb3697cade4d3ae0e63c532"
+        "hash": "cdc35607f06d96952d166900983591768f2bc41178a0c9c5b3fab43bde48f50e"
       }
     },
     {
@@ -2864,7 +2864,7 @@
         ]
       },
       "meta": {
-        "hash": "362fddaa6244404741e84bca6fc442a101fdb642af53b299e8b9994d0d7162d8"
+        "hash": "4fb7286fb828a9fe7686b3d312dcb5f002e559a5df9fb11ab3eba71161efcc83"
       }
     },
     {
@@ -3425,7 +3425,7 @@
         ]
       },
       "meta": {
-        "hash": "012ebca6a90c50ec89278af2632d7d0d90eeb423f2bcf902ed015f6fce6d4f5a"
+        "hash": "23ded1eef634ad88b34431b187b5f9eca4432daf09e89980fb0661fb56d8dcb0"
       }
     },
     {
@@ -3716,7 +3716,7 @@
       "type": "snippetListing",
       "title": "permutations",
       "attributes": {
-        "text": "Generates all permutations of an array's elements (contains duplicates).\n\n⚠️ **WARNING**: This function's execution time increases exponentially with each array element. Anything more than 8 to 10 entries will cause your browser to hang as it tries to solve all the different combinations.\n\nUse recursion.\nFor each element in the given array, create all the partial permutations for the rest of its elements.\nUse `Array.prototype.map()` to combine the element with each partial permutation, then `Array.prototype.reduce()` to combine all permutations in one array.\nBase cases are for array `length` equal to `2` or `1`.\n\n",
+        "text": "Generates all permutations of an array's elements (contains duplicates).\n\n生成数组中元素的所有排列。（包含重复组合）\n\n⚠️ **WARNING**: This function's execution time increases exponentially with each array element. Anything more than 8 to 10 entries will cause your browser to hang as it tries to solve all the different combinations.\n\n⚠️ **WARNING**: 本函数的执行时间随着数组元素个数指数级增长。任何超过8~10个元素的数组会导致浏览器尝因试不同的组合而导致挂起（大量同步计算导致无响应）。\n\nUse recursion.\nFor each element in the given array, create all the partial permutations for the rest of its elements.\nUse `Array.prototype.map()` to combine the element with each partial permutation, then `Array.prototype.reduce()` to combine all permutations in one array.\nBase cases are for array `length` equal to `2` or `1`.\n\n使用递归。对给定数组中每个元素，创建除它以外所有元素的排列。使用`Array.prototype.map()`来把这个元素和每个剩余部分的排列结合，然后使用`Array.prototype.reduce()`把所有排列结合成一个数组。\n\n",
         "tags": [
           "array",
           "recursion",
@@ -3724,7 +3724,7 @@
         ]
       },
       "meta": {
-        "hash": "821e55db97be7e29b6a969cafbaf06da5ad72d5677eb9e275fb43d536052655b"
+        "hash": "be4f34eb610cf3dcfb5fab5631569d992d0369c1d1ce2478f24a94c5c08c5c8e"
       }
     },
     {
@@ -3774,7 +3774,7 @@
         ]
       },
       "meta": {
-        "hash": "dbfbb6fb9c362558721fde219333c63539f77fd05a0ca436fe271710c7ced0d9"
+        "hash": "3a5fcdc7adeb7dfe9577f1b1506fe2a7b1ea9d88879ea56c5989284d4c6af12c"
       }
     },
     {
@@ -4171,7 +4171,7 @@
         ]
       },
       "meta": {
-        "hash": "c1542907e6295eb81df918174c247a65d73c8daccc56769f2eb32d609b7846fc"
+        "hash": "01a00370a7df880e14dc03a9b53744ecf1c1ee4edc4948ec0aec18da52639123"
       }
     },
     {
@@ -4487,7 +4487,7 @@
         ]
       },
       "meta": {
-        "hash": "532a39b77c025041de48f14122ac229a675d0af3e0a990d55a26c5f971ec3725"
+        "hash": "71d94ef22f6c5c5b48c96d3cda5885fdccd3c607457c908171a04a5e224a1833"
       }
     },
     {
@@ -4671,7 +4671,7 @@
       "type": "snippetListing",
       "title": "stringPermutations",
       "attributes": {
-        "text": "Generates all permutations of a string (contains duplicates).\n\n⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.\n\nUse recursion.\nFor each letter in the given string, create all the partial permutations for the rest of its letters.\nUse `Array.prototype.map()` to combine the letter with each partial permutation, then `Array.prototype.reduce()` to combine all permutations in one array.\nBase cases are for string `length` equal to `2` or `1`.\n\n",
+        "text": "Generates all permutations of a string (contains duplicates).\n\n生成一个字符串的所有排列（包括重复的）。\n\n⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.\n\n⚠️ **WARNING**: 这个函数的执行时间随每个字符指数级增长。每个超过8到10个字符的字符串将因为尝试所有不同的组合而导致你的浏览器挂起（无响应）。\n\nUse recursion.\nFor each letter in the given string, create all the partial permutations for the rest of its letters.\nUse `Array.prototype.map()` to combine the letter with each partial permutation, then `Array.prototype.reduce()` to combine all permutations in one array.\nBase cases are for string `length` equal to `2` or `1`.\n\n使用递归。对给定字符串中的每个字母，创建剩余字母的所有的部分全排列。使用`Array.prototype.map()`来把这个字母和每个部分全排列组装起来，然后使用`Array.prototype.reduce()`把所有排列组装到一个数组中。基本的场景是字符串`length`等于`2`或`1`。\n\n",
         "tags": [
           "string",
           "recursion",
@@ -4679,7 +4679,7 @@
         ]
       },
       "meta": {
-        "hash": "1a4c3427df70f2633c0d1a2c47b9ef7452664e1b6ea58525ce4067e1ea6a51a8"
+        "hash": "f825bf19e8dd6480c46277b442a23b6fb6fd3f6cc1f4422e295546f3b918c37d"
       }
     },
     {

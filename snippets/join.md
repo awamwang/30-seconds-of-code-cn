@@ -15,15 +15,14 @@ Omit the third argument, `end`, to use the same value as `separator` by default.
 使用 `Array.prototype.reduce()`把元素列表结合成一个字符串。如果不传第二个参数`separator`，默认值为`','`；如果不传第三个参数`end`，默认值为`separator`的值。
 
 ```js
-
 const join = (arr, separator = ',', end = separator) =>
   arr.reduce(
     (acc, val, i) =>
       i === arr.length - 2
         ? acc + val + end
         : i === arr.length - 1
-          ? acc + val
-          : acc + val + separator,
+        ? acc + val
+        : acc + val + separator,
     ''
   );
 ```
