@@ -16,7 +16,10 @@ module.exports = {
   distPath: `dist`,
   testPath: `test`,
   // General information
-  language: `js`,
+  language: {
+    short: `js`,
+    long: `JavaScript`
+  },
   // Module information
   moduleName: `_30s`,
   rollupInputFile: `imports.temp.js`,
@@ -25,5 +28,6 @@ module.exports = {
   requirables: [
     `snippets.json`,
     `archivedSnippets.json`
-  ]
+  ],
+  parser: '_30codeParser',
 };

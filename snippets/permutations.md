@@ -3,13 +3,13 @@ title: permutations
 tags: array,recursion,advanced
 ---
 
-⚠️ **WARNING**: This function's execution time increases exponentially with each array element. Anything more than 8 to 10 entries will cause your browser to hang as it tries to solve all the different combinations.
-
-⚠️ **WARNING**: 本函数的执行时间随着数组元素个数指数级增长。任何超过8~10个元素的数组会导致浏览器尝因试不同的组合而导致挂起（大量同步计算导致无响应）。
-
 Generates all permutations of an array's elements (contains duplicates).
 
 生成数组中元素的所有排列。（包含重复组合）
+
+⚠️ **WARNING**: This function's execution time increases exponentially with each array element. Anything more than 8 to 10 entries will cause your browser to hang as it tries to solve all the different combinations.
+
+⚠️ **WARNING**: 本函数的执行时间随着数组元素个数指数级增长。任何超过8~10个元素的数组会导致浏览器尝因试不同的组合而导致挂起（大量同步计算导致无响应）。
 
 Use recursion.
 For each element in the given array, create all the partial permutations for the rest of its elements.

@@ -208,8 +208,8 @@
     return Array.isArray(obj) && obj.length
       ? (clone.length = obj.length) && Array.from(clone)
       : Array.isArray(obj)
-      ? Array.from(obj)
-      : clone;
+        ? Array.from(obj)
+        : clone;
   };
   const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));
   const deepFreeze = obj =>
@@ -428,10 +428,10 @@
     num === 0 || num === 24
       ? 12 + 'am'
       : num === 12
-      ? 12 + 'pm'
-      : num < 12
-      ? (num % 12) + 'am'
-      : (num % 12) + 'pm';
+        ? 12 + 'pm'
+        : num < 12
+          ? (num % 12) + 'am'
+          : (num % 12) + 'pm';
   const getScrollPosition = (el = window) => ({
     x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
     y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
@@ -474,12 +474,15 @@
         0
       )
     );
-  const hasKey = (obj, key) => {
-    if (key.includes('.')) {
-      let _key = key.split('.')[0];
-      if (typeof obj[_key] === 'object') return hasKey(obj[_key], key.slice(key.indexOf('.') + 1));
-    }
-    return Object.keys(obj).includes(key);
+  const hasKey = (obj, keys) => {
+    return (
+      keys.length > 0 &&
+      keys.every(key => {
+        if (typeof obj !== 'object' || !obj.hasOwnProperty(key)) return false;
+        obj = obj[key];
+        return true;
+      })
+    );
   };
   const head = arr => arr[0];
   const hexToRGB = hex => {
@@ -525,6 +528,8 @@
     for (let i = 0; i < iterations; i++) fn();
     return (1000 * iterations) / (performance.now() - before);
   };
+  const includesAll = (arr, values) => values.every(v => arr.includes(v));
+  const includesAny = (arr, values) => values.some(v => arr.includes(v));
   const indentString = (str, count, indent = ' ') => str.replace(/^/gm, indent.repeat(count));
   const indexOfAll = (arr, val) => arr.reduce((acc, el, i) => (el === val ? [...acc, i] : acc), []);
   const initial = arr => arr.slice(0, -1);
@@ -659,8 +664,8 @@
         i === arr.length - 2
           ? acc + val + end
           : i === arr.length - 1
-          ? acc + val
-          : acc + val + separator,
+            ? acc + val
+            : acc + val + separator,
       ''
     );
   const JSONtoCSV = (arr, columns, delimiter = ',') =>
@@ -778,10 +783,10 @@
   const objectToQueryString = queryParameters => {
     return queryParameters
       ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {
-        const symbol = index === 0 ? '?' : '&';
-        queryString += (typeof val === 'string') ? `${symbol}${key}=${val}` : '';
-        return queryString;
-      }, '')
+          const symbol = index === 0 ? '?' : '&';
+          queryString += typeof val === 'string' ? `${symbol}${key}=${val}` : '';
+          return queryString;
+        }, '')
       : '';
   };
   const observeMutations = (element, callback, options) => {
@@ -1012,9 +1017,9 @@
   const remove = (arr, func) =>
     Array.isArray(arr)
       ? arr.filter(func).reduce((acc, val) => {
-          arr.splice(arr.indexOf(val), 1);
-          return acc.concat(val);
-        }, [])
+        arr.splice(arr.indexOf(val), 1);
+        return acc.concat(val);
+      }, [])
       : [];
   const removeNonASCII = str => str.replace(/[^\x20-\x7E]/g, '');
   const renameKeys = (keysMap, obj) =>
@@ -1092,10 +1097,10 @@
     Array.isArray(val)
       ? val.length
       : val && typeof val === 'object'
-      ? val.size || val.length || Object.keys(val).length
-      : typeof val === 'string'
-      ? new Blob([val]).size
-      : 0;
+        ? val.size || val.length || Object.keys(val).length
+        : typeof val === 'string'
+          ? new Blob([val]).size
+          : 0;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const smoothScroll = element =>
     document.querySelector(element).scrollIntoView({
@@ -1690,6 +1695,8 @@
   exports.httpPost = httpPost;
   exports.httpsRedirect = httpsRedirect;
   exports.hz = hz;
+  exports.includesAll = includesAll;
+  exports.includesAny = includesAny;
   exports.indentString = indentString;
   exports.indexOfAll = indexOfAll;
   exports.initial = initial;

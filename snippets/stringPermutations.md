@@ -3,13 +3,13 @@ title: stringPermutations
 tags: string,recursion,advanced
 ---
 
-⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.
-
-⚠️ **WARNING**: 这个函数的执行时间随每个字符指数级增长。每个超过8到10个字符的字符串将因为尝试所有不同的组合而导致你的浏览器挂起（无响应）。
-
 Generates all permutations of a string (contains duplicates).
 
 生成一个字符串的所有排列（包括重复的）。
+
+⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.
+
+⚠️ **WARNING**: 这个函数的执行时间随每个字符指数级增长。每个超过8到10个字符的字符串将因为尝试所有不同的组合而导致你的浏览器挂起（无响应）。
 
 Use recursion.
 For each letter in the given string, create all the partial permutations for the rest of its letters.

@@ -13,12 +13,13 @@ The `func` is invoked with three arguments (`value, index, array`).
 使用`Array.prototype.filter()`来找到数组中的返回真值的元素，并使用`Array.prototype.reduce()`和`Array.prototype.splice()`去除掉它。`func`回调支持三个参数(`value, index, array`)。
 
 ```js
+
 const remove = (arr, func) =>
   Array.isArray(arr)
     ? arr.filter(func).reduce((acc, val) => {
-        arr.splice(arr.indexOf(val), 1);
-        return acc.concat(val);
-      }, [])
+      arr.splice(arr.indexOf(val), 1);
+      return acc.concat(val);
+    }, [])
     : [];
 ```
 

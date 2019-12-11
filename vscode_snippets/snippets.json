@@ -53,7 +53,7 @@
     "body": [
       "const ary = (fn, n) => (...args) => fn(...args.slice(0, n));"
     ],
-    "description": "Creates a function that accepts up to `n` arguments, ignoring any additional arguments.\n\n创建一个最多`n`个参数的函数，它会忽略其他参数。\n\nCall the provided function, `fn`, with up to `n` arguments, using `Array.prototype.slice(0,n)` and the spread operator (`...`).\n\n使用`Array.prototype.slice(0,n)`和展开操作符(`...`)提取最多`n`个参数，传给`fn`并调用。\n"
+    "description": "Creates a function that accepts up to `n` arguments, ignoring any additional arguments.\n\nCall the provided function, `fn`, with up to `n` arguments, using `Array.prototype.slice(0, n)` and the spread operator (`...`).\n"
   },
   "atob": {
     "prefix": "30s_atob",
@@ -356,7 +356,7 @@
       "  }",
       "};"
     ],
-    "description": "⚠️ **NOTICE:** The same functionality can be easily implemented by using the new asynchronous Clipboard API, which is still experimental but should be used in the future instead of this snippet. Find out more about it [here](https://github.com/w3c/clipboard-apis/blob/master/explainer.adoc#writing-to-the-clipboard).\n\n⚠️ **NOTICE:** 相同的功能可以很容易的用还在实验阶段但未来可能替代本代码片段的新异步剪切板API实现。更多信息参见[here](https://github.com/w3c/clipboard-apis/blob/master/explainer.adoc#writing-to-the-clipboard).\n\nCopy a string to the clipboard. \nOnly works as a result of user action (i.e. inside a `click` event listener).\n\n把一个字符串拷贝到剪切板。只有在用户操作时才生效（i.e. 在一个`click`事件的监听函数中）。\n\nCreate a new `<textarea>` element, fill it with the supplied data and add it to the HTML document.\nUse `Selection.getRangeAt()`to store the selected range (if any).\nUse `document.execCommand('copy')` to copy to the clipboard.\nRemove the `<textarea>` element from the HTML document.\nFinally, use `Selection().addRange()` to recover the original selected range (if any).\n\n创建一个`<textarea>`元素，用提供的数据填充它，并把它添加到HTML的文档流中。使用 `Selection.getRangeAt()`来存储选中的区域（如果有的话）。使用`document.execCommand('copy')`来把内容拷贝到剪切板。把`<textarea>`从HTML的文档流中删除。最后，使用`Selection().addRange()`来恢复原始选择的区域（如果有）。"
+    "description": "Copy a string to the clipboard. \nOnly works as a result of user action (i.e. inside a `click` event listener).\n\n⚠️ **NOTICE:** The same functionality can be easily implemented by using the new asynchronous Clipboard API, which is still experimental but should be used in the future instead of this snippet. Find out more about it [here](https://github.com/w3c/clipboard-apis/blob/master/explainer.adoc#writing-to-the-clipboard).\n\nCreate a new `<textarea>` element, fill it with the supplied data and add it to the HTML document.\nUse `Selection.getRangeAt()`to store the selected range (if any).\nUse `document.execCommand('copy')` to copy to the clipboard.\nRemove the `<textarea>` element from the HTML document.\nFinally, use `Selection().addRange()` to recover the original selected range (if any).\n"
   },
   "countBy": {
     "prefix": "30s_countBy",
@@ -1175,15 +1175,18 @@
   "hasKey": {
     "prefix": "30s_hasKey",
     "body": [
-      "const hasKey = (obj, key) => {",
-      "  if (key.includes('.')) {",
-      "    let _key = key.split('.')[0];",
-      "    if (typeof obj[_key] === 'object') return hasKey(obj[_key], key.slice(key.indexOf('.') + 1));",
-      "  }",
-      "  return Object.keys(obj).includes(key);",
+      "const hasKey = (obj, keys) => {",
+      "  return (",
+      "    keys.length > 0 &&",
+      "    keys.every(key => {",
+      "      if (typeof obj !== 'object' || !obj.hasOwnProperty(key)) return false;",
+      "      obj = obj[key];",
+      "      return true;",
+      "    })",
+      "  );",
       "};"
     ],
-    "description": "Returns `true` if the target value exists in a JSON object, `false` otherwise.\n\nCheck if the key contains `.`, use `String.prototype.split('.')[0]` to get the first part and store as `_key`.\nUse `typeof` to check if the contents of `obj[key]` are an `object` and, if so, call `hasKey` with that object and the remainder of the `key`.\nOtherwise, use `Object.keys(obj)` in combination with `Array.prototype.includes()` to check if the given `key` exists.\n"
+    "description": "Returns `true` if the target value exists in a JSON object, `false` otherwise.\n\nCheck if `keys` is non-empty and use `Array.prototype.every()` to sequentially check its keys to internal depth of the object, `obj`. \nUse `Object.prototype.hasOwnProperty()` to check if `obj` does not have the current key or is not an object, stop propagation and return `false`.\nOtherwise assign the key's value to `obj` to use on the next iteration.\nReturn `false` beforehand if given key list is empty.\n"
   },
   "head": {
     "prefix": "30s_head",
@@ -1270,6 +1273,20 @@
       "};"
     ],
     "description": "Returns the number of times a function executed per second. \n`hz` is the unit for `hertz`, the unit of frequency defined as one cycle per second.\n\n返回一个函数每秒执行的次数。`hz`是`hertz`的单位，被定义为以每秒为一个周期的频率单位。\n\nUse `performance.now()` to get the difference in milliseconds before and after the iteration loop to calculate the time elapsed executing the function `iterations` times. \nReturn the number of cycles per second by converting milliseconds to seconds and dividing it by the time elapsed. \nOmit the second argument, `iterations`, to use the default of 100 iterations.\n\n使用`performance.now()`来获取迭代循环执行`iterations`次函数的执行时间的前后差值（以毫秒为单位）。把毫秒转换为秒并除以时间长度，返回每秒的循环次数。如果不传第二个参数`iterations`，默认值为循环100次。\n"
+  },
+  "includesAll": {
+    "prefix": "30s_includesAll",
+    "body": [
+      "const includesAll = (arr, values) => values.every(v => arr.includes(v));"
+    ],
+    "description": "Returns `true` if all the elements ιν `values` are included in `arr`, `false` otherwise.\n\nUse `Array.prototype.every()` and `Array.prototype.includes()` to check if all elements of `values` are included in `arr`.\n"
+  },
+  "includesAny": {
+    "prefix": "30s_includesAny",
+    "body": [
+      "const includesAny = (arr, values) => values.some(v => arr.includes(v));"
+    ],
+    "description": "Returns `true` if at least one element of values is included in arr , `false` otherwise.\n\nUse `Array.prototype.some()` and `Array.prototype.includes()` to check if at least one element of `values` is included in `arr`.\n"
   },
   "indentString": {
     "prefix": "30s_indentString",
@@ -2286,7 +2303,7 @@
       "  );",
       "};"
     ],
-    "description": "⚠️ **WARNING**: This function's execution time increases exponentially with each array element. Anything more than 8 to 10 entries will cause your browser to hang as it tries to solve all the different combinations.\n\n⚠️ **WARNING**: 本函数的执行时间随着数组元素个数指数级增长。任何超过8~10个元素的数组会导致浏览器尝因试不同的组合而导致挂起（大量同步计算导致无响应）。\n\nGenerates all permutations of an array's elements (contains duplicates).\n\n生成数组中元素的所有排列。（包含重复组合）\n\nUse recursion.\nFor each element in the given array, create all the partial permutations for the rest of its elements.\nUse `Array.prototype.map()` to combine the element with each partial permutation, then `Array.prototype.reduce()` to combine all permutations in one array.\nBase cases are for array `length` equal to `2` or `1`.\n\n使用递归。对给定数组中每个元素，创建除它以外所有元素的排列。使用`Array.prototype.map()`来把这个元素和每个剩余部分的排列结合，然后使用`Array.prototype.reduce()`把所有排列结合成一个数组。\n"
+    "description": "Generates all permutations of an array's elements (contains duplicates).\n\n⚠️ **WARNING**: This function's execution time increases exponentially with each array element. Anything more than 8 to 10 entries will cause your browser to hang as it tries to solve all the different combinations.\n\nUse recursion.\nFor each element in the given array, create all the partial permutations for the rest of its elements.\nUse `Array.prototype.map()` to combine the element with each partial permutation, then `Array.prototype.reduce()` to combine all permutations in one array.\nBase cases are for array `length` equal to `2` or `1`.\n"
   },
   "pick": {
     "prefix": "30s_pick",
@@ -2579,9 +2596,9 @@
       "const remove = (arr, func) =>",
       "  Array.isArray(arr)",
       "    ? arr.filter(func).reduce((acc, val) => {",
-      "        arr.splice(arr.indexOf(val), 1);",
-      "        return acc.concat(val);",
-      "      }, [])",
+      "      arr.splice(arr.indexOf(val), 1);",
+      "      return acc.concat(val);",
+      "    }, [])",
       "    : [];"
     ],
     "description": "Removes elements from an array for which the given function returns `false`.\n\n把数组中给定函数作用后返回`false`的元素删除。\n\nUse `Array.prototype.filter()` to find array elements that return truthy values and `Array.prototype.reduce()` to remove elements using `Array.prototype.splice()`.\nThe `func` is invoked with three arguments (`value, index, array`).\n\n使用`Array.prototype.filter()`来找到数组中的返回真值的元素，并使用`Array.prototype.reduce()`和`Array.prototype.splice()`去除掉它。`func`回调支持三个参数(`value, index, array`)。\n"
@@ -2779,10 +2796,10 @@
       "  Array.isArray(val)",
       "    ? val.length",
       "    : val && typeof val === 'object'",
-      "    ? val.size || val.length || Object.keys(val).length",
-      "    : typeof val === 'string'",
-      "    ? new Blob([val]).size",
-      "    : 0;"
+      "      ? val.size || val.length || Object.keys(val).length",
+      "      : typeof val === 'string'",
+      "        ? new Blob([val]).size",
+      "        : 0;"
     ],
     "description": "Get size of arrays, objects or strings.\n\n获取数组、对象或字符串的大小。\n\nGet type of `val` (`array`, `object` or `string`). \nUse `length` property for arrays.\nUse `length` or `size` value if available or number of keys for objects.\nUse `size` of a [`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob) created from `val` for strings.\n\n获取`val`的类型 (`array`, `object`或者`string`)。对于数组则使用`length`，对于对象则使用`length`或`size`或者键列表的数目这三个值中可用的。对于字符串则使用从`val`创建的[`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob)的`size`。\n\nSplit strings into array of characters with `split('')` and return its length.\n"
   },
@@ -2911,7 +2928,7 @@
       "    );",
       "};"
     ],
-    "description": "⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.\n\n⚠️ **WARNING**: 这个函数的执行时间随每个字符指数级增长。每个超过8到10个字符的字符串将因为尝试所有不同的组合而导致你的浏览器挂起（无响应）。\n\nGenerates all permutations of a string (contains duplicates).\n\n生成一个字符串的所有排列（包括重复的）。\n\nUse recursion.\nFor each letter in the given string, create all the partial permutations for the rest of its letters.\nUse `Array.prototype.map()` to combine the letter with each partial permutation, then `Array.prototype.reduce()` to combine all permutations in one array.\nBase cases are for string `length` equal to `2` or `1`.\n\n使用递归。对给定字符串中的每个字母，创建剩余字母的所有的部分全排列。使用`Array.prototype.map()`来把这个字母和每个部分全排列组装起来，然后使用`Array.prototype.reduce()`把所有排列组装到一个数组中。基本的场景是字符串`length`等于`2`或`1`。\n"
+    "description": "Generates all permutations of a string (contains duplicates).\n\n⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.\n\nUse recursion.\nFor each letter in the given string, create all the partial permutations for the rest of its letters.\nUse `Array.prototype.map()` to combine the letter with each partial permutation, then `Array.prototype.reduce()` to combine all permutations in one array.\nBase cases are for string `length` equal to `2` or `1`.\n"
   },
   "stripHTMLTags": {
     "prefix": "30s_stripHTMLTags",

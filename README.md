@@ -1,18 +1,18 @@
-[![Logo](/logo.png)](https://30secondsofcode.org/)
+[![Logo](/logo.png)](https://30secondsofcode.org/js/p/1)
 
 # 30 seconds of code
 
 [![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/30-seconds/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Known Vulnerabilities](https://snyk.io/test/github/30-seconds/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/30-seconds/30-seconds-of-code?targetFile=package.json) [![Travis Build](https://travis-ci.org/keepgoingwm/30-seconds-of-code-cn.svg?branch=master)](https://travis-ci.org/keepgoingwm/30-seconds-of-code) <br/>
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-> Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
+* Visit [our website](https://30secondsofcode.org) to view our snippet collection.
+* Use the [Search page](https://30secondsofcode.org/search) to find snippets that suit your needs. You can search by name, tag, language or using a snippet's description. Just start typing a term and see what comes up.
+* Browse the [JavaScript Snippet List](https://30secondsofcode.org/js/p/1) to see all the snippets in this project or click individual tags at the top of the same page to narrow down your search to a specific tag.
+* Click on each snippet card to view the whole snippet, including code, explanation and examples.
+* You can use the button on the right side of a snippet card to copy the code to clipboard.
+* If you like the project, give it a star. It means a lot to the people maintaining it.
 
-* Use <kbd>Ctrl</kbd> + <kbd>F</kbd> or <kbd>command</kbd> + <kbd>F</kbd> to search for a snippet.
-* Contributions welcome, please read the [contribution guide](CONTRIBUTING.md).
-* Snippets are written in ES6, use the [Babel transpiler](https://babeljs.io/) to ensure backwards-compatibility.
-* You can import these snippets into VSCode, by following the instructions found [here](https://github.com/30-seconds/30-seconds-of-code/tree/master/vscode_snippets).
-* You can search, view and copy these snippets from a terminal, using the CLI application from [this repo](https://github.com/sQVe/30s).
-* If you want to follow 30-seconds-of-code on social media, you can find us on [Facebook](https://www.facebook.com/30secondsofcode), [Instagram](https://www.instagram.com/30secondsofcode) and [Twitter](https://twitter.com/30secondsofcode).
+## Want to contribute?
 
 这个项目中的代码片段有以下几个特点：
 
@@ -11072,3 +11072,7 @@ yesNo('Foo', true); // true
 *Logos made by [Angelos Chalaris](https://github.com/Chalarangelo) are licensed under the [MIT](https://opensource.org/licenses/MIT) license.*
 *This README is built using [markdown-builder](https://github.com/30-seconds/markdown-builder).*
 
+* This repository is maintained by the [30-seconds organization on GitHub](https://github.com/30-seconds).
+* All snippets are licensed under the CC0-1.0 License, unless explicitly stated otherwise.
+* Logos, names and trademarks are not to be used without the explicit consent of the maintainers or owners of the 30 seconds GitHub organization.
+* Our website is powered by [Netlify](https://www.netlify.com/), [Gatsby](https://www.gatsbyjs.org/), [Travis CI](https://travis-ci.com/) & [GitHub](https://github.com/).
