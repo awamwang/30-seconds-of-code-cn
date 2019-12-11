@@ -12,14 +12,15 @@ Use the modulo operator (`%`) and conditional checks to transform an integer to 
 使用取模操作符(`%`)和条件运算符来把一个整数转换为12小时制的子午线后缀字符串形式。
 
 ```js
+
 const getMeridiemSuffixOfInteger = num =>
   num === 0 || num === 24
     ? 12 + 'am'
     : num === 12
-    ? 12 + 'pm'
-    : num < 12
-    ? (num % 12) + 'am'
-    : (num % 12) + 'pm';
+      ? 12 + 'pm'
+      : num < 12
+        ? (num % 12) + 'am'
+        : (num % 12) + 'pm';
 ```
 
 ```js
