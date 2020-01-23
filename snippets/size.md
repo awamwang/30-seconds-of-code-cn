@@ -3,7 +3,7 @@ title: size
 tags: object,array,string,intermediate
 ---
 
-Get size of arrays, objects or strings.
+Gets the size of an array, object or string.
 
 获取数组、对象或字符串的大小。
 
@@ -17,15 +17,14 @@ Use `size` of a [`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API
 Split strings into array of characters with `split('')` and return its length.
 
 ```js
-
 const size = val =>
   Array.isArray(val)
     ? val.length
     : val && typeof val === 'object'
-      ? val.size || val.length || Object.keys(val).length
-      : typeof val === 'string'
-        ? new Blob([val]).size
-        : 0;
+    ? val.size || val.length || Object.keys(val).length
+    : typeof val === 'string'
+    ? new Blob([val]).size
+    : 0;
 ```
 
 ```js

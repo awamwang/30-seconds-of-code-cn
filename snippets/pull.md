@@ -19,7 +19,7 @@ _(不改变原始数组的代码片段参见 [`without`](#without))_
 ```js
 const pull = (arr, ...args) => {
   let argState = Array.isArray(args[0]) ? args[0] : args;
-  let pulled = arr.filter((v, i) => !argState.includes(v));
+  let pulled = arr.filter(v => !argState.includes(v));
   arr.length = 0;
   pulled.forEach(v => arr.push(v));
 };

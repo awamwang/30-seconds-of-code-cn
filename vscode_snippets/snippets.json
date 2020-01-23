@@ -967,6 +967,17 @@
     ],
     "description": "Iterates over all own properties of an object in reverse, running a callback for each one.\n\n反向的对对象中每个自有属性（按照默认顺序相反的顺序）都迭代的执行一个回调。\n\nUse `Object.keys(obj)` to get all the properties of the object, `Array.prototype.reverse()` to reverse their order and `Array.prototype.forEach()` to run the provided function for each key-value pair. The callback receives three arguments - the value, the key and the object.\n\n使用`Object.keys(obj)`来获取对象的每个属性，使用`Array.prototype.reverse()`来反转它们的顺序，`Array.prototype.forEach()`来对每个键值对运行给定的函数。回调函数接受三个参数——值，键，和对象。\n"
   },
+  "frequencies": {
+    "prefix": "30s_frequencies",
+    "body": [
+      "const frequencies = arr =>",
+      "  arr.reduce((a, v) => {",
+      "    a[v] = a[v] ? a[v] + 1 : 1;",
+      "    return a;",
+      "  }, {});"
+    ],
+    "description": "Returns an object with the unique values of an array as keys and their frequencies as the values.\n\nUse `Array.prototype.reduce()` to map unique values to an object's keys, adding to existing keys every time the same value is encountered.\n"
+  },
   "fromCamelCase": {
     "prefix": "30s_fromCamelCase",
     "body": [
@@ -1188,12 +1199,23 @@
     ],
     "description": "Returns `true` if the target value exists in a JSON object, `false` otherwise.\n\nCheck if `keys` is non-empty and use `Array.prototype.every()` to sequentially check its keys to internal depth of the object, `obj`. \nUse `Object.prototype.hasOwnProperty()` to check if `obj` does not have the current key or is not an object, stop propagation and return `false`.\nOtherwise assign the key's value to `obj` to use on the next iteration.\nReturn `false` beforehand if given key list is empty.\n"
   },
+  "haveSameContents": {
+    "prefix": "30s_haveSameContents",
+    "body": [
+      "const haveSameContents = (a, b) => {",
+      "  for (const v of new Set([...a, ...b]))",
+      "    if (a.filter(e => e === v).length !== b.filter(e => e === v).length) return false;",
+      "  return true;",
+      "};"
+    ],
+    "description": "Returns `true` if two arrays contain the same elements regardless of order, `false` otherwise.\n\nUse a `for...of` loop over a `Set` created from the values of both arrays.\nUse `Array.prototype.filter()` to compare the amount of occurences of each distinct value in both arrays.\nReturn `false` if the counts do not match for any element, `true` otherwise.\n"
+  },
   "head": {
     "prefix": "30s_head",
     "body": [
-      "const head = arr => arr[0];"
+      "const head = arr => (arr && arr.length ? arr[0] : undefined);"
     ],
-    "description": "Returns the head of a list.\n\n返回列表的头部。\n\nUse `arr[0]` to return the first element of the passed array.\n\n使用`arr[0]`返回传入数组的第一个元素。\n"
+    "description": "Returns the head of a list.\n\nCheck if `arr` is truthy and has a `length` property, use `arr[0]` if possible to return the first element, otherwise return `undefined`.\n"
   },
   "hexToRGB": {
     "prefix": "30s_hexToRGB",
@@ -1451,7 +1473,7 @@
       "  return normalize(str1) === normalize(str2);",
       "};"
     ],
-    "description": "Checks if a string is an anagram of another string (case-insensitive, ignores spaces, punctuation and special characters).\n\n检测一个字符串是否是另一个字符串的重新排列（大小写敏感，忽略空格、点号和特定的字符）。重新排列就是说两个字符串拥有相同的字母元素和个数。\n\nUse `String.toLowerCase()`, `String.prototype.replace()` with an appropriate regular expression to remove unnecessary characters, `String.prototype.split('')`, `Array.prototype.sort()` and `Array.prototype.join('')` on both strings to normalize them, then check if their normalized forms are equal.\n\n使用`String.toLowerCase()`, `String.prototype.replace()`和合适的正则表达式来删除非必要的字符串。对两个字符串都使用`String.prototype.split('')`, `Array.prototype.sort()`和`Array.prototype.join('')`来标准化它们，然后检测它们的标准化格式是否相等。\n"
+    "description": "Checks if a string is an anagram of another string (case-insensitive, ignores spaces, punctuation and special characters).\n\nUse `String.prototype.toLowerCase()`, `String.prototype.replace()` with an appropriate regular expression to remove unnecessary characters, `String.prototype.split('')`, `Array.prototype.sort()` and `Array.prototype.join('')` on both strings to normalize them, then check if their normalized forms are equal.\n"
   },
   "isArrayLike": {
     "prefix": "30s_isArrayLike",
@@ -1487,6 +1509,19 @@
       "const isBrowserTabFocused = () => !document.hidden;"
     ],
     "description": "Returns `true` if the browser tab of the page is focused, `false` otherwise.\n\n如果当前的浏览器标签页是获取到焦点的就返回`true`，否则返回`false`。\n\nUse the `Document.hidden` property, introduced by the Page Visibility API to check if the browser tab of the page is visible or hidden.\n\n使用页面可见性API（Page Visibility API）中的`Document.hidden`属性来检查当前的浏览器标签页是可见的还是隐藏的。\n"
+  },
+  "isContainedIn": {
+    "prefix": "30s_isContainedIn",
+    "body": [
+      "const isContainedIn = (a, b) => {",
+      "  for (const v of new Set(a)) {",
+      "    if (!b.some(e => e === v) || a.filter(e => e === v).length > b.filter(e => e === v).length)",
+      "      return false;",
+      "  }",
+      "  return true;",
+      "};"
+    ],
+    "description": "Returns `true` if the elements of the first array are contained in the second one regardless of order, `false` otherwise.\n\nUse a `for...of` loop over a `Set` created from the first array.\nUse `Array.prototype.some()` to check if all distinct values are contained in the second array, use `Array.prototype.filter()` to compare the number of occurrences of each distinct value in both arrays.\nReturn `false` if the count of any element is greater in the first array than the second one, `true` otherwise.\n"
   },
   "isDivisible": {
     "prefix": "30s_isDivisible",
@@ -1592,6 +1627,13 @@
       "const isPlainObject = val => !!val && typeof val === 'object' && val.constructor === Object;"
     ],
     "description": "Checks if the provided value is an object created by the Object constructor.\n\n检查给出的值是否是一个对象构造器创建的对象。\n\nCheck if the provided value is truthy, use `typeof` to check if it is an object and `Object.constructor` to make sure the constructor is equal to `Object`.\n\n检查给出的值是否为真值，使用`typeof`来检查它是否是一个对象，使用`Object.constructor`来确保它的构造器等于`Object`。\n"
+  },
+  "isPowerOfTwo": {
+    "prefix": "30s_isPowerOfTwo",
+    "body": [
+      "const isPowerOfTwo = n => !!n && (n & (n - 1)) == 0;"
+    ],
+    "description": "Returns `true` if the given number is a power of `2`, `false` otherwise.\n\nUse the bitwise binary AND operator (`&`) to determine if `n is a power of `2. \nAdditionally, check that `n` is not falsy.\n"
   },
   "isPrime": {
     "prefix": "30s_isPrime",
@@ -1749,8 +1791,8 @@
       "      i === arr.length - 2",
       "        ? acc + val + end",
       "        : i === arr.length - 1",
-      "          ? acc + val",
-      "          : acc + val + separator,",
+      "        ? acc + val",
+      "        : acc + val + separator,",
       "    ''",
       "  );"
     ],
@@ -1784,9 +1826,9 @@
   "last": {
     "prefix": "30s_last",
     "body": [
-      "const last = arr => arr[arr.length - 1];"
+      "const last = arr => (arr && arr.length ? arr[arr.length - 1] : undefined);"
     ],
-    "description": "Returns the last element in an array.\n\n返回数组中最后一个元素。\n\nUse `arr.length - 1` to compute the index of the last element of the given array and returning it.\n\n使用`arr.length - 1`来计算给定数组的最后一个元素的序号并返回它的值。\n"
+    "description": "Returns the last element in an array.\n\nCheck if `arr` is truthy and has a `length` property, use `arr.length - 1` to compute the index of the last element of the given array and return it, otherwise return `undefined`.\n"
   },
   "lcm": {
     "prefix": "30s_lcm",
@@ -2000,6 +2042,19 @@
     ],
     "description": "Returns the `n` minimum elements from the provided array.\nIf `n` is greater than or equal to the provided array's length, then return the original array (sorted in ascending order).\n\n返回给定数组中最小的`n`个数。如果`n`大于等于给定数组的长度，则返回原始数组（正序排列）。\n\nUse `Array.prototype.sort()` combined with the spread operator (`...`) to create a shallow clone of the array and sort it in ascending order.\nUse `Array.prototype.slice()` to get the specified number of elements.\nOmit the second argument, `n`, to get a one-element array.\n\n使用`Array.prototype.sort()`结合展开操作符(`...`)来创建一个给定数组的浅拷贝，然后对它正序排列。使用`Array.prototype.slice()`来获取元素列表中指定数目的元素。如果不传第二个参数`n`，则只获取一个元素。\n"
   },
+  "mostFrequent": {
+    "prefix": "30s_mostFrequent",
+    "body": [
+      "const mostFrequent = arr =>",
+      "  Object.entries(",
+      "    arr.reduce((a, v) => {",
+      "      a[v] = a[v] ? a[v] + 1 : 1;",
+      "      return a;",
+      "    }, {})",
+      "  ).reduce((a, v) => (v[1] >= a[1] ? v : a), [null, 0])[0];"
+    ],
+    "description": "Returns the most frequent element in an array.\n\nUse `Array.prototype.reduce()` to map unique values to an object's keys, adding to existing keys every time the same value is encountered.\nUse `Object.entries()` on the result in combination with `Array.prototype.reduce()` to get the most frequent value in the array.\n"
+  },
   "mostPerformant": {
     "prefix": "30s_mostPerformant",
     "body": [
@@ -2079,14 +2134,14 @@
       "const objectToQueryString = queryParameters => {",
       "  return queryParameters",
       "    ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {",
-      "        const symbol = index === 0 ? '?' : '&';",
+      "        const symbol = queryString.length === 0 ? '?' : '&';",
       "        queryString += typeof val === 'string' ? `${symbol}${key}=${val}` : '';",
       "        return queryString;",
       "      }, '')",
       "    : '';",
       "};"
     ],
-    "description": "Returns a query string generated from the key-value pairs of the given object.\n\nUse `Array.prototype.reduce()` on `Object.entries(queryParameters)` to create the query string.\nDetermine the `symbol` to be either `?` or `&` based on the `index` and concatenate `val` to `queryString` only if it's a string.\nReturn the `queryString` or an empty string when the `queryParameters` are falsy.\n"
+    "description": "Returns a query string generated from the key-value pairs of the given object.\n\nUse `Array.prototype.reduce()` on `Object.entries(queryParameters)` to create the query string.\nDetermine the `symbol` to be either `?` or `&` based on the `length` of `queryString` and concatenate `val` to `queryString` only if it's a string.\nReturn the `queryString` or an empty string when the `queryParameters` are falsy.\n"
   },
   "observeMutations": {
     "prefix": "30s_observeMutations",
@@ -2411,7 +2466,7 @@
     "body": [
       "const pull = (arr, ...args) => {",
       "  let argState = Array.isArray(args[0]) ? args[0] : args;",
-      "  let pulled = arr.filter((v, i) => !argState.includes(v));",
+      "  let pulled = arr.filter(v => !argState.includes(v));",
       "  arr.length = 0;",
       "  pulled.forEach(v => arr.push(v));",
       "};"
@@ -2780,7 +2835,7 @@
       "  return arr;",
       "};"
     ],
-    "description": "Randomizes the order of the values of an array, returning a new array.\n\n随机改变数组中元素的顺序后，返回新的数组。\n\nUses the [Fisher-Yates algorithm](https://github.com/30-seconds/30-seconds-of-code#shuffle) to reorder the elements of the array.\n\n使用[Fisher-Yates algorithm](https://github.com/30-seconds/30-seconds-of-code#shuffle)来对数组中元素重新排序。\n"
+    "description": "Randomizes the order of the values of an array, returning a new array.\n\nUse the [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Fisher_and_Yates'_original_method) to reorder the elements of the array.\n"
   },
   "similarity": {
     "prefix": "30s_similarity",
@@ -2796,12 +2851,12 @@
       "  Array.isArray(val)",
       "    ? val.length",
       "    : val && typeof val === 'object'",
-      "      ? val.size || val.length || Object.keys(val).length",
-      "      : typeof val === 'string'",
-      "        ? new Blob([val]).size",
-      "        : 0;"
+      "    ? val.size || val.length || Object.keys(val).length",
+      "    : typeof val === 'string'",
+      "    ? new Blob([val]).size",
+      "    : 0;"
     ],
-    "description": "Get size of arrays, objects or strings.\n\n获取数组、对象或字符串的大小。\n\nGet type of `val` (`array`, `object` or `string`). \nUse `length` property for arrays.\nUse `length` or `size` value if available or number of keys for objects.\nUse `size` of a [`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob) created from `val` for strings.\n\n获取`val`的类型 (`array`, `object`或者`string`)。对于数组则使用`length`，对于对象则使用`length`或`size`或者键列表的数目这三个值中可用的。对于字符串则使用从`val`创建的[`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob)的`size`。\n\nSplit strings into array of characters with `split('')` and return its length.\n"
+    "description": "Gets the size of an array, object or string.\n\nGet type of `val` (`array`, `object` or `string`). \nUse `length` property for arrays.\nUse `length` or `size` value if available or number of keys for objects.\nUse `size` of a [`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob) created from `val` for strings.\nSplit strings into array of characters with `split('')` and return its length.\n"
   },
   "sleep": {
     "prefix": "30s_sleep",
@@ -3454,6 +3509,20 @@
       "};"
     ],
     "description": "Returns the distance between two vectors.\n\nUse `Array.prototype.reduce()`, `Math.pow()` and `Math.sqrt()` to calculate the Euclidean distance between two vectors.\n"
+  },
+  "weightedSample": {
+    "prefix": "30s_weightedSample",
+    "body": [
+      "const weightedSample = (arr, weights) => {",
+      "  let roll = Math.random();",
+      "  return arr[",
+      "    weights",
+      "      .reduce((acc, w, i) => (i === 0 ? [w] : [...acc, acc[acc.length - 1] + w]), [])",
+      "      .findIndex((v, i, s) => roll >= (i === 0 ? 0 : s[i - 1]) && roll < v)",
+      "  ];",
+      "};"
+    ],
+    "description": "Returns a random element from an array, using the provided `weights` as the probabilities for each element.\n\nUse `Array.prototype.reduce()` to create an array of partial sums for each value in `weights`.\nUse `Math.random()` to generate a random number and `Array.prototype.findIndex()` to find the correct index based on the array previously produced.\nFinally, return the element of `arr` with the produced index.\n\n"
   },
   "when": {
     "prefix": "30s_when",

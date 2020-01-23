@@ -7,9 +7,9 @@ Randomizes the order of the values of an array, returning a new array.
 
 随机改变数组中元素的顺序后，返回新的数组。
 
-Uses the [Fisher-Yates algorithm](https://github.com/30-seconds/30-seconds-of-code#shuffle) to reorder the elements of the array.
+Use the [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Fisher_and_Yates'_original_method) to reorder the elements of the array.
 
-使用[Fisher-Yates algorithm](https://github.com/30-seconds/30-seconds-of-code#shuffle)来对数组中元素重新排序。
+使用[Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Fisher_and_Yates'_original_method)来对数组中元素重新排序。
 
 ```js
 const shuffle = ([...arr]) => {

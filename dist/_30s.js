@@ -221,13 +221,13 @@
     Array.isArray(obj)
       ? obj.map(val => deepMapKeys(val, f))
       : typeof obj === 'object'
-      ? Object.keys(obj).reduce((acc, current) => {
+        ? Object.keys(obj).reduce((acc, current) => {
           const val = obj[current];
           acc[f(current)] =
             val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
           return acc;
         }, {})
-      : obj;
+        : obj;
   const defaults = (obj, ...defs) => Object.assign({}, obj, ...defs.reverse(), obj);
   const defer = (fn, ...args) => setTimeout(fn, 1, ...args);
   const degreesToRads = deg => (deg * Math.PI) / 180.0;
@@ -249,9 +249,9 @@
     target in obj
       ? obj[target]
       : Object.values(obj).reduce((acc, val) => {
-          if (acc !== undefined) return acc;
-          if (typeof val === 'object') return dig(val, target);
-        }, undefined);
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
   const digitize = n => [...`${n}`].map(i => parseInt(i));
   const distance = (x0, y0, x1, y1) => Math.hypot(x1 - x0, y1 - y0);
   const drop = (arr, n = 1) => arr.slice(n);
@@ -323,11 +323,11 @@
   const factorial = n =>
     n < 0
       ? (() => {
-          throw new TypeError('Negative numbers are not allowed!');
-        })()
+        throw new TypeError('Negative numbers are not allowed!');
+      })()
       : n <= 1
-      ? 1
-      : n * factorial(n - 1);
+        ? 1
+        : n * factorial(n - 1);
   const fibonacci = n =>
     Array.from({ length: n }).reduce(
       (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),
@@ -390,6 +390,11 @@
     Object.keys(obj)
       .reverse()
       .forEach(key => fn(obj[key], key, obj));
+  const frequencies = arr =>
+    arr.reduce((a, v) => {
+      a[v] = a[v] ? a[v] + 1 : 1;
+      return a;
+    }, {});
   const fromCamelCase = (str, separator = '_') =>
     str
       .replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2')
@@ -484,7 +489,12 @@
       })
     );
   };
-  const head = arr => arr[0];
+  const haveSameContents = (a, b) => {
+    for (const v of new Set([...a, ...b]))
+      if (a.filter(e => e === v).length !== b.filter(e => e === v).length) return false;
+    return true;
+  };
+  const head = arr => (arr && arr.length ? arr[0] : undefined);
   const hexToRGB = hex => {
     let alpha = false,
       h = hex.slice(hex.startsWith('#') ? 1 : 0);
@@ -586,6 +596,13 @@
   const isBoolean = val => typeof val === 'boolean';
   const isBrowser = () => ![typeof window, typeof document].includes('undefined');
   const isBrowserTabFocused = () => !document.hidden;
+  const isContainedIn = (a, b) => {
+    for (const v of new Set(a)) {
+      if (!b.some(e => e === v) || a.filter(e => e === v).length > b.filter(e => e === v).length)
+        return false;
+    }
+    return true;
+  };
   const isDivisible = (dividend, divisor) => dividend % divisor === 0;
   const isDuplexStream = val =>
     val !== null &&
@@ -607,6 +624,7 @@
   const isObjectLike = val => val !== null && typeof val === 'object';
   const isOdd = num => num % 2 === 1;
   const isPlainObject = val => !!val && typeof val === 'object' && val.constructor === Object;
+  const isPowerOfTwo = n => !!n && (n & (n - 1)) == 0;
   const isPrime = num => {
     const boundary = Math.floor(Math.sqrt(num));
     for (var i = 2; i <= boundary; i++) if (num % i === 0) return false;
@@ -664,8 +682,8 @@
         i === arr.length - 2
           ? acc + val + end
           : i === arr.length - 1
-            ? acc + val
-            : acc + val + separator,
+          ? acc + val
+          : acc + val + separator,
       ''
     );
   const JSONtoCSV = (arr, columns, delimiter = ',') =>
@@ -680,7 +698,7 @@
     ].join('\n');
   const JSONToFile = (obj, filename) =>
     fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2));
-  const last = arr => arr[arr.length - 1];
+  const last = arr => (arr && arr.length ? arr[arr.length - 1] : undefined);
   const lcm = (...arr) => {
     const gcd = (x, y) => (!y ? x : gcd(y, x % y));
     const _lcm = (x, y) => (x * y) / gcd(x, y);
@@ -761,6 +779,13 @@
   const minBy = (arr, fn) => Math.min(...arr.map(typeof fn === 'function' ? fn : val => val[fn]));
   const minDate = dates => new Date(Math.min(...dates));
   const minN = (arr, n = 1) => [...arr].sort((a, b) => a - b).slice(0, n);
+  const mostFrequent = arr =>
+    Object.entries(
+      arr.reduce((a, v) => {
+        a[v] = a[v] ? a[v] + 1 : 1;
+        return a;
+      }, {})
+    ).reduce((a, v) => (v[1] >= a[1] ? v : a), [null, 0])[0];
   const mostPerformant = (fns, iterations = 10000) => {
     const times = fns.map(fn => {
       const before = performance.now();
@@ -783,7 +808,7 @@
   const objectToQueryString = queryParameters => {
     return queryParameters
       ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {
-          const symbol = index === 0 ? '?' : '&';
+          const symbol = queryString.length === 0 ? '?' : '&';
           queryString += typeof val === 'string' ? `${symbol}${key}=${val}` : '';
           return queryString;
         }, '')
@@ -935,7 +960,7 @@
     );
   const pull = (arr, ...args) => {
     let argState = Array.isArray(args[0]) ? args[0] : args;
-    let pulled = arr.filter((v, i) => !argState.includes(v));
+    let pulled = arr.filter(v => !argState.includes(v));
     arr.length = 0;
     pulled.forEach(v => arr.push(v));
   };
@@ -1097,10 +1122,10 @@
     Array.isArray(val)
       ? val.length
       : val && typeof val === 'object'
-        ? val.size || val.length || Object.keys(val).length
-        : typeof val === 'string'
-          ? new Blob([val]).size
-          : 0;
+      ? val.size || val.length || Object.keys(val).length
+      : typeof val === 'string'
+      ? new Blob([val]).size
+      : 0;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const smoothScroll = element =>
     document.querySelector(element).scrollIntoView({
@@ -1379,6 +1404,14 @@
       .slice(0, pointLength)
       .reduce((acc, val, i) => acc + Math.pow(val - coords[pointLength + i], 2), 0);
     return Math.sqrt(sum);
+  };
+  const weightedSample = (arr, weights) => {
+    let roll = Math.random();
+    return arr[
+      weights
+        .reduce((acc, w, i) => (i === 0 ? [w] : [...acc, acc[acc.length - 1] + w]), [])
+        .findIndex((v, i, s) => roll >= (i === 0 ? 0 : s[i - 1]) && roll < v)
+    ];
   };
   const when = (pred, whenTrue) => x => (pred(x) ? whenTrue(x) : x);
   const without = (arr, ...args) => arr.filter(v => !args.includes(v));
@@ -1667,6 +1700,7 @@
   exports.formToObject = formToObject;
   exports.forOwn = forOwn;
   exports.forOwnRight = forOwnRight;
+  exports.frequencies = frequencies;
   exports.fromCamelCase = fromCamelCase;
   exports.functionName = functionName;
   exports.functions = functions;
@@ -1688,6 +1722,7 @@
   exports.hashBrowser = hashBrowser;
   exports.hashNode = hashNode;
   exports.hasKey = hasKey;
+  exports.haveSameContents = haveSameContents;
   exports.head = head;
   exports.hexToRGB = hexToRGB;
   exports.hide = hide;
@@ -1721,6 +1756,7 @@
   exports.isBoolean = isBoolean;
   exports.isBrowser = isBrowser;
   exports.isBrowserTabFocused = isBrowserTabFocused;
+  exports.isContainedIn = isContainedIn;
   exports.isDivisible = isDivisible;
   exports.isDuplexStream = isDuplexStream;
   exports.isEmpty = isEmpty;
@@ -1735,6 +1771,7 @@
   exports.isObjectLike = isObjectLike;
   exports.isOdd = isOdd;
   exports.isPlainObject = isPlainObject;
+  exports.isPowerOfTwo = isPowerOfTwo;
   exports.isPrime = isPrime;
   exports.isPrimitive = isPrimitive;
   exports.isPromiseLike = isPromiseLike;
@@ -1777,6 +1814,7 @@
   exports.minBy = minBy;
   exports.minDate = minDate;
   exports.minN = minN;
+  exports.mostFrequent = mostFrequent;
   exports.mostPerformant = mostPerformant;
   exports.negate = negate;
   exports.nest = nest;
@@ -1916,6 +1954,7 @@
   exports.UUIDGeneratorNode = UUIDGeneratorNode;
   exports.validateNumber = validateNumber;
   exports.vectorDistance = vectorDistance;
+  exports.weightedSample = weightedSample;
   exports.when = when;
   exports.without = without;
   exports.words = words;

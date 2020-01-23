@@ -103,7 +103,6 @@
       "attributes": {
         "text": "Creates a function that accepts up to `n` arguments, ignoring any additional arguments.\n\n创建一个最多`n`个参数的函数，它会忽略其他参数。\n\nCall the provided function, `fn`, with up to `n` arguments, using `Array.prototype.slice(0, n)` and the spread operator (`...`).\n\n使用`Array.prototype.slice(0, n)`和展开操作符(`...`)提取最多`n`个参数，传给`fn`并调用。\n\n",
         "tags": [
-          "adapter",
           "function",
           "intermediate"
         ]
@@ -325,13 +324,12 @@
       "attributes": {
         "text": "Given a key and a set of arguments, call them when given a context. Primarily useful in composition.\n\n用给的一个`key`值和一组参数，在提供的`context`下调用函数（context理解为一个对象，key值理解为对象下的方法名），主要在组合模式中使用。（这个操作使JS中的对象方法不依赖于对象存在，使得动态类的构造成为可能）。\n\nUse a closure to call a stored key with stored arguments.\n\n用闭包把`key`名称和传入的参数存储，在更换`context`可以方便的调用。\n\n",
         "tags": [
-          "adapter",
           "function",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "e447b88ee1d7bc2e216775b4298dd7e66ea29a720700edfb56eaa28fa6ea9e5c"
+        "hash": "8b606a9b76e65d602238eb487d504dda0f1fe8bba9166ae2accbc7984c8d6530"
       }
     },
     {
@@ -412,7 +410,7 @@
         ]
       },
       "meta": {
-        "hash": "8ebea84d2f15aca4284f61f861396e36492b8c292aaf4abd68afb58eea1b6422"
+        "hash": "52eca7b91d4205abe619c672895a773fc7ed7c2e151fd37e83ceda54ee74ad71"
       }
     },
     {
@@ -498,14 +496,13 @@
       "attributes": {
         "text": "Changes a function that accepts an array into a variadic function.\n\n把一个接受数组参数的函数改造成接受可变数目参数的函数。\n\nGiven a function, return a closure that collects all inputs into an array-accepting function.\n\n传入一个接受数组参数的函数，返回一个把所有参数收集到一个array后传给这个函数调用的闭包。\n\n",
         "tags": [
-          "adapter",
           "function",
           "array",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "74af3365eb69fc8fcf259918b677a6e3f202498dbe75b8154010e05d1b78e43f"
+        "hash": "cbf8e15f8c0f47c8e38f6f070ff90ac694aab206cc57ceef7e457d93d794e69c"
       }
     },
     {
@@ -898,7 +895,7 @@
         ]
       },
       "meta": {
-        "hash": "9337000c1b67812b906b3bd294fe45c6e3c62805e4823ef7d67c56d64299d125"
+        "hash": "6fa14364405f7b99aa49c2157bdc08c02b4ce2f288db29a4348a6983460933c7"
       }
     },
     {
@@ -1037,7 +1034,7 @@
         ]
       },
       "meta": {
-        "hash": "60d378da1542524c88b67188e95ac1caf9d5f76c11ce5fd30f1be1a85cc3d2e7"
+        "hash": "5f38360819f9225b887a94221bfee1a80f1bcc224a364440b3388f60491b03ba"
       }
     },
     {
@@ -1273,7 +1270,7 @@
         ]
       },
       "meta": {
-        "hash": "3e72493bcececaffbc25f44a287c99c5ba1b1aa72917c0010c6d5975869982dd"
+        "hash": "55b1ce0a892110d792a9487e40331774015525479faa2b8961f6c2ea6291c27b"
       }
     },
     {
@@ -1439,13 +1436,12 @@
       "attributes": {
         "text": "Flip takes a function as an argument, then makes the first argument the last.\n\nFlip接受一个函数作为参数，把传入函数的第一个参数放到参数列表末尾。\n\nReturn a closure that takes variadic inputs, and splices the last argument to make it the first argument before applying the rest.\n\n返回一个接受可变数量参数，把第一个参数放到其余参数后面（即最后）的闭包（英文好像有错误）\n\n",
         "tags": [
-          "adapter",
           "function",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "67e08d810755a4df1c48e2940ddc13a65eef8c40bb894a83936afcddb8ae7b96"
+        "hash": "553f8cccba3bd6339b01a926661a2a3fcca310f02bbb7402d1e0eeca5bf5d729"
       }
     },
     {
@@ -1526,6 +1522,21 @@
       },
       "meta": {
         "hash": "1d6d8225ba07b9d001490b67c7c53fd752d79ca0e41aaa7e54f3f4a11f329ded"
+      }
+    },
+    {
+      "id": "frequencies",
+      "type": "snippetListing",
+      "title": "frequencies",
+      "attributes": {
+        "text": "Returns an object with the unique values of an array as keys and their frequencies as the values.\n\nUse `Array.prototype.reduce()` to map unique values to an object's keys, adding to existing keys every time the same value is encountered.\n\n",
+        "tags": [
+          "array",
+          "intermediate"
+        ]
+      },
+      "meta": {
+        "hash": "227fc1043f5a7850c32f4ecce686a97de0b8badf4d487462a1c25e8312465124"
       }
     },
     {
@@ -1857,18 +1868,33 @@
       }
     },
     {
+      "id": "haveSameContents",
+      "type": "snippetListing",
+      "title": "haveSameContents",
+      "attributes": {
+        "text": "Returns `true` if two arrays contain the same elements regardless of order, `false` otherwise.\n\nUse a `for...of` loop over a `Set` created from the values of both arrays.\nUse `Array.prototype.filter()` to compare the amount of occurences of each distinct value in both arrays.\nReturn `false` if the counts do not match for any element, `true` otherwise.\n\n",
+        "tags": [
+          "array",
+          "intermediate"
+        ]
+      },
+      "meta": {
+        "hash": "917079b8a868588894ebbd8d76a1bf5359d91d09dce294d7bb2cc0185900a2ae"
+      }
+    },
+    {
       "id": "head",
       "type": "snippetListing",
       "title": "head",
       "attributes": {
-        "text": "Returns the head of a list.\n\n返回列表的头部。\n\nUse `arr[0]` to return the first element of the passed array.\n\n使用`arr[0]`返回传入数组的第一个元素。\n\n",
+        "text": "Returns the head of a list.\n\nCheck if `arr` is truthy and has a `length` property, use `arr[0]` if possible to return the first element, otherwise return `undefined`.\n\n",
         "tags": [
           "array",
           "beginner"
         ]
       },
       "meta": {
-        "hash": "38a4b5bf58b5b631a3491e11ab98da35e7a603df4ca03d8be3d4d3b584d7a0ad"
+        "hash": "5ab776577e1c861d4a2b17fbc72837b77b9cbeeea2bacb5614c8bd9b7efcec7a"
       }
     },
     {
@@ -2289,7 +2315,7 @@
       "type": "snippetListing",
       "title": "isAnagram",
       "attributes": {
-        "text": "Checks if a string is an anagram of another string (case-insensitive, ignores spaces, punctuation and special characters).\n\n检测一个字符串是否是另一个字符串的重新排列（大小写敏感，忽略空格、点号和特定的字符）。重新排列就是说两个字符串拥有相同的字母元素和个数。\n\nUse `String.toLowerCase()`, `String.prototype.replace()` with an appropriate regular expression to remove unnecessary characters, `String.prototype.split('')`, `Array.prototype.sort()` and `Array.prototype.join('')` on both strings to normalize them, then check if their normalized forms are equal.\n\n使用`String.toLowerCase()`, `String.prototype.replace()`和合适的正则表达式来删除非必要的字符串。对两个字符串都使用`String.prototype.split('')`, `Array.prototype.sort()`和`Array.prototype.join('')`来标准化它们，然后检测它们的标准化格式是否相等。\n\n",
+        "text": "Checks if a string is an anagram of another string (case-insensitive, ignores spaces, punctuation and special characters).\n\nUse `String.prototype.toLowerCase()`, `String.prototype.replace()` with an appropriate regular expression to remove unnecessary characters, `String.prototype.split('')`, `Array.prototype.sort()` and `Array.prototype.join('')` on both strings to normalize them, then check if their normalized forms are equal.\n\n",
         "tags": [
           "string",
           "regexp",
@@ -2297,7 +2323,7 @@
         ]
       },
       "meta": {
-        "hash": "d4cfa5f153ce09e5b1de647bee1e6bdf553d2b886a27ea2702a6436cbc7e8592"
+        "hash": "0988d3506c206c544948142c4b65b471d0d0bdabdfc464fc40260f9ccc054f52"
       }
     },
     {
@@ -2376,6 +2402,21 @@
       },
       "meta": {
         "hash": "76936eb2937a9902ae1489fccd4b4138d380fe1c442f205eb2e2489146f4f9fd"
+      }
+    },
+    {
+      "id": "isContainedIn",
+      "type": "snippetListing",
+      "title": "isContainedIn",
+      "attributes": {
+        "text": "Returns `true` if the elements of the first array are contained in the second one regardless of order, `false` otherwise.\n\nUse a `for...of` loop over a `Set` created from the first array.\nUse `Array.prototype.some()` to check if all distinct values are contained in the second array, use `Array.prototype.filter()` to compare the number of occurrences of each distinct value in both arrays.\nReturn `false` if the count of any element is greater in the first array than the second one, `true` otherwise.\n\n",
+        "tags": [
+          "array",
+          "intermediate"
+        ]
+      },
+      "meta": {
+        "hash": "a6e27de05fd710d2837571011dd7bb2031169053438ef998c9b3aa212c24a2f6"
       }
     },
     {
@@ -2597,6 +2638,21 @@
       },
       "meta": {
         "hash": "c1d3580d7d9e9cca00a62978a1f9ec07da88402ca3d270c2e85d9c9bc7cdc4d1"
+      }
+    },
+    {
+      "id": "isPowerOfTwo",
+      "type": "snippetListing",
+      "title": "isPowerOfTwo",
+      "attributes": {
+        "text": "Returns `true` if the given number is a power of `2`, `false` otherwise.\n\nUse the bitwise binary AND operator (`&`) to determine if `n is a power of `2. \nAdditionally, check that `n` is not falsy.\n\n",
+        "tags": [
+          "math",
+          "beginner"
+        ]
+      },
+      "meta": {
+        "hash": "93dcd24b208880ba16d9aa32e59e718187cb4178cadb5876a4bc7c588ddcdebd"
       }
     },
     {
@@ -2864,7 +2920,7 @@
         ]
       },
       "meta": {
-        "hash": "7583256f404ca2ccd782fed2c839680dfe6cd838b478df1bee47356fc042f3ea"
+        "hash": "3db3faac666ee61ab86c70766d2ab5d1293ffd818da87edb971bfff7a366364a"
       }
     },
     {
@@ -2905,14 +2961,14 @@
       "type": "snippetListing",
       "title": "last",
       "attributes": {
-        "text": "Returns the last element in an array.\n\n返回数组中最后一个元素。\n\nUse `arr.length - 1` to compute the index of the last element of the given array and returning it.\n\n使用`arr.length - 1`来计算给定数组的最后一个元素的序号并返回它的值。\n\n",
+        "text": "Returns the last element in an array.\n\nCheck if `arr` is truthy and has a `length` property, use `arr.length - 1` to compute the index of the last element of the given array and return it, otherwise return `undefined`.\n\n",
         "tags": [
           "array",
           "beginner"
         ]
       },
       "meta": {
-        "hash": "9835729f98713e2deaead726c400056c903b7e1b248f2566627bb7095430fd21"
+        "hash": "0cf1faf6ccf465c4f35c162a2d40775ebef33b27e4456d856551cc5a1f3def56"
       }
     },
     {
@@ -3069,12 +3125,11 @@
         "tags": [
           "string",
           "utility",
-          "regexp",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "16ef7e2a894e8d2ae00951c0f12e4193e13446a1604876bc269d61391fed6335"
+        "hash": "d95e586ebffdfdbaa182feb6a21c41619d6bacde9b7a49ace88b2c958480f25d"
       }
     },
     {
@@ -3272,6 +3327,21 @@
       }
     },
     {
+      "id": "mostFrequent",
+      "type": "snippetListing",
+      "title": "mostFrequent",
+      "attributes": {
+        "text": "Returns the most frequent element in an array.\n\nUse `Array.prototype.reduce()` to map unique values to an object's keys, adding to existing keys every time the same value is encountered.\nUse `Object.entries()` on the result in combination with `Array.prototype.reduce()` to get the most frequent value in the array.\n\n",
+        "tags": [
+          "array",
+          "intermediate"
+        ]
+      },
+      "meta": {
+        "hash": "0c04c74cdbb51195f740a163776cb5c4e21a57a59099a1740211cf0764c6c9cc"
+      }
+    },
+    {
       "id": "mostPerformant",
       "type": "snippetListing",
       "title": "mostPerformant",
@@ -3416,7 +3486,7 @@
       "type": "snippetListing",
       "title": "objectToQueryString",
       "attributes": {
-        "text": "Returns a query string generated from the key-value pairs of the given object.\n\nUse `Array.prototype.reduce()` on `Object.entries(queryParameters)` to create the query string.\nDetermine the `symbol` to be either `?` or `&` based on the `index` and concatenate `val` to `queryString` only if it's a string.\nReturn the `queryString` or an empty string when the `queryParameters` are falsy.\n\n",
+        "text": "Returns a query string generated from the key-value pairs of the given object.\n\nUse `Array.prototype.reduce()` on `Object.entries(queryParameters)` to create the query string.\nDetermine the `symbol` to be either `?` or `&` based on the `length` of `queryString` and concatenate `val` to `queryString` only if it's a string.\nReturn the `queryString` or an empty string when the `queryParameters` are falsy.\n\n",
         "tags": [
           "utility",
           "object",
@@ -3425,7 +3495,7 @@
         ]
       },
       "meta": {
-        "hash": "012ebca6a90c50ec89278af2632d7d0d90eeb423f2bcf902ed015f6fce6d4f5a"
+        "hash": "e8f820ce6da97eabde082ffb829c9fb700e85efc79bdebe883c67237269e3f52"
       }
     },
     {
@@ -3578,13 +3648,12 @@
       "attributes": {
         "text": "Creates a function that invokes each provided function with the arguments it receives and returns the results.\n\n创建一个函数，它用接收的参数列表调用每个给定的函数，并返回结果列表。\n\nUse `Array.prototype.map()` and `Function.prototype.apply()` to apply each function to the given arguments.\n\n使用`Array.prototype.map()` 和 `Function.prototype.apply()`来把接收的参数列表应用给每个给定的函数。\n\n",
         "tags": [
-          "adapter",
           "function",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "b1eda6d6ca1fb075159cd1737b22e469d03609a2472c66bece3625329a25d6e3"
+        "hash": "d19ede265d140ecd73abb0a471042ab93591ef7b19ba92d3f8a0462661bdc99f"
       }
     },
     {
@@ -3594,13 +3663,12 @@
       "attributes": {
         "text": "Creates a function that invokes the provided function with its arguments transformed.\n\n创建一个函数，它用给定的转换后的参数来调用给定的函数。\n\nUse `Array.prototype.map()` to apply `transforms` to `args` in combination with the spread operator (`...`) to pass the transformed arguments to `fn`.\n\n使用`Array.prototype.map()`和展开操作符(`...`)把`transforms`作用于`args`，然后把转换后的参数列表传给`fn`并调用。\n\n",
         "tags": [
-          "adapter",
           "function",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "0c07f4c31039e2c05918ae2048c730de2a5c4bc279a6117abee7a91969533c4e"
+        "hash": "5a47cd886751568aa2ce0bd8a935d3f4730076c509666b66f7305f3660320847"
       }
     },
     {
@@ -3767,14 +3835,13 @@
       "attributes": {
         "text": "Performs left-to-right function composition for asynchronous functions.\n\n为异步函数列表产生一个从左向右执行的函数组合。\n\nUse `Array.prototype.reduce()` with the spread operator (`...`) to perform left-to-right function composition using `Promise.then()`.\nThe functions can return a combination of: simple values, `Promise`'s, or they can be defined as `async` ones returning through `await`.\n\n使用`Array.prototype.reduce()`和展开操作符(`...`) 来从左向右执行 `Promise.then()`的函数组合。这些函数可以返回一下结果：简单值，`Promise`，或者通过`await`执行的`async`函数。\n\nAll functions must be unary.\n\n所有函数必须是一元的（接受一个参数）。\n\n",
         "tags": [
-          "adapter",
           "function",
           "promise",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "dbfbb6fb9c362558721fde219333c63539f77fd05a0ca436fe271710c7ced0d9"
+        "hash": "a2b9ac4f1209c3791caa6f40f0d041acd75514e9ee8909f2e3833635f357c0bd"
       }
     },
     {
@@ -3784,13 +3851,12 @@
       "attributes": {
         "text": "Performs left-to-right function composition.\n\n从左向右执行一个函数组合。\n\nUse `Array.prototype.reduce()` with the spread operator (`...`) to perform left-to-right function composition.\nThe first (leftmost) function can accept one or more arguments; the remaining functions must be unary.\n\n使用`Array.prototype.reduce()`和展开操作符(`...`) 来从左向右执行函数组合。第一个（最左边）的函数可以接受一个或多个参数；剩下的函数必须是一元的（接受一个参数）。\n\n",
         "tags": [
-          "adapter",
           "function",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "8bcd1a735537d7a213d4eecf10192e26d69799d6b4be1620230b16494fa73589"
+        "hash": "6b85e9e5022873b5f6d6e955b383edb46e8c37615d9266fb5ee1af7939f08686"
       }
     },
     {
@@ -3879,14 +3945,13 @@
       "attributes": {
         "text": "Converts an asynchronous function to return a promise.\n\n把一个异步函数转换为返回promise的函数（很适合将Node中回调模式的函数转为promise）。\n\n*In Node 8+, you can use [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*\n*在Node 8+环境，你可以直接使用[`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*\n\nUse currying to return a function returning a `Promise` that calls the original function.\nUse the `...rest` operator to pass in all the parameters.\n\n使用柯里化来返回一个调用原函数并且返回`Promise`的函数。使用 `...rest` 操作符来传入所有参数。\n\n",
         "tags": [
-          "adapter",
           "function",
           "promise",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "0d2d098cc4afd4c68b899ecb298be4a7a529190d0585d2307806a0fb3dc13268"
+        "hash": "fa80063e1d74810a551c7f01397b126868a1a7f7b306859182b033aa4a2696d4"
       }
     },
     {
@@ -3901,7 +3966,7 @@
         ]
       },
       "meta": {
-        "hash": "4d6d5e60f9f6858ee8feff6d9d6d295c5ea013d7479ead9a1dbb537cab080c0c"
+        "hash": "72fb580d39611c91cd9fa263a0f1bcb44bfd4c77815051bb2dd68e9931d21701"
       }
     },
     {
@@ -4056,13 +4121,12 @@
       "attributes": {
         "text": "Creates a function that invokes the provided function with its arguments arranged according to the specified indexes.\n\n用给定的函数创建一个新函数，新函数的参数按照指定顺序重新排序传入。\n\nUse `Array.prototype.map()` to reorder arguments based on `indexes` in combination with the spread operator (`...`) to pass the transformed arguments to `fn`.\n\n使用 `Array.prototype.map()`把参数根据传入的`indexes`重新排序，然后使用展开操作符(`...`)把转换后的参数列表传给`fn`。\n\n",
         "tags": [
-          "adapter",
           "function",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "505edc25288a5d9f691d066cd35a235e3a8dcef9766c71b8a5394a7bf0b8d35c"
+        "hash": "cb2326c19a1292426193785d4cf2c47b5e8d83a99edb7f3415f8c4e057f6a70b"
       }
     },
     {
@@ -4446,7 +4510,7 @@
       "type": "snippetListing",
       "title": "shuffle",
       "attributes": {
-        "text": "Randomizes the order of the values of an array, returning a new array.\n\n随机改变数组中元素的顺序后，返回新的数组。\n\nUses the [Fisher-Yates algorithm](https://github.com/30-seconds/30-seconds-of-code#shuffle) to reorder the elements of the array.\n\n使用[Fisher-Yates algorithm](https://github.com/30-seconds/30-seconds-of-code#shuffle)来对数组中元素重新排序。\n\n",
+        "text": "Randomizes the order of the values of an array, returning a new array.\n\nUse the [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Fisher_and_Yates'_original_method) to reorder the elements of the array.\n\n",
         "tags": [
           "array",
           "random",
@@ -4454,7 +4518,7 @@
         ]
       },
       "meta": {
-        "hash": "6d3000085c7d526745ffc748730bcd6b218f0f0b96f2ec451fe5b9ffab890bd9"
+        "hash": "d01a5226fd9306ed492f80e84b22e6c7cc7950500f9cabbeac699103c83e5643"
       }
     },
     {
@@ -4478,7 +4542,7 @@
       "type": "snippetListing",
       "title": "size",
       "attributes": {
-        "text": "Get size of arrays, objects or strings.\n\n获取数组、对象或字符串的大小。\n\nGet type of `val` (`array`, `object` or `string`). \nUse `length` property for arrays.\nUse `length` or `size` value if available or number of keys for objects.\nUse `size` of a [`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob) created from `val` for strings.\n\n获取`val`的类型 (`array`, `object`或者`string`)。对于数组则使用`length`，对于对象则使用`length`或`size`或者键列表的数目这三个值中可用的。对于字符串则使用从`val`创建的[`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob)的`size`。\n\nSplit strings into array of characters with `split('')` and return its length.\n\n",
+        "text": "Gets the size of an array, object or string.\n\nGet type of `val` (`array`, `object` or `string`). \nUse `length` property for arrays.\nUse `length` or `size` value if available or number of keys for objects.\nUse `size` of a [`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob) created from `val` for strings.\nSplit strings into array of characters with `split('')` and return its length.\n\n",
         "tags": [
           "object",
           "array",
@@ -4487,7 +4551,7 @@
         ]
       },
       "meta": {
-        "hash": "9ea023338dd4638a2dbf796f53dc9dabe53e9bea978c81af6724cc201cbeb88f"
+        "hash": "6dd4c6a51d2c80fa4768c95ae01c16a8359c4140bcad28c7fde0cecd72d7d3e2"
       }
     },
     {
@@ -4625,12 +4689,12 @@
       "attributes": {
         "text": "Takes a variadic function and returns a closure that accepts an array of arguments to map to the inputs of the function.\n\n传入一个可变的函数，返回一个闭包，它接受参数数组来代替原本的输入。\n\nUse closures and the spread operator (`...`) to map the array of arguments to the inputs of the function.\n\n使用闭包和展开操作符(`...`)来把参数数组映射给函数输入。\n\n",
         "tags": [
-          "adapter",
+          "function",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "5f69bc297a2b4b27ce69bab768c9c62031b4be8efec7bc1c8256052be7798a07"
+        "hash": "b94cbdec64a2897b1a193d5fd32eeb59b315ea590d609a50b7fe50012b1d4ce4"
       }
     },
     {
@@ -5159,13 +5223,12 @@
       "attributes": {
         "text": "Creates a function that accepts up to one argument, ignoring any additional arguments.\n\n创建一个最多接受一个参数的函数，忽略其他参数。\n\nCall the provided function, `fn`, with just the first argument given.\n\n仅使用给出参数的第一个调用函数`fn`。\n\n",
         "tags": [
-          "adapter",
           "function",
-          "intermediate"
+          "beginner"
         ]
       },
       "meta": {
-        "hash": "a106b3599ac21995f8b478626c0bd95c3ad7d5fc29094b24a651bba9dd54afc7"
+        "hash": "f0eda594028997293121b8afca105772ce002f9fe0d5642ffd41c3167fd6b4f1"
       }
     },
     {
@@ -5468,6 +5531,22 @@
       },
       "meta": {
         "hash": "a2c8560a2e285ebe11caad3a46c07ee0e41a64bd850b2e5a4f5aebc12da09dcc"
+      }
+    },
+    {
+      "id": "weightedSample",
+      "type": "snippetListing",
+      "title": "weightedSample",
+      "attributes": {
+        "text": "Returns a random element from an array, using the provided `weights` as the probabilities for each element.\n\nUse `Array.prototype.reduce()` to create an array of partial sums for each value in `weights`.\nUse `Math.random()` to generate a random number and `Array.prototype.findIndex()` to find the correct index based on the array previously produced.\nFinally, return the element of `arr` with the produced index.\n\n\n",
+        "tags": [
+          "array",
+          "random",
+          "advanced"
+        ]
+      },
+      "meta": {
+        "hash": "94d3b2ea296a94907be873c19381a525eeb96676cd52cb1baf1bd76bc22971a6"
       }
     },
     {

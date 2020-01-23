@@ -889,6 +889,12 @@
       return fn(obj[key], key, obj);
     });
   };
+  var frequencies = function frequencies(arr) {
+    return arr.reduce(function (a, v) {
+      a[v] = a[v] ? a[v] + 1 : 1;
+      return a;
+    }, {});
+  };
   var fromCamelCase = function fromCamelCase(str) {
     var separator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '_';
     return str.replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2').replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2').toLowerCase();
@@ -1022,8 +1028,47 @@
       return true;
     });
   };
+  var haveSameContents = function haveSameContents(a, b) {
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      var _loop = function _loop() {
+        var v = _step2.value;
+        if (a.filter(function (e) {
+          return e === v;
+        }).length !== b.filter(function (e) {
+          return e === v;
+        }).length) return {
+          v: false
+        };
+      };
+
+      for (var _iterator = new Set([].concat(_toConsumableArray(a), _toConsumableArray(b)))[Symbol.iterator](), _step2; !(_iteratorNormalCompletion = (_step2 = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var _ret = _loop();
+
+        if (_typeof(_ret) === "object") return _ret.v;
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+          _iterator["return"]();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    return true;
+  };
   var head = function head(arr) {
-    return arr[0];
+    return arr && arr.length ? arr[0] : undefined;
   };
   var hexToRGB = function hexToRGB(hex) {
     var alpha = false,
@@ -1227,6 +1272,47 @@
   var isBrowserTabFocused = function isBrowserTabFocused() {
     return !document.hidden;
   };
+  var isContainedIn = function isContainedIn(a, b) {
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      var _loop2 = function _loop2() {
+        var v = _step3.value;
+        if (!b.some(function (e) {
+          return e === v;
+        }) || a.filter(function (e) {
+          return e === v;
+        }).length > b.filter(function (e) {
+          return e === v;
+        }).length) return {
+          v: false
+        };
+      };
+
+      for (var _iterator2 = new Set(a)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion2 = (_step3 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var _ret2 = _loop2();
+
+        if (_typeof(_ret2) === "object") return _ret2.v;
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+          _iterator2["return"]();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
+        }
+      }
+    }
+
+    return true;
+  };
   var isDivisible = function isDivisible(dividend, divisor) {
     return dividend % divisor === 0;
   };
@@ -1269,6 +1355,9 @@
   var isPlainObject = function isPlainObject(val) {
     return !!val && _typeof(val) === 'object' && val.constructor === Object;
   };
+  var isPowerOfTwo = function isPowerOfTwo(n) {
+    return !!n && (n & n - 1) == 0;
+  };
   var isPrime = function isPrime(num) {
     var boundary = Math.floor(Math.sqrt(num));
 
@@ -1292,30 +1381,30 @@
   };
   var isSorted = function isSorted(arr) {
     var direction = -(arr[0] - arr[1]);
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    var _iteratorNormalCompletion3 = true;
+    var _didIteratorError3 = false;
+    var _iteratorError3 = undefined;
 
     try {
-      for (var _iterator = arr.entries()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion = (_step2 = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var _step2$value = _slicedToArray(_step2.value, 2),
-            i = _step2$value[0],
-            val = _step2$value[1];
+      for (var _iterator3 = arr.entries()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion3 = (_step4 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+        var _step4$value = _slicedToArray(_step4.value, 2),
+            i = _step4$value[0],
+            val = _step4$value[1];
 
         direction = !direction ? -(arr[i - 1] - arr[i]) : direction;
         if (i === arr.length - 1) return !direction ? 0 : direction;else if ((val - arr[i + 1]) * direction > 0) return 0;
       }
     } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
+      _didIteratorError3 = true;
+      _iteratorError3 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-          _iterator["return"]();
+        if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+          _iterator3["return"]();
         }
       } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
+        if (_didIteratorError3) {
+          throw _iteratorError3;
         }
       }
     }
@@ -1376,7 +1465,7 @@
     return fs.writeFile("".concat(filename, ".json"), JSON.stringify(obj, null, 2));
   };
   var last = function last(arr) {
-    return arr[arr.length - 1];
+    return arr && arr.length ? arr[arr.length - 1] : undefined;
   };
   var lcm = function lcm() {
     var gcd = function gcd(x, y) {
@@ -1532,6 +1621,14 @@
       return a - b;
     }).slice(0, n);
   };
+  var mostFrequent = function mostFrequent(arr) {
+    return Object.entries(arr.reduce(function (a, v) {
+      a[v] = a[v] ? a[v] + 1 : 1;
+      return a;
+    }, {})).reduce(function (a, v) {
+      return v[1] >= a[1] ? v : a;
+    }, [null, 0])[0];
+  };
   var mostPerformant = function mostPerformant(fns) {
     var iterations = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10000;
     var times = fns.map(function (fn) {
@@ -1601,7 +1698,7 @@
           key = _ref22[0],
           val = _ref22[1];
 
-      var symbol = index === 0 ? '?' : '&';
+      var symbol = queryString.length === 0 ? '?' : '&';
       queryString += typeof val === 'string' ? "".concat(symbol).concat(key, "=").concat(val) : '';
       return queryString;
     }, '') : '';
@@ -1895,7 +1992,7 @@
     }
 
     var argState = Array.isArray(args[0]) ? args[0] : args;
-    var pulled = arr.filter(function (v, i) {
+    var pulled = arr.filter(function (v) {
       return !argState.includes(v);
     });
     arr.length = 0;
@@ -2338,29 +2435,29 @@
     }, []);
   };
   var takeWhile = function takeWhile(arr, func) {
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
+    var _iteratorNormalCompletion4 = true;
+    var _didIteratorError4 = false;
+    var _iteratorError4 = undefined;
 
     try {
-      for (var _iterator2 = arr.entries()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion2 = (_step3 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var _step3$value = _slicedToArray(_step3.value, 2),
-            i = _step3$value[0],
-            val = _step3$value[1];
+      for (var _iterator4 = arr.entries()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion4 = (_step5 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+        var _step5$value = _slicedToArray(_step5.value, 2),
+            i = _step5$value[0],
+            val = _step5$value[1];
 
         if (func(val)) return arr.slice(0, i);
       }
     } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
+      _didIteratorError4 = true;
+      _iteratorError4 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
-          _iterator2["return"]();
+        if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+          _iterator4["return"]();
         }
       } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
+        if (_didIteratorError4) {
+          throw _iteratorError4;
         }
       }
     }
@@ -2634,6 +2731,14 @@
       return acc + Math.pow(val - coords[pointLength + i], 2);
     }, 0);
     return Math.sqrt(sum);
+  };
+  var weightedSample = function weightedSample(arr, weights) {
+    var roll = Math.random();
+    return arr[weights.reduce(function (acc, w, i) {
+      return i === 0 ? [w] : [].concat(_toConsumableArray(acc), [acc[acc.length - 1] + w]);
+    }, []).findIndex(function (v, i, s) {
+      return roll >= (i === 0 ? 0 : s[i - 1]) && roll < v;
+    })];
   };
   var when = function when(pred, whenTrue) {
     return function (x) {
@@ -3041,6 +3146,7 @@
   exports.formToObject = formToObject;
   exports.forOwn = forOwn;
   exports.forOwnRight = forOwnRight;
+  exports.frequencies = frequencies;
   exports.fromCamelCase = fromCamelCase;
   exports.functionName = functionName;
   exports.functions = functions;
@@ -3062,6 +3168,7 @@
   exports.hashBrowser = hashBrowser;
   exports.hashNode = hashNode;
   exports.hasKey = hasKey;
+  exports.haveSameContents = haveSameContents;
   exports.head = head;
   exports.hexToRGB = hexToRGB;
   exports.hide = hide;
@@ -3095,6 +3202,7 @@
   exports.isBoolean = isBoolean;
   exports.isBrowser = isBrowser;
   exports.isBrowserTabFocused = isBrowserTabFocused;
+  exports.isContainedIn = isContainedIn;
   exports.isDivisible = isDivisible;
   exports.isDuplexStream = isDuplexStream;
   exports.isEmpty = isEmpty;
@@ -3109,6 +3217,7 @@
   exports.isObjectLike = isObjectLike;
   exports.isOdd = isOdd;
   exports.isPlainObject = isPlainObject;
+  exports.isPowerOfTwo = isPowerOfTwo;
   exports.isPrime = isPrime;
   exports.isPrimitive = isPrimitive;
   exports.isPromiseLike = isPromiseLike;
@@ -3151,6 +3260,7 @@
   exports.minBy = minBy;
   exports.minDate = minDate;
   exports.minN = minN;
+  exports.mostFrequent = mostFrequent;
   exports.mostPerformant = mostPerformant;
   exports.negate = negate;
   exports.nest = nest;
@@ -3290,6 +3400,7 @@
   exports.UUIDGeneratorNode = UUIDGeneratorNode;
   exports.validateNumber = validateNumber;
   exports.vectorDistance = vectorDistance;
+  exports.weightedSample = weightedSample;
   exports.when = when;
   exports.without = without;
   exports.words = words;
