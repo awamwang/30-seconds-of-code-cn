@@ -28,6 +28,5 @@ module.exports = {
   requirables: [
     `snippets.json`,
     `archivedSnippets.json`
-  ],
-  parser: '_30codeParser',
+  ]
 };
