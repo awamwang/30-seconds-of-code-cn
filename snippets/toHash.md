@@ -24,7 +24,11 @@ const toHash = (object, key) =>
 toHash([4, 3, 2, 1]); // { 0: 4, 1: 3, 2: 2, 3: 1 }
 toHash([{ a: 'label' }], 'a'); // { label: { a: 'label' } }
 // A more in depth example:   一个更深入的例子：
-let users = [{ id: 1, first: 'Jon' }, { id: 2, first: 'Joe' }, { id: 3, first: 'Moe' }];
+let users = [
+  { id: 1, first: 'Jon' },
+  { id: 2, first: 'Joe' },
+  { id: 3, first: 'Moe' }
+];
 let managers = [{ manager: 1, employees: [2, 3] }];
 // We use function here because we want a bindable reference, but a closure referencing the hash would work, too.
 // 因为我们需要一个可绑定的索引值，所以我们这里使用函数，但引用我们产生的hash对象的闭包是正常工作的。（把toHash结果作为this传给了map的参数函数）

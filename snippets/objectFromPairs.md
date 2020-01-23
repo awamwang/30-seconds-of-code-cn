@@ -16,5 +16,8 @@ const objectFromPairs = arr => arr.reduce((a, [key, val]) => ((a[key] = val), a)
 ```
 
 ```js
-objectFromPairs([['a', 1], ['b', 2]]); // {a: 1, b: 2}
+objectFromPairs([
+  ['a', 1],
+  ['b', 2]
+]); // {a: 1, b: 2}
 ```

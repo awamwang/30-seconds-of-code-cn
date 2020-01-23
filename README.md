@@ -621,9 +621,21 @@ const arrayToCSV = (arr, delimiter = ',') =>
 <summary>Examples</summary>
 
 ```[object Object]
-arrayToCSV([['a', 'b'], ['c', 'd']]); // '"a","b"\n"c","d"'
-arrayToCSV([['a', 'b'], ['c', 'd']], ';'); // '"a";"b"\n"c";"d"'
-arrayToCSV([['a', '"b" great'], ['c', 3.1415]]); // '"a","""b"" great"\n"c",3.1415'
+arrayToCSV([
+  ['a', 'b'],
+  ['c', 'd']
+]); // '"a","b"\n"c","d"'
+arrayToCSV(
+  [
+    ['a', 'b'],
+    ['c', 'd']
+  ],
+  ';'
+); // '"a";"b"\n"c";"d"'
+arrayToCSV([
+  ['a', '"b" great'],
+  ['c', 3.1415]
+]); // '"a","""b"" great"\n"c",3.1415'
 ```
 </details>
 
@@ -1720,8 +1732,8 @@ const join = (arr, separator = ',', end = separator) =>
       i === arr.length - 2
         ? acc + val + end
         : i === arr.length - 1
-        ? acc + val
-        : acc + val + separator,
+          ? acc + val
+          : acc + val + separator,
     ''
   );
 ```
@@ -2049,7 +2061,10 @@ const partition = (arr, fn) =>
 <summary>Examples</summary>
 
 ```[object Object]
-const users = [{ user: 'barney', age: 36, active: false }, { user: 'fred', age: 40, active: true }];
+const users = [
+  { user: 'barney', age: 36, active: false },
+  { user: 'fred', age: 40, active: true }
+];
 partition(users, o => o.active); // [[{ 'user': 'fred',    'age': 40, 'active': true }],[{ 'user': 'barney',  'age': 36, 'active': false }]]
 ```
 </details>
@@ -2328,7 +2343,11 @@ const reduceWhich = (arr, comparator = (a, b) => a - b) =>
 reduceWhich([1, 3, 2]); // 1
 reduceWhich([1, 3, 2], (a, b) => b - a); // 3
 reduceWhich(
-  [{ name: 'Tom', age: 12 }, { name: 'Jack', age: 18 }, { name: 'Lucy', age: 9 }],
+  [
+    { name: 'Tom', age: 12 },
+    { name: 'Jack', age: 18 },
+    { name: 'Lucy', age: 9 }
+  ],
   (a, b) => a.age - b.age
 ); // {name: "Lucy", age: 9}
 ```
@@ -2374,9 +2393,9 @@ The `func` is invoked with three arguments (`value, index, array`).
 const remove = (arr, func) =>
   Array.isArray(arr)
     ? arr.filter(func).reduce((acc, val) => {
-      arr.splice(arr.indexOf(val), 1);
-      return acc.concat(val);
-    }, [])
+        arr.splice(arr.indexOf(val), 1);
+        return acc.concat(val);
+      }, [])
     : [];
 ```
 
@@ -2936,7 +2955,11 @@ const toHash = (object, key) =>
 toHash([4, 3, 2, 1]); // { 0: 4, 1: 3, 2: 2, 3: 1 }
 toHash([{ a: 'label' }], 'a'); // { label: { a: 'label' } }
 // A more in depth example:   一个更深入的例子：
-let users = [{ id: 1, first: 'Jon' }, { id: 2, first: 'Joe' }, { id: 3, first: 'Moe' }];
+let users = [
+  { id: 1, first: 'Jon' },
+  { id: 2, first: 'Joe' },
+  { id: 3, first: 'Moe' }
+];
 let managers = [{ manager: 1, employees: [2, 3] }];
 // We use function here because we want a bindable reference, but a closure referencing the hash would work, too.
 // 因为我们需要一个可绑定的索引值，所以我们这里使用函数，但引用我们产生的hash对象的闭包是正常工作的。（把toHash结果作为this传给了map的参数函数）
@@ -3182,8 +3205,14 @@ const unzip = arr =>
 <summary>Examples</summary>
 
 ```[object Object]
-unzip([['a', 1, true], ['b', 2, false]]); // [['a', 'b'], [1, 2], [true, false]]
-unzip([['a', 1, true], ['b', 2]]); // [['a', 'b'], [1, 2], [true]]
+unzip([
+  ['a', 1, true],
+  ['b', 2, false]
+]); // [['a', 'b'], [1, 2], [true, false]]
+unzip([
+  ['a', 1, true],
+  ['b', 2]
+]); // [['a', 'b'], [1, 2], [true]]
 ```
 </details>
 
@@ -3217,7 +3246,13 @@ const unzipWith = (arr, fn) =>
 <summary>Examples</summary>
 
 ```[object Object]
-unzipWith([[1, 10, 100], [2, 20, 200]], (...args) => args.reduce((acc, v) => acc + v, 0)); // [3, 30, 300]
+unzipWith(
+  [
+    [1, 10, 100],
+    [2, 20, 200]
+  ],
+  (...args) => args.reduce((acc, v) => acc + v, 0)
+); // [3, 30, 300]
 ```
 </details>
 
@@ -4716,10 +4751,10 @@ const getMeridiemSuffixOfInteger = num =>
   num === 0 || num === 24
     ? 12 + 'am'
     : num === 12
-      ? 12 + 'pm'
-      : num < 12
-        ? (num % 12) + 'am'
-        : (num % 12) + 'pm';
+    ? 12 + 'pm'
+    : num < 12
+    ? (num % 12) + 'am'
+    : (num % 12) + 'pm';
 ```
 
 <details>
@@ -5248,10 +5283,7 @@ const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
 ```[object Object]
 const add5 = x => x + 5;
 const multiply = (x, y) => x * y;
-const multiplyAndAdd5 = compose(
-  add5,
-  multiply
-);
+const multiplyAndAdd5 = compose(add5, multiply);
 multiplyAndAdd5(5, 2); // 15
 ```
 </details>
@@ -5768,7 +5800,7 @@ const sum = pipeAsyncFunctions(
   x => x + 3,
   async x => (await x) + 4
 );
-(async() => {
+(async () => {
   console.log(await sum(5)); // 15 (after one second)
 })();
 ```
@@ -6133,7 +6165,10 @@ const when = (pred, whenTrue) => x => (pred(x) ? whenTrue(x) : x);
 <summary>Examples</summary>
 
 ```[object Object]
-const doubleEvenNumbers = when(x => x % 2 === 0, x => x * 2);
+const doubleEvenNumbers = when(
+  x => x % 2 === 0,
+  x => x * 2
+);
 doubleEvenNumbers(2); // 4
 doubleEvenNumbers(1); // 1
 ```
@@ -6429,11 +6464,11 @@ Throws an exception if `n` is a negative number.
 const factorial = n =>
   n < 0
     ? (() => {
-      throw new TypeError('Negative numbers are not allowed!');
-    })()
+        throw new TypeError('Negative numbers are not allowed!');
+      })()
     : n <= 1
-      ? 1
-      : n * factorial(n - 1);
+    ? 1
+    : n * factorial(n - 1);
 ```
 
 <details>
@@ -7855,8 +7890,8 @@ const deepClone = obj => {
   return Array.isArray(obj) && obj.length
     ? (clone.length = obj.length) && Array.from(clone)
     : Array.isArray(obj)
-      ? Array.from(obj)
-      : clone;
+    ? Array.from(obj)
+    : clone;
 };
 ```
 
@@ -7955,13 +7990,13 @@ const deepMapKeys = (obj, f) =>
   Array.isArray(obj)
     ? obj.map(val => deepMapKeys(val, f))
     : typeof obj === 'object'
-      ? Object.keys(obj).reduce((acc, current) => {
+    ? Object.keys(obj).reduce((acc, current) => {
         const val = obj[current];
         acc[f(current)] =
           val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
         return acc;
       }, {})
-      : obj;
+    : obj;
 ```
 
 <details>
@@ -8040,9 +8075,9 @@ const dig = (obj, target) =>
   target in obj
     ? obj[target]
     : Object.values(obj).reduce((acc, val) => {
-      if (acc !== undefined) return acc;
-      if (typeof val === 'object') return dig(val, target);
-    }, undefined);
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
 ```
 
 <details>
@@ -8645,7 +8680,10 @@ const objectFromPairs = arr => arr.reduce((a, [key, val]) => ((a[key] = val), a)
 <summary>Examples</summary>
 
 ```[object Object]
-objectFromPairs([['a', 1], ['b', 2]]); // {a: 1, b: 2}
+objectFromPairs([
+  ['a', 1],
+  ['b', 2]
+]); // {a: 1, b: 2}
 ```
 </details>
 
@@ -8759,7 +8797,11 @@ const orderBy = (arr, props, orders) =>
 <summary>Examples</summary>
 
 ```[object Object]
-const users = [{ name: 'fred', age: 48 }, { name: 'barney', age: 36 }, { name: 'fred', age: 40 }];
+const users = [
+  { name: 'fred', age: 48 },
+  { name: 'barney', age: 36 },
+  { name: 'fred', age: 40 }
+];
 orderBy(users, ['name', 'age'], ['asc', 'desc']); // [{name: 'barney', age: 36}, {name: 'fred', age: 48}, {name: 'fred', age: 40}]
 orderBy(users, ['name', 'age']); // [{name: 'barney', age: 36}, {name: 'fred', age: 40}, {name: 'fred', age: 48}]
 ```
@@ -8897,10 +8939,10 @@ const size = val =>
   Array.isArray(val)
     ? val.length
     : val && typeof val === 'object'
-    ? val.size || val.length || Object.keys(val).length
-    : typeof val === 'string'
-    ? new Blob([val]).size
-    : 0;
+      ? val.size || val.length || Object.keys(val).length
+      : typeof val === 'string'
+        ? new Blob([val]).size
+        : 0;
 ```
 
 <details>
@@ -8964,7 +9006,13 @@ const truthCheckCollection = (collection, pre) => collection.every(obj => obj[pr
 <summary>Examples</summary>
 
 ```[object Object]
-truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex: 'male' }], 'sex'); // true
+truthCheckCollection(
+  [
+    { user: 'Tinky-Winky', sex: 'male' },
+    { user: 'Dipsy', sex: 'male' }
+  ],
+  'sex'
+); // true
 ```
 </details>
 
@@ -10933,10 +10981,10 @@ Return the `queryString` or an empty string when the `queryParameters` are falsy
 const objectToQueryString = queryParameters => {
   return queryParameters
     ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {
-        const symbol = queryString.length === 0 ? '?' : '&';
-        queryString += typeof val === 'string' ? `${symbol}${key}=${val}` : '';
-        return queryString;
-      }, '')
+      const symbol = queryString.length === 0 ? '?' : '&';
+      queryString += typeof val === 'string' ? `${symbol}${key}=${val}` : '';
+      return queryString;
+    }, '')
     : '';
 };
 ```
