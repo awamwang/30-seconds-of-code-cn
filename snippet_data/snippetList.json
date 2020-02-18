@@ -1034,7 +1034,7 @@
         ]
       },
       "meta": {
-        "hash": "5f38360819f9225b887a94221bfee1a80f1bcc224a364440b3388f60491b03ba"
+        "hash": "bdc202436bee09f06a353d31841c6cfff33e8efead34c6c56ae1a1413284976d"
       }
     },
     {
@@ -1270,7 +1270,7 @@
         ]
       },
       "meta": {
-        "hash": "55b1ce0a892110d792a9487e40331774015525479faa2b8961f6c2ea6291c27b"
+        "hash": "6e9710c9117f500e74e65c0ee36b39fb80bd55537fa5ff9c4b1136b2667096f2"
       }
     },
     {
@@ -5425,14 +5425,14 @@
       "type": "snippetListing",
       "title": "unzip",
       "attributes": {
-        "text": "Creates an array of arrays, ungrouping the elements in an array produced by [zip](#zip).\n\n返回一个数组，把[zip](#zip)产生的数组元素的分组拆解掉。\n\nUse `Math.max.apply()` to get the longest subarray in the array, `Array.prototype.map()` to make each element an array.\nUse `Array.prototype.reduce()` and `Array.prototype.forEach()` to map grouped values to individual arrays.\n\n使用`Math.max.apply()`获取数组中最长的子数组，使用`Array.prototype.map()`来把每个元素转为一个数组。使用`Array.prototype.reduce()` 和 `Array.prototype.forEach()`来把映射出来的分组的值列表分解到单独的数组列表中。\n\n",
+        "text": "Creates an array of arrays, ungrouping the elements in an array produced by [zip](/js/s/zip).\n\nUse `Math.max.apply()` to get the longest subarray in the array, `Array.prototype.map()` to make each element an array.\nUse `Array.prototype.reduce()` and `Array.prototype.forEach()` to map grouped values to individual arrays.\n\n",
         "tags": [
           "array",
           "intermediate"
         ]
       },
       "meta": {
-        "hash": "1992121e6c01d5f422e1dd82811ad8801b4d00b28e5d1135f98626c557b61877"
+        "hash": "ae3c80b1e7de7581fbfc0f800190418de4173441876c3907b135bc35adcbf85b"
       }
     },
     {

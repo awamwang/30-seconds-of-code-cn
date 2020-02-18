@@ -3,7 +3,7 @@ title: unzip
 tags: array,intermediate
 ---
 
-Creates an array of arrays, ungrouping the elements in an array produced by [zip](#zip).
+Creates an array of arrays, ungrouping the elements in an array produced by [zip](/js/s/zip).
 
 返回一个数组，把[zip](#zip)产生的数组元素的分组拆解掉。
 
@@ -23,12 +23,6 @@ const unzip = arr =>
 ```
 
 ```js
-unzip([
-  ['a', 1, true],
-  ['b', 2, false]
-]); // [['a', 'b'], [1, 2], [true, false]]
-unzip([
-  ['a', 1, true],
-  ['b', 2]
-]); // [['a', 'b'], [1, 2], [true]]
+unzip([['a', 1, true], ['b', 2, false]]); // [['a', 'b'], [1, 2], [true, false]]
+unzip([['a', 1, true], ['b', 2]]); // [['a', 'b'], [1, 2], [true]]
 ```
