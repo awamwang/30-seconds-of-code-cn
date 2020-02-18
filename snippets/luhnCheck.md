@@ -14,7 +14,7 @@ Return `true` if `sum` is divisible by `10`, `false` otherwise.
 
 使用`String.prototype.split('')`, `Array.prototype.reverse()`和`Array.prototype.map()`结合`parseInt()`来获取一个十进制数的数组。使用`Array.prototype.splice(0,1)`来获取十进制数的最后一位。使用`Array.prototype.reduce()`来实行Luhn算法。如果`sum`可以被`10`整除则返回`true`，否则返回`false`。
 
-```js
+<!-- ```js
 const luhnCheck = num => {
   let arr = (num + '')
     .split('')
@@ -22,6 +22,18 @@ const luhnCheck = num => {
     .map(x => parseInt(x));
   let lastDigit = arr.splice(0, 1)[0];
   let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
+  sum += lastDigit;
+  return sum % 10 === 0;
+};
+``` -->
+```js
+const luhnCheck = num => {
+  let arr = (num + '')
+    .split('')
+    .reverse()
+    .map(x => parseInt(x));
+  let lastDigit = arr.splice(0, 1)[0];
+  let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + (val * 2 > 9 ? val * 2 - 9 : val * 2)), 0);
   sum += lastDigit;
   return sum % 10 === 0;
 };
