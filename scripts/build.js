@@ -156,6 +156,7 @@ archivedSnippetsArray = Object.keys(archivedSnippets).reduce((acc, key) => {
   acc.push(archivedSnippets[key]);
   return acc;
 }, []);
+// archivedSnippetsArray = []
 
 // Load static parts for the README file
 try {

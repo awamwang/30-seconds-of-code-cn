@@ -13,10 +13,8 @@ If the original array can't be split evenly, the final chunk will contain the re
 ```js
 const chunkIntoN = (arr, n) => {
   const size = Math.ceil(arr.length / n);
-  return Array.from({ length: n }, (v, i) =>
-    arr.slice(i * size, i * size + size)
-  );
-}
+  return Array.from({ length: n }, (v, i) => arr.slice(i * size, i * size + size));
+};
 ```
 
 ```js

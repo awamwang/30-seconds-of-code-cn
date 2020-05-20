@@ -81,10 +81,12 @@ _30s.average(1, 2, 3);
 * [`all`](#all)
 * [`allEqual`](#allequal)
 * [`any`](#any)
+* [`aperture`](#aperture)
 * [`arrayToCSV`](#arraytocsv)
 * [`bifurcate`](#bifurcate)
 * [`bifurcateBy`](#bifurcateby)
 * [`chunk`](#chunk)
+* [`chunkIntoN`](#chunkinton)
 * [`compact`](#compact)
 * [`countBy`](#countby)
 * [`countOccurrences`](#countoccurrences)
@@ -97,7 +99,6 @@ _30s.average(1, 2, 3);
 * [`dropRightWhile`](#droprightwhile)
 * [`dropWhile`](#dropwhile)
 * [`everyNth`](#everynth)
-* [`filterFalsy`](#filterfalsy)
 * [`filterNonUnique`](#filternonunique)
 * [`filterNonUniqueBy`](#filternonuniqueby)
 * [`findLast`](#findlast)
@@ -126,11 +127,12 @@ _30s.average(1, 2, 3);
 * [`JSONtoCSV`](#jsontocsv-)
 * [`last`](#last)
 * [`longestItem`](#longestitem)
-* [`mapObject`](#mapobject-)
+* [`mapObject`](#mapobject)
 * [`maxN`](#maxn)
 * [`minN`](#minn)
 * [`mostFrequent`](#mostfrequent)
 * [`none`](#none)
+* [`normalizeLineEndings`](#normalizelineendings)
 * [`nthElement`](#nthelement)
 * [`offset`](#offset)
 * [`partition`](#partition)
@@ -197,30 +199,43 @@ _30s.average(1, 2, 3);
 * [`elementContains`](#elementcontains)
 * [`elementIsVisibleInViewport`](#elementisvisibleinviewport-)
 * [`formToObject`](#formtoobject)
+* [`getBaseURL`](#getbaseurl)
 * [`getImages`](#getimages)
 * [`getScrollPosition`](#getscrollposition)
 * [`getStyle`](#getstyle)
+* [`getURLParameters`](#geturlparameters)
 * [`hasClass`](#hasclass)
 * [`hashBrowser`](#hashbrowser-)
 * [`hide`](#hide)
+* [`httpDelete`](#httpdelete)
+* [`httpGet`](#httpget)
+* [`httpPost`](#httppost)
+* [`httpPut`](#httpput)
 * [`httpsRedirect`](#httpsredirect)
 * [`insertAfter`](#insertafter)
 * [`insertBefore`](#insertbefore)
+* [`isBrowser`](#isbrowser)
 * [`isBrowserTabFocused`](#isbrowsertabfocused)
 * [`nodeListToArray`](#nodelisttoarray)
 * [`observeMutations`](#observemutations-)
 * [`off`](#off)
 * [`on`](#on)
 * [`onUserInputChange`](#onuserinputchange-)
+* [`parseCookie`](#parsecookie)
+* [`prefersDarkColorScheme`](#prefersdarkcolorscheme)
+* [`prefersLightColorScheme`](#preferslightcolorscheme)
 * [`prefix`](#prefix)
 * [`recordAnimationFrames`](#recordanimationframes)
 * [`redirect`](#redirect)
+* [`renderElement`](#renderelement-)
 * [`runAsync`](#runasync-)
 * [`scrollToTop`](#scrolltotop)
+* [`serializeCookie`](#serializecookie)
 * [`serializeForm`](#serializeform)
 * [`setStyle`](#setstyle)
 * [`show`](#show)
 * [`smoothScroll`](#smoothscroll)
+* [`supportsTouchEvents`](#supportstouchevents)
 * [`toggleClass`](#toggleclass)
 * [`triggerEvent`](#triggerevent)
 * [`UUIDGeneratorBrowser`](#uuidgeneratorbrowser)
@@ -239,6 +254,7 @@ _30s.average(1, 2, 3);
 * [`getMeridiemSuffixOfInteger`](#getmeridiemsuffixofinteger)
 * [`isAfterDate`](#isafterdate)
 * [`isBeforeDate`](#isbeforedate)
+* [`isLeapYear`](#isleapyear)
 * [`isSameDate`](#issamedate)
 * [`isWeekday`](#isweekday)
 * [`isWeekend`](#isweekend)
@@ -256,12 +272,15 @@ _30s.average(1, 2, 3);
 
 * [`ary`](#ary)
 * [`attempt`](#attempt)
+* [`binary`](#binary)
 * [`bind`](#bind)
 * [`bindKey`](#bindkey)
+* [`both`](#both)
 * [`call`](#call)
 * [`chainAsync`](#chainasync)
 * [`checkProp`](#checkprop)
 * [`collectInto`](#collectinto)
+* [`complement`](#complement)
 * [`compose`](#compose)
 * [`composeRight`](#composeright)
 * [`converge`](#converge)
@@ -269,11 +288,14 @@ _30s.average(1, 2, 3);
 * [`debounce`](#debounce)
 * [`defer`](#defer)
 * [`delay`](#delay)
+* [`either`](#either)
 * [`flip`](#flip)
 * [`functionName`](#functionname)
 * [`hz`](#hz)
 * [`memoize`](#memoize-)
+* [`mostPerformant`](#mostperformant)
 * [`negate`](#negate)
+* [`nthArg`](#ntharg)
 * [`once`](#once)
 * [`over`](#over)
 * [`overArgs`](#overargs)
@@ -288,6 +310,7 @@ _30s.average(1, 2, 3);
 * [`spreadOver`](#spreadover)
 * [`throttle`](#throttle-)
 * [`times`](#times)
+* [`timeTaken`](#timetaken)
 * [`unary`](#unary)
 * [`uncurry`](#uncurry)
 * [`unfold`](#unfold)
@@ -300,16 +323,20 @@ _30s.average(1, 2, 3);
 <details>
 <summary>View contents</summary>
 
+* [`accumulate`](#accumulate)
+* [`and`](#and)
 * [`approximatelyEqual`](#approximatelyequal)
 * [`average`](#average)
 * [`averageBy`](#averageby)
 * [`binomialCoefficient`](#binomialcoefficient)
+* [`celsiusToFahrenheit`](#celsiustofahrenheit)
 * [`clampNumber`](#clampnumber)
 * [`degreesToRads`](#degreestorads)
 * [`digitize`](#digitize)
 * [`distance`](#distance)
 * [`elo`](#elo-)
 * [`factorial`](#factorial)
+* [`fahrenheitToCelsius`](#fahrenheittocelsius)
 * [`fibonacci`](#fibonacci)
 * [`gcd`](#gcd)
 * [`geometricProgression`](#geometricprogression)
@@ -328,10 +355,13 @@ _30s.average(1, 2, 3);
 * [`median`](#median)
 * [`midpoint`](#midpoint)
 * [`minBy`](#minby)
+* [`not`](#not)
+* [`or`](#or)
 * [`percentile`](#percentile)
 * [`powerset`](#powerset)
 * [`primes`](#primes)
 * [`radsToDegrees`](#radstodegrees)
+* [`randomHexColorCode`](#randomhexcolorcode)
 * [`randomIntArrayInRange`](#randomintarrayinrange)
 * [`randomIntegerInRange`](#randomintegerinrange)
 * [`randomNumberInRange`](#randomnumberinrange)
@@ -341,7 +371,12 @@ _30s.average(1, 2, 3);
 * [`sum`](#sum)
 * [`sumBy`](#sumby)
 * [`sumPower`](#sumpower)
+* [`toCurrency`](#tocurrency)
+* [`toDecimalMark`](#todecimalmark)
+* [`toOrdinalSuffix`](#toordinalsuffix)
 * [`toSafeInteger`](#tosafeinteger)
+* [`validateNumber`](#validatenumber)
+* [`vectorAngle`](#vectorangle)
 * [`vectorDistance`](#vectordistance)
 
 </details>
@@ -399,7 +434,9 @@ _30s.average(1, 2, 3);
 * [`merge`](#merge)
 * [`nest`](#nest)
 * [`objectFromPairs`](#objectfrompairs)
+* [`objectToEntries`](#objecttoentries)
 * [`objectToPairs`](#objecttopairs)
+* [`objectToQueryString`](#objecttoquerystring)
 * [`omit`](#omit)
 * [`omitBy`](#omitby)
 * [`orderBy`](#orderby)
@@ -408,6 +445,7 @@ _30s.average(1, 2, 3);
 * [`renameKeys`](#renamekeys)
 * [`shallowClone`](#shallowclone)
 * [`size`](#size)
+* [`toPairs`](#topairs)
 * [`transform`](#transform)
 * [`truthCheckCollection`](#truthcheckcollection)
 * [`unflattenObject`](#unflattenobject-)
@@ -423,12 +461,15 @@ _30s.average(1, 2, 3);
 * [`capitalize`](#capitalize)
 * [`capitalizeEveryWord`](#capitalizeeveryword)
 * [`compactWhitespace`](#compactwhitespace)
+* [`containsWhitespace`](#containswhitespace)
 * [`CSVToArray`](#csvtoarray)
 * [`CSVToJSON`](#csvtojson-)
 * [`decapitalize`](#decapitalize)
 * [`escapeHTML`](#escapehtml)
 * [`escapeRegExp`](#escaperegexp)
+* [`extendHex`](#extendhex)
 * [`fromCamelCase`](#fromcamelcase)
+* [`hexToRGB`](#hextorgb-)
 * [`indentString`](#indentstring)
 * [`isAbsoluteURL`](#isabsoluteurl)
 * [`isAnagram`](#isanagram)
@@ -439,8 +480,10 @@ _30s.average(1, 2, 3);
 * [`pad`](#pad)
 * [`palindrome`](#palindrome)
 * [`pluralize`](#pluralize)
+* [`prettyBytes`](#prettybytes-)
 * [`removeNonASCII`](#removenonascii)
 * [`reverseString`](#reversestring)
+* [`RGBToHex`](#rgbtohex)
 * [`sortCharactersInString`](#sortcharactersinstring)
 * [`splitLines`](#splitlines)
 * [`stringPermutations`](#stringpermutations-)
@@ -453,6 +496,7 @@ _30s.average(1, 2, 3);
 * [`unescapeHTML`](#unescapehtml)
 * [`URLJoin`](#urljoin-)
 * [`words`](#words)
+* [`yesNo`](#yesno)
 
 </details>
 
@@ -461,6 +505,10 @@ _30s.average(1, 2, 3);
 <details>
 <summary>View contents</summary>
 
+* [`castArray`](#castarray)
+* [`cloneRegExp`](#cloneregexp)
+* [`coalesce`](#coalesce)
+* [`coalesceFactory`](#coalescefactory)
 * [`getType`](#gettype)
 * [`is`](#is)
 * [`isArrayLike`](#isarraylike)
@@ -479,38 +527,6 @@ _30s.average(1, 2, 3);
 * [`isSymbol`](#issymbol)
 * [`isUndefined`](#isundefined)
 * [`isValidJSON`](#isvalidjson)
-
-</details>
-
-### 🔧 Utility
-
-<details>
-<summary>View contents</summary>
-
-* [`castArray`](#castarray)
-* [`cloneRegExp`](#cloneregexp)
-* [`coalesce`](#coalesce)
-* [`coalesceFactory`](#coalescefactory)
-* [`extendHex`](#extendhex)
-* [`getURLParameters`](#geturlparameters)
-* [`hexToRGB`](#hextorgb-)
-* [`httpGet`](#httpget)
-* [`httpPost`](#httppost)
-* [`isBrowser`](#isbrowser)
-* [`mostPerformant`](#mostperformant)
-* [`nthArg`](#ntharg)
-* [`objectToQueryString`](#objecttoquerystring)
-* [`parseCookie`](#parsecookie)
-* [`prettyBytes`](#prettybytes-)
-* [`randomHexColorCode`](#randomhexcolorcode)
-* [`RGBToHex`](#rgbtohex)
-* [`serializeCookie`](#serializecookie)
-* [`timeTaken`](#timetaken)
-* [`toCurrency`](#tocurrency)
-* [`toDecimalMark`](#todecimalmark)
-* [`toOrdinalSuffix`](#toordinalsuffix)
-* [`validateNumber`](#validatenumber)
-* [`yesNo`](#yesno)
 
 </details>
 
@@ -593,6 +609,30 @@ const any = (arr, fn = Boolean) => arr.some(fn);
 ```[object Object]
 any([0, 1, 2, 0], x => x >= 2); // true
 any([0, 0, 1, 0]); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### aperture
+
+Returns an array of `n`-tuples of consecutive elements.
+
+Use `Array.prototype.slice()` and `Array.prototype.map()` to create an array of appropriate length and populate it with `n`-tuples of consecutive elements from `arr`.
+If `n` is greater than the length of `arr`, return an empty array.
+
+```[object Object]
+const aperture = (n, arr) =>
+  n > arr.length ? [] : arr.slice(n - 1).map((v, i) => [...arr.slice(i, i + n - 1), v]);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+R.aperture(2, [1, 2, 3, 4]); // [[1, 2], [2, 3], [3, 4]]
+R.aperture(3, [1, 2, 3, 4]); // [[1, 2, 3], [2, 3, 4]]
+R.aperture(5, [1, 2, 3, 4]); // []
 ```
 </details>
 
@@ -721,6 +761,32 @@ chunk([1, 2, 3, 4, 5], 2); // [[1,2],[3,4],[5]]
 
 <br>[⬆ Back to top](#contents)
 
+### chunkIntoN
+
+Chunks an array into `n` smaller arrays.
+
+Use `Math.ceil()` and `Array.prototype.length` to get the size of each chunk.
+Use `Array.from()` to create a new array of size `n`.
+Use `Array.prototype.slice()` to map each element of the new array to a chunk the length of `size`.
+If the original array can't be split evenly, the final chunk will contain the remaining elements.
+
+```[object Object]
+const chunkIntoN = (arr, n) => {
+  const size = Math.ceil(arr.length / n);
+  return Array.from({ length: n }, (v, i) => arr.slice(i * size, i * size + size));
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+chunkIntoN([1, 2, 3, 4, 5, 6, 7], 4); // [[1,2], [3,4], [5,6], [7]]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### compact
 
 Removes falsy values from an array.
@@ -819,7 +885,7 @@ const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFla
 <summary>Examples</summary>
 
 ```[object Object]
-deepFlatten([1, [2], [[3], 4], 5]); // [1,2,3,4,5]
+deepFlatten([1, [2], [[3], 4], 5]); // [1, 2, 3, 4, 5]
 ```
 </details>
 
@@ -1007,7 +1073,7 @@ const dropWhile = (arr, func) => {
 <summary>Examples</summary>
 
 ```[object Object]
-dropWhile([1, 2, 3, 4], n => n >= 3); // [3,4]
+dropWhile([1, 2, 3, 4], n => n >= 3); // [3, 4]
 ```
 </details>
 
@@ -1032,30 +1098,6 @@ const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
 
 ```[object Object]
 everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### filterFalsy
-
-Filters out the falsy values in an array.
-
-过滤掉一个数组中的假值。
-
-Use `Array.prototype.filter()` to get an array containing only truthy values.
-
-使用`Array.prototype.filter()`来获取一个只包含真值的数组。
-
-```[object Object]
-const filterFalsy = arr => arr.filter(Boolean);
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-filterFalsy(['', true, {}, false, 'sample', 1, 0]); // [true, {}, 'sample', 1]
 ```
 </details>
 
@@ -1291,7 +1333,7 @@ groupBy(['one', 'two', 'three'], 'length'); // {3: ['one', 'two'], 5: ['three']}
 Returns `true` if two arrays contain the same elements regardless of order, `false` otherwise.
 
 Use a `for...of` loop over a `Set` created from the values of both arrays.
-Use `Array.prototype.filter()` to compare the amount of occurences of each distinct value in both arrays.
+Use `Array.prototype.filter()` to compare the amount of occurrences of each distinct value in both arrays.
 Return `false` if the counts do not match for any element, `true` otherwise.
 
 ```[object Object]
@@ -1341,7 +1383,7 @@ head(undefined); // undefined
 
 ### includesAll
 
-Returns `true` if all the elements ιν `values` are included in `arr`, `false` otherwise.
+Returns `true` if all the elements in `values` are included in `arr`, `false` otherwise.
 
 Use `Array.prototype.every()` and `Array.prototype.includes()` to check if all elements of `values` are included in `arr`.
 
@@ -1401,7 +1443,7 @@ const indexOfAll = (arr, val) => arr.reduce((acc, el, i) => (el === val ? [...ac
 <summary>Examples</summary>
 
 ```[object Object]
-indexOfAll([1, 2, 3, 1, 2, 3], 1); // [0,3]
+indexOfAll([1, 2, 3, 1, 2, 3], 1); // [0, 3]
 indexOfAll([1, 2, 3], 4); // []
 ```
 </details>
@@ -1584,7 +1626,7 @@ Create a `Set` from `b`, then use `Array.prototype.filter()` on `a` to only keep
 ```[object Object]
 const intersection = (a, b) => {
   const s = new Set(b);
-  return a.filter(x => s.has(x));
+  return [...new Set(a)].filter(x => s.has(x));
 };
 ```
 
@@ -1611,7 +1653,7 @@ Create a `Set` by applying `fn` to all elements in `b`, then use `Array.prototyp
 ```[object Object]
 const intersectionBy = (a, b, fn) => {
   const s = new Set(b.map(fn));
-  return a.filter(x => s.has(fn(x)));
+  return [...new Set(a)].filter(x => s.has(fn(x)));
 };
 ```
 
@@ -1694,7 +1736,7 @@ const isSorted = arr => {
   let direction = -(arr[0] - arr[1]);
   for (let [i, val] of arr.entries()) {
     direction = !direction ? -(arr[i - 1] - arr[i]) : direction;
-    if (i === arr.length - 1) return !direction ? 0 : direction;
+    if (i === arr.length - 1) return !direction ? 0 : direction / Math.abs(direction);
     else if ((val - arr[i + 1]) * direction > 0) return 0;
   }
 };
@@ -1732,8 +1774,8 @@ const join = (arr, separator = ',', end = separator) =>
       i === arr.length - 2
         ? acc + val + end
         : i === arr.length - 1
-          ? acc + val
-          : acc + val + separator,
+        ? acc + val
+        : acc + val + separator,
     ''
   );
 ```
@@ -1844,29 +1886,30 @@ longestItem([1, 2, 3], 'foobar'); // 'foobar'
 
 <br>[⬆ Back to top](#contents)
 
-### mapObject ![advanced](/advanced.svg)
+### mapObject
 
-Maps the values of an array to an object using a function, where the key-value pairs consist of the stringified value as the key and the mapped value.
+Maps the values of an array to an object using a function, where the key-value pairs consist of the original value as the key and the result of the function as the value.
 
 应用一个函数把数组中的值映射到一个以原始值作为key、函数结果作为value的key-value对象中。
 
-Use an anonymous inner function scope to declare an undefined memory space, using closures to store a return value. Use a new `Array` to store the array with a map of the function over its data set and a comma operator to return a second step, without needing to move from one context to another (due to closures and order of operations).
+Use `Array.prototype.reduce()` to apply `fn` to each element in `arr` and combine the results into an object.
+Use `el` as the key for each property and the result of `fn` as the value.
 
-使用一个匿名的内部函数作用域来声明一个未定义的内存空间，使用闭包来保存返回值。使用一个新的`Array`来存储函数作用数组后的结果，使用了逗号分隔符在不变更context（上下文）的情况下把第二步的操作结果返回（取决于闭包和操作符的顺序）。
+使用`Array.prototype.reduce()`对`arr`中的每个元素应用`fn`函数，并且把结果整合到一个对象中。这个对象中，使用`el`作为每个属性的键，使用`fn`函数的结果作为值。
 
 ```[object Object]
 const mapObject = (arr, fn) =>
-  (a => (
-    (a = [arr, arr.map(fn)]), a[0].reduce((acc, val, ind) => ((acc[val] = a[1][ind]), acc), {})
-  ))();
+  arr.reduce((acc, el, i) => {
+    acc[el] = fn(el, i, arr);
+    return acc;
+  }, {});
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```[object Object]
-const squareIt = arr => mapObject(arr, a => a * a);
-squareIt([1, 2, 3]); // { 1: 1, 2: 4, 3: 9 }
+mapObject([1, 2, 3], a => a * a); // { 1: 1, 2: 4, 3: 9 }
 ```
 </details>
 
@@ -1976,6 +2019,28 @@ const none = (arr, fn = Boolean) => !arr.some(fn);
 ```[object Object]
 none([0, 1, 3, 0], x => x == 2); // true
 none([0, 0, 0]); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### normalizeLineEndings
+
+Normalizes line endings in a string.
+
+Use `String.prototype.replace()` and a regular expression to match and replace line endings with the `normalized` version.
+Omit the seconds argument, `normalized`, to use the default value of `'\r\n'`.
+
+```[object Object]
+const normalizeLineEndings = (str, normalized = '\r\n') => str.replace(/\r?\n/g, normalized);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+splitLines('This\r\nis a\nmultiline\nstring.\r\n'); // 'This\r\nis a\r\nmultiline\r\nstring.\r\n'
+splitLines('This\r\nis a\nmultiline\nstring.\r\n', '\n'); // 'This\nis a\nmultiline\nstring.\n'
 ```
 </details>
 
@@ -2357,9 +2422,9 @@ reduceWhich(
 
 ### reject
 
-Filters an array's values based on a predicate function, returning only values for which the predicate function returns `true`.
+Filters an array's values based on a predicate function, returning only values for which the predicate function returns `false`.
 
-Use `Array.prototype.filter()` in combination with the predicate function, `pred`, to return only the values for which `pred()` returns `true`.
+Use `Array.prototype.filter()` in combination with the predicate function, `pred`, to return only the values for which `pred()` returns `false`.
 
 接受一个断言函数和数组，有点类似`Array.prototype.filter()`，但在`pred(x) === false`时保留`x`（就是过滤掉pred(x)为真的`x`）。
 
@@ -2380,7 +2445,7 @@ reject(word => word.length > 4, ['Apple', 'Pear', 'Kiwi', 'Banana']); // ['Pear'
 
 ### remove
 
-Removes elements from an array for which the given function returns `false`.
+Mutates an array by removing elements for which the given function returns `false`.
 
 把数组中给定函数作用后返回`false`的元素删除。
 
@@ -2393,9 +2458,9 @@ The `func` is invoked with three arguments (`value, index, array`).
 const remove = (arr, func) =>
   Array.isArray(arr)
     ? arr.filter(func).reduce((acc, val) => {
-      arr.splice(arr.indexOf(val), 1);
-      return acc.concat(val);
-    }, [])
+        arr.splice(arr.indexOf(val), 1);
+        return acc.concat(val);
+      }, [])
     : [];
 ```
 
@@ -2993,7 +3058,7 @@ const union = (a, b) => Array.from(new Set([...a, ...b]));
 <summary>Examples</summary>
 
 ```[object Object]
-union([1, 2, 3], [4, 3, 2]); // [1,2,3,4]
+union([1, 2, 3], [4, 3, 2]); // [1, 2, 3, 4]
 ```
 </details>
 
@@ -3055,13 +3120,13 @@ unionWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0, 3.9], (a, b) => Math.round(a) === Mat
 
 ### uniqueElements
 
-Returns all unique values of an array.
+Returns all unique values in an array.
 
 返回数组中所有唯一的元素。
 
-Use ES6 `Set` and the `...rest` operator to discard all duplicated values.
+Create a `Set` from the given array to discard duplicated values, then use the spread operator (`...`) to convert it back to an array.
 
-使用ES6的`Set`和`...rest`操作符来去除所有重复元素。
+从给出的数组创建一个`Set`，用来去除重复值，然后使用展开操作符(`...`)来把它转换回数组形式。
 
 ```[object Object]
 const uniqueElements = arr => [...new Set(arr)];
@@ -3585,13 +3650,13 @@ counter('#my-id', 1, 1000, 5, 2000); // Creates a 2-second timer for the element
 
 ### createElement
 
-Creates an element from a string (without appending it to the document). 
+Creates an element from a string (without appending it to the document).
 If the given string contains multiple elements, only the first one will be returned.
 
 从字符串中创建一个元素（不把它追加到文档流中）。如果给定的字符串包含多个元素，只有一个会被返回。
 
 Use `document.createElement()` to create a new element.
-Set its `innerHTML` to the string supplied as the argument. 
+Set its `innerHTML` to the string supplied as the argument.
 Use `ParentNode.firstElementChild` to return the element version of the string.
 
 使用`document.createElement()`来创建一个新元素。把它的`innerHTML`设置成参数提供的字符串。使用`ParentNode.firstElementChild`返回字符串的Html元素形式。
@@ -3682,7 +3747,7 @@ Returns the current URL.
 
 返回当前页的URL。
 
-Use `window.location.href` to get current URL.
+Use `window.location.href` to get the current URL.
 
 使用`window.location.href`来获取当前URL。
 
@@ -3816,6 +3881,26 @@ formToObject(document.querySelector('#form')); // { email: 'test@email.com', nam
 
 <br>[⬆ Back to top](#contents)
 
+### getBaseURL
+
+Returns the current URL without any parameters.
+
+Use `String.prototype.indexOf()` to check if the given `url` has parameters, `String.prototype.slice()` to remove them if necessary.
+
+```[object Object]
+const getBaseURL = url => (url.indexOf('?') > 0 ? url.slice(0, url.indexOf('?')) : url);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+getBaseURL('http://url.com/page?name=Adam&surname=Smith'); // 'http://url.com/page'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### getImages
 
 Fetches all images from within an element and puts them into an array
@@ -3891,6 +3976,36 @@ const getStyle = (el, ruleName) => getComputedStyle(el)[ruleName];
 
 ```[object Object]
 getStyle(document.querySelector('p'), 'font-size'); // '16px'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### getURLParameters
+
+Returns an object containing the parameters of the current URL.
+
+返回一个包含当前URL的参数的对象。
+
+Use `String.prototype.match()` with an appropriate regular expression to get all key-value pairs, `Array.prototype.reduce()` to map and combine them into a single object.
+Pass `location.search` as the argument to apply to the current `url`.
+
+使用`String.prototype.match()`和一个合适的正则表达式来获取所有键值对，使用`Array.prototype.reduce()`来映射并把它们组合成一个对象。需要对当前的`url`应该改方法时，把`location.search`作为参数传入。
+
+```[object Object]
+const getURLParameters = url =>
+  (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+    (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
+    {}
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+getURLParameters('http://url.com/page?name=Adam&surname=Smith'); // {name: 'Adam', surname: 'Smith'}
+getURLParameters('google.com'); // {}
 ```
 </details>
 
@@ -3975,6 +4090,192 @@ hide(document.querySelectorAll('img')); // Hides all <img> elements on the page
 
 <br>[⬆ Back to top](#contents)
 
+### httpDelete
+
+Makes a `DELETE` request to the passed URL.
+
+Use `XMLHttpRequest` web api to make a `delete` request to the given `url`.
+Handle the `onload` event, by running the provided `callback` function.
+Handle the `onerror` event, by running the provided `err` function.
+Omit the third argument, `err` to log the request to the console's error stream by default.
+
+```[object Object]
+const httpDelete = (url, callback, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('DELETE', url, true);
+  request.onload = () => callback(request);
+  request.onerror = () => err(request);
+  request.send();
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+httpDelete('https://jsonplaceholder.typicode.com/posts/1', request => {
+  console.log(request.responseText);
+}); /*
+Logs: {}
+*/
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### httpGet
+
+Makes a `GET` request to the passed URL.
+
+创建一个到传入URL的`GET`请求。
+
+Use [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) web api to make a `get` request to the given `url`.
+Handle the `onload` event, by calling the given `callback` the `responseText`.
+Handle the `onerror` event, by running the provided `err` function.
+Omit the third argument, `err`, to log errors to the console's `error` stream by default.
+
+使用[`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)网络api来创建一个给出`url`的`get`请求。通过对`responseText`调用给出的`callback`来处理`onload`事件，通过执行提供的`err`函数来处理`onerror`事件。如果不传第三个参数`err`，则把错误打印到默认的控制台`error`流中。
+
+```[object Object]
+const httpGet = (url, callback, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.onload = () => callback(request.responseText);
+  request.onerror = () => err(request);
+  request.send();
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+httpGet(
+  'https://jsonplaceholder.typicode.com/posts/1',
+  console.log
+); /*
+Logs: {
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+*/
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### httpPost
+
+Makes a `POST` request to the passed URL.
+
+创建一个到传入URL的`POST`请求。
+
+Use [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) web api to make a `post` request to the given `url`.
+Set the value of an `HTTP` request header with `setRequestHeader` method.
+Handle the `onload` event, by calling the given `callback` the `responseText`.
+Handle the `onerror` event, by running the provided `err` function.
+Omit the third argument, `data`, to send no data to the provided `url`.
+Omit the fourth argument, `err`, to log errors to the console's `error` stream by default.
+
+使用[`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)网络api来创建一个给出`url`的`post`请求。用`setRequestHeader`方法来设置`HTTP`请求头。通过对`responseText`调用给出的`callback`来处理`onload`事件，通过执行提供的`err`函数来处理`onerror`事件。如果不传第三个参数`data`，则不向给出的`url`发送数据。如果不传第四个参数`err`，则把错误打印到默认的控制台`error`流中。
+
+```[object Object]
+const httpPost = (url, data, callback, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('POST', url, true);
+  request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  request.onload = () => callback(request.responseText);
+  request.onerror = () => err(request);
+  request.send(data);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const newPost = {
+  userId: 1,
+  id: 1337,
+  title: 'Foo',
+  body: 'bar bar bar'
+};
+const data = JSON.stringify(newPost);
+httpPost(
+  'https://jsonplaceholder.typicode.com/posts',
+  data,
+  console.log
+); /*
+Logs: {
+  "userId": 1,
+  "id": 1337,
+  "title": "Foo",
+  "body": "bar bar bar"
+}
+*/
+httpPost(
+  'https://jsonplaceholder.typicode.com/posts',
+  null, // does not send a body
+  console.log
+); /*
+Logs: {
+  "id": 101
+}
+*/
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### httpPut
+
+Makes a `PUT` request to the passed URL.
+
+Use `XMLHttpRequest` web api to make a `put` request to the given `url`.
+Set the value of an `HTTP` request header with `setRequestHeader` method.
+Handle the `onload` event, by running the provided `callback` function.
+Handle the `onerror` event, by running the provided `err` function.
+Omit the last argument, `err` to log the request to the console's error stream by default.
+
+```[object Object]
+const httpPut = (url, data, callback, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('PUT', url, true);
+  request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  request.onload = () => callback(request);
+  request.onerror = () => err(request);
+  request.send(data);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const password = 'fooBaz';
+const data = JSON.stringify({
+  id: 1,
+  title: 'foo',
+  body: 'bar',
+  userId: 1
+});
+httpPut('https://jsonplaceholder.typicode.com/posts/1', data, request => {
+  console.log(request.responseText);
+}); /*
+Logs: {
+  id: 1,
+  title: 'foo',
+  body: 'bar',
+  userId: 1
+}
+*/
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### httpsRedirect
 
 Redirects the page to HTTPS if its currently in HTTP. Also, pressing the back button doesn't take it back to the HTTP page as its replaced in the history.
@@ -4019,7 +4320,8 @@ const insertAfter = (el, htmlString) => el.insertAdjacentHTML('afterend', htmlSt
 <summary>Examples</summary>
 
 ```[object Object]
-insertAfter(document.getElementById('myId'), '<p>after</p>'); // <div id="myId">...</div> <p>after</p>
+insertAfter(document.getElementById('myId'), '<p>after</p>');
+// <div id="myId">...</div> <p>after</p>
 ```
 </details>
 
@@ -4042,7 +4344,35 @@ const insertBefore = (el, htmlString) => el.insertAdjacentHTML('beforebegin', ht
 <summary>Examples</summary>
 
 ```[object Object]
-insertBefore(document.getElementById('myId'), '<p>before</p>'); // <p>before</p> <div id="myId">...</div>
+insertBefore(document.getElementById('myId'), '<p>before</p>');
+// <p>before</p> <div id="myId">...</div>
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### isBrowser
+
+Determines if the current runtime environment is a browser so that front-end modules can run on the server (Node) without throwing errors.
+
+判定当前的执行环境是否是浏览器，以判断是否前端的模块可以不报错的在server上运行（Node）。
+
+Use `Array.prototype.includes()` on the `typeof` values of both `window` and `document` (globals usually only available in a browser environment unless they were explicitly defined), which will return `true` if one of them is `undefined`.
+`typeof` allows globals to be checked for existence without throwing a `ReferenceError`.
+If both of them are not `undefined`, then the current environment is assumed to be a browser.
+
+对`window`和`docoment`（通常除了显示定义，只在浏览器中才可用的全局变量）的`typeof`值使用`Array.prototype.includes()`，如果它们中有一个是`undefined`则返回`true`。`typeof`运行在不报`ReferenceError`错误的情况下检查全局变量的存在性。如果它们都不是`undefined`，则当前的环境被当做一个浏览器环境。
+
+```[object Object]
+const isBrowser = () => ![typeof window, typeof document].includes('undefined');
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+isBrowser(); // true (browser)
+isBrowser(); // false (Node)
 ```
 </details>
 
@@ -4241,6 +4571,81 @@ onUserInputChange(type => {
 
 <br>[⬆ Back to top](#contents)
 
+### parseCookie
+
+Parse an HTTP Cookie header string and return an object of all cookie name-value pairs.
+
+解析一个HTTP Cookie头字符串，并返回一个包含所有cookie键值对的对象。
+
+Use `String.prototype.split(';')` to separate key-value pairs from each other.
+Use `Array.prototype.map()` and `String.prototype.split('=')` to separate keys from values in each pair.
+Use `Array.prototype.reduce()` and `decodeURIComponent()` to create an object with all key-value pairs.
+
+使用`String.prototype.split(';')`来把每个键值对分隔开。使用`Array.prototype.map()`和`String.prototype.split('=')`来从每个对中分隔键和值。使用`Array.prototype.reduce()`和`decodeURIComponent()`来创建一个包含所有键值对的对象。
+
+```[object Object]
+const parseCookie = str =>
+  str
+    .split(';')
+    .map(v => v.split('='))
+    .reduce((acc, v) => {
+      acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
+      return acc;
+    }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+parseCookie('foo=bar; equation=E%3Dmc%5E2'); // { foo: 'bar', equation: 'E=mc^2' }
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### prefersDarkColorScheme
+
+Returns `true` if the user color scheme preference is `dark`, `false` otherwise.
+
+Use `window.matchMedia()` with the appropriate media query to check the user color scheme preference.
+
+```[object Object]
+const prefersDarkColorScheme = () =>
+  window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+prefersDarkColorScheme(); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### prefersLightColorScheme
+
+Returns `true` if the user color scheme preference is `light`, `false` otherwise.
+
+Use `window.matchMedia()` with the appropriate media query to check the user color scheme preference.
+
+```[object Object]
+const prefersLightColorScheme = () =>
+  window && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+prefersLightColorScheme(); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### prefix
 
 Returns the prefixed version (if necessary) of a CSS property that the browser supports.
@@ -4279,9 +4684,9 @@ Invokes the provided callback on each animation frame.
 
 对每个动画frame来执行给定的回调函数。
 
-Use recursion. 
-Provided that `running` is `true`, continue invoking `window.requestAnimationFrame()` which invokes the provided callback. 
-Return an object with two methods `start` and `stop` to allow manual control of the recording. 
+Use recursion.
+Provided that `running` is `true`, continue invoking `window.requestAnimationFrame()` which invokes the provided callback.
+Return an object with two methods `start` and `stop` to allow manual control of the recording.
 Omit the second argument, `autoStart`, to implicitly call `start` when the function is invoked.
 
 使用递归。如果`running`是`true`，则继续去触发执行给定回调的`window.requestAnimationFrame()` 。返回一个有两个方法`start`和`stop`的对象来允许记录的手动控制。如果不传第二个参数`autoStart`，则在调用给定函数的时候隐式的调用`start`。
@@ -4344,6 +4749,57 @@ const redirect = (url, asLink = true) =>
 
 ```[object Object]
 redirect('https://google.com');
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### renderElement ![advanced](/advanced.svg)
+
+Renders the given DOM tree in the specified DOM element.
+
+Destructure the first argument into `type` and `props`, use `type` to determine if the given element is a text element.
+Based on the element's `type`, use either `Document.createTextNode()` or `Document.createElement()` to create the DOM element.
+Use `Object.keys(props`, adding attributes to the DOM element and setting event listeners, as necessary.
+Use recursion to render `props.children`, if any.
+Finally, use `Node.appendChild()` to append the DOM element to the specified `container`.
+
+```[object Object]
+const renderElement = ({ type, props = {} }, container) => {
+  const isTextElement = !type;
+  const element = isTextElement ? document.createTextNode('') : document.createElement(type);
+
+  const isListener = p => p.startsWith('on');
+  const isAttribute = p => !isListener(p) && p !== 'children';
+
+  Object.keys(props).forEach(p => {
+    if (isAttribute(p)) element[p] = props[p];
+    if (!isTextElement && isListener(p))
+      element.addEventListener(p.toLowerCase().slice(2), props[p]);
+  });
+
+  if (!isTextElement && props.children && props.children.length)
+    props.children.forEach(childElement => renderElement(childElement, element));
+
+  container.appendChild(element);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const myElement = {
+  type: 'button',
+  props: {
+    type: 'button',
+    className: 'btn',
+    onClick: () => alert('Clicked'),
+    children: [{ props: { nodeValue: 'Click me' } }]
+  }
+};
+
+renderElement(myElement, document.body);
 ```
 </details>
 
@@ -4435,6 +4891,30 @@ scrollToTop();
 
 <br>[⬆ Back to top](#contents)
 
+### serializeCookie
+
+Serialize a cookie name-value pair into a Set-Cookie header string.
+
+把一个cookie键值对序列化为一个Set-Cookie HTTP头字符串。
+
+Use template literals and `encodeURIComponent()` to create the appropriate string.
+
+使用模板字面量和`encodeURIComponent()`来创建一个合适的字符串。
+
+```[object Object]
+const serializeCookie = (name, val) => `${encodeURIComponent(name)}=${encodeURIComponent(val)}`;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+serializeCookie('foo', 'bar'); // 'foo=bar'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### serializeForm
 
 Encode a set of form elements as a query string.
@@ -4460,7 +4940,7 @@ serializeForm(document.querySelector('#form')); // email=test%40email.com&name=T
 
 ### setStyle
 
-Sets the value of a CSS rule for the specified element.
+Sets the value of a CSS rule for the specified HTML element.
 
 为指定的元素设置CSS规则值。
 
@@ -4476,7 +4956,8 @@ const setStyle = (el, ruleName, val) => (el.style[ruleName] = val);
 <summary>Examples</summary>
 
 ```[object Object]
-setStyle(document.querySelector('p'), 'font-size', '20px'); // The first <p> element on the page will have a font-size of 20px
+setStyle(document.querySelector('p'), 'font-size', '20px');
+// The first <p> element on the page will have a font-size of 20px
 ```
 </details>
 
@@ -4535,9 +5016,31 @@ smoothScroll('.fooBar'); // scrolls smoothly to the first element with a class o
 
 <br>[⬆ Back to top](#contents)
 
+### supportsTouchEvents
+
+Returns `true` if touch events are supported, `false` otherwise.
+
+Check if `ontouchstart` exists in `window` or `window.DocumentTouch` is true and the current `document` is an instance of it.
+
+```[object Object]
+const supportsTouchEvents = () =>
+  window &&
+  ('ontouchstart' in window || (window.DocumentTouch && document instanceof window.DocumentTouch));
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+supportsTouchEvents(); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### toggleClass
 
-Toggle a class for an element.
+Toggles a class for an HTML element.
 
 开关一个元素的class。
 
@@ -4553,7 +5056,8 @@ const toggleClass = (el, className) => el.classList.toggle(className);
 <summary>Examples</summary>
 
 ```[object Object]
-toggleClass(document.querySelector('p.special'), 'special'); // The paragraph will not have the 'special' class anymore
+toggleClass(document.querySelector('p.special'), 'special');
+// The paragraph will not have the 'special' class anymore
 ```
 </details>
 
@@ -4751,10 +5255,10 @@ const getMeridiemSuffixOfInteger = num =>
   num === 0 || num === 24
     ? 12 + 'am'
     : num === 12
-      ? 12 + 'pm'
-      : num < 12
-        ? (num % 12) + 'am'
-        : (num % 12) + 'pm';
+    ? 12 + 'pm'
+    : num < 12
+    ? (num % 12) + 'am'
+    : (num % 12) + 'pm';
 ```
 
 <details>
@@ -4813,6 +5317,27 @@ const isBeforeDate = (dateA, dateB) => dateA < dateB;
 
 ```[object Object]
 isBeforeDate(new Date(2010, 10, 20), new Date(2010, 10, 21)); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### isLeapYear
+
+Returns `true` if the given `year` is a leap year, `false` otherwise.
+
+Use `new Date()`, setting the date to February 29th of the given `year` and use `Date.prototype.getMonth()` to check if the month is equal to `1`.
+
+```[object Object]
+const isLeapYear = year => new Date(year, 1, 29).getMonth() === 1;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+isLeapYear(2019); // false
+isLeapYear(2020); // true
 ```
 </details>
 
@@ -5061,6 +5586,26 @@ if (elements instanceof Error) elements = []; // elements = []
 
 <br>[⬆ Back to top](#contents)
 
+### binary
+
+Creates a function that accepts up to two arguments, ignoring any additional arguments.
+
+Call the provided function, `fn`, with the first two arguments given.
+
+```[object Object]
+const binary = fn => (a, b) => fn(a, b);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+['2', '1', '0'].map(binary(Math.max)); // [2, 1, 2]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### bind
 
 Creates a function that invokes `fn` with a given context, optionally adding any additional supplied parameters to the beginning of the arguments.
@@ -5119,6 +5664,30 @@ const freddy = {
 };
 const freddyBound = bindKey(freddy, 'greet');
 console.log(freddyBound('hi', '!')); // 'hi fred!'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### both
+
+Returns `true` if both functions return `true` for a given set of arguments, `false` otherwise.
+
+Use the logical and (`&&`) operator on the result of calling the two functions with the supplied `args`.
+
+```[object Object]
+const both = (f, g) => (...args) => f(...args) && g(...args);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const isEven = num => num % 2 === 0;
+const isPositive = num => num > 0;
+const isPositiveEven = both(isEven, isPositive);
+isPositiveEven(4); // true
+isPositiveEven(-2); // false
 ```
 </details>
 
@@ -5257,6 +5826,29 @@ let p1 = Promise.resolve(1);
 let p2 = Promise.resolve(2);
 let p3 = new Promise(resolve => setTimeout(resolve, 2000, 3));
 Pall(p1, p2, p3).then(console.log); // [1, 2, 3] (after about 2 seconds)
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### complement
+
+Returns a function that is the logical complement of the given function, `fn`.
+
+Use the logical not (`!`) operator on the result of calling `fn` with any supplied `args`.
+
+```[object Object]
+const complement = fn => (...args) => !fn(...args);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const isEven = num => num % 2 === 0;
+const isOdd = complement(isEven);
+isOdd(2); // false
+isOdd(3); // true
 ```
 </details>
 
@@ -5475,6 +6067,30 @@ delay(
 
 <br>[⬆ Back to top](#contents)
 
+### either
+
+Returns `true` if at least one function returns `true` for a given set of arguments, `false` otherwise.
+
+Use the logical or (`||`) operator on the result of calling the two functions with the supplied `args`.
+
+```[object Object]
+const either = (f, g) => (...args) => f(...args) || g(...args);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const isEven = num => num % 2 === 0;
+const isPositive = num => num > 0;
+const isPositiveOrEven = either(isPositive, isEven);
+isPositiveOrEven(4); // true
+isPositiveOrEven(3); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### flip
 
 Flip takes a function as an argument, then makes the first argument the last.
@@ -5608,6 +6224,48 @@ console.log(anagramsCached.cache); // The cached anagrams map
 
 <br>[⬆ Back to top](#contents)
 
+### mostPerformant
+
+Returns the index of the function in an array of functions which executed the fastest.
+
+返回一个函数数组中执行的最快的函数的序号。
+
+Use `Array.prototype.map()` to generate an array where each value is the total time taken to execute the function after `iterations` times. Use the difference in `performance.now()` values before and after to get the total time in milliseconds to a high degree of accuracy.
+Use `Math.min()` to find the minimum execution time, and return the index of that shortest time which corresponds to the index of the most performant function.
+Omit the second argument, `iterations`, to use a default of 10,000 iterations. The more iterations, the more reliable the result but the longer it will take.
+
+使用`Array.prototype.map()`来生成一个元素是每个函数执行`iterations`次后的总时间的数组。使用执行前后的`performance.now()`差值来获取毫秒为单位的总时间，以获取更高精度。使用`Math.min()`来找到最小执行时间，并把相应最高效的函数的序号（即最短的执行时间的序号）返回。如果不传第二个参数`iterations`，则使用默认的10,000次循环。循环次数越多，结果越可靠，但是花费的时间越长。
+
+```[object Object]
+const mostPerformant = (fns, iterations = 10000) => {
+  const times = fns.map(fn => {
+    const before = performance.now();
+    for (let i = 0; i < iterations; i++) fn();
+    return performance.now() - before;
+  });
+  return times.indexOf(Math.min(...times));
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+mostPerformant([
+  () => {
+    // Loops through the entire array before returning `false`
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, '10'].every(el => typeof el === 'number');
+  },
+  () => {
+    // Only needs to reach index `1` before returning false
+    [1, '2', 3, 4, 5, 6, 7, 8, 9, 10].every(el => typeof el === 'number');
+  }
+]); // 1
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### negate
 
 Negates a predicate function.
@@ -5627,6 +6285,34 @@ const negate = func => (...args) => !func(...args);
 
 ```[object Object]
 [1, 2, 3, 4, 5, 6].filter(negate(n => n % 2 === 0)); // [ 1, 3, 5 ]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### nthArg
+
+Creates a function that gets the argument at index `n`. If `n` is negative, the nth argument from the end is returned.
+
+创建一个获取序号`n`位置上的参数的函数。如果`n`是负数，则返回倒数第n个参数。
+
+Use `Array.prototype.slice()` to get the desired argument at index `n`.
+
+使用`Array.prototype.slice()`来获取序号`n`位置上的所需的参数。
+
+```[object Object]
+const nthArg = n => (...args) => args.slice(n)[0];
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const third = nthArg(2);
+third(1, 2, 3); // 3
+third(1, 2); // undefined
+const last = nthArg(-1);
+last(1, 2, 3, 4, 5); // 5
 ```
 </details>
 
@@ -5777,14 +6463,12 @@ Performs left-to-right function composition for asynchronous functions.
 
 为异步函数列表产生一个从左向右执行的函数组合。
 
-Use `Array.prototype.reduce()` with the spread operator (`...`) to perform left-to-right function composition using `Promise.then()`.
-The functions can return a combination of: simple values, `Promise`'s, or they can be defined as `async` ones returning through `await`.
+Use `Array.prototype.reduce()` and the spread operator (`...`) to perform function composition using `Promise.then()`.
+The functions can return a combination of normal values, `Promise`s or be `async`, returning through `await`.
+All functions must accept a single argument.
 
-使用`Array.prototype.reduce()`和展开操作符(`...`) 来从左向右执行 `Promise.then()`的函数组合。这些函数可以返回一下结果：简单值，`Promise`，或者通过`await`执行的`async`函数。
-
-All functions must be unary.
-
-所有函数必须是一元的（接受一个参数）。
+使用`Array.prototype.reduce()`和展开操作符(`...`) 来执行 `Promise.then()`的函数组合。这些函数可以返回以下结果类型：简单值，`Promise`s，或者通过`await`执行的`async`函数。
+所有函数必须是接受一个参数的。
 
 ```[object Object]
 const pipeAsyncFunctions = (...fns) => arg => fns.reduce((p, f) => p.then(f), Promise.resolve(arg));
@@ -5800,7 +6484,7 @@ const sum = pipeAsyncFunctions(
   x => x + 3,
   async x => (await x) + 4
 );
-(async() => {
+(async () => {
   console.log(await sum(5)); // 15 (after one second)
 })();
 ```
@@ -6058,6 +6742,35 @@ console.log(output); // 01234
 
 <br>[⬆ Back to top](#contents)
 
+### timeTaken
+
+Measures the time taken by a function to execute.
+
+测量函数执行所花费的时间。
+
+Use `console.time()` and `console.timeEnd()` to measure the difference between the start and end times to determine how long the callback took to execute.
+
+使用`console.time()`和`console.timeEnd()`来测量开始和结束时间的差值来确定函数花费了多少时间来执行。
+
+```[object Object]
+const timeTaken = callback => {
+  console.time('timeTaken');
+  const r = callback();
+  console.timeEnd('timeTaken');
+  return r;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+timeTaken(() => Math.pow(2, 10)); // 1024, (logged): timeTaken: 0.02099609375ms
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### unary
 
 Creates a function that accepts up to one argument, ignoring any additional arguments.
@@ -6181,6 +6894,49 @@ doubleEvenNumbers(1); // 1
 ## ➗ Math
 
 
+### accumulate
+
+Returns an array of partial sums.
+
+Use `Array.prototype.reduce()`, `Array.prototype.slice(-1)` and the unary `+` operator to add each value to the unary array containing the previous sum.
+
+```[object Object]
+const accumulate = (...nums) => nums.reduce((acc, n) => [...acc, n + +acc.slice(-1)], []);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+accumulate(1, 2, 3, 4); // [1, 3, 6, 10]
+accumulate(...[1, 2, 3, 4]); // [1, 3, 6, 10]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### and
+
+Returns `true` if both arguments are `true`, `false` otherwise.
+
+Use the logical and (`&&`) operator on the two given values.
+
+```[object Object]
+const and = (a, b) => a && b;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+and(true, true); // true
+and(true, false); // false
+and(false, false); // false
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### approximatelyEqual
 
 Checks if two numbers are approximately equal to each other.
@@ -6290,6 +7046,26 @@ const binomialCoefficient = (n, k) => {
 
 ```[object Object]
 binomialCoefficient(8, 2); // 28
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### celsiusToFahrenheit
+
+Converts Celsius to Fahrenheit.
+
+Follows the conversion formula `F =  1.8C + 32`.
+
+```[object Object]
+const celsiusToFahrenheit = degrees => 1.8 * degrees + 32;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+celsiusToFahrenheit(33); // 91.4
 ```
 </details>
 
@@ -6464,11 +7240,11 @@ Throws an exception if `n` is a negative number.
 const factorial = n =>
   n < 0
     ? (() => {
-      throw new TypeError('Negative numbers are not allowed!');
-    })()
+        throw new TypeError('Negative numbers are not allowed!');
+      })()
     : n <= 1
-      ? 1
-      : n * factorial(n - 1);
+    ? 1
+    : n * factorial(n - 1);
 ```
 
 <details>
@@ -6476,6 +7252,26 @@ const factorial = n =>
 
 ```[object Object]
 factorial(6); // 720
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### fahrenheitToCelsius
+
+Converts Fahrenheit to Celsius.
+
+Follows the conversion formula `C = (F - 32) * 5/9`.
+
+```[object Object]
+const fahrenheitToCelsius = degrees => ((degrees - 32) * 5) / 9;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+fahrenheitToCelsius(32); // 0
 ```
 </details>
 
@@ -6578,7 +7374,7 @@ Calculates the Hamming distance between two values.
 
 计算两个值之间的汉明距离。
 
-Use XOR operator (`^`) to find the bit difference between the two numbers, convert to a binary string using `toString(2)`.
+Use the XOR operator (`^`) to find the bit difference between the two numbers, convert to a binary string using `toString(2)`.
 Count and return the number of `1`s in the string, using `match(/1/g)`.
 
 使用异或操作符(`^`)来找到两个数之间的bit位差异，用`toString(2)`把它转换二进制字符串。使用`match(/1/g)`计算并返回字符串中`1`的数目。
@@ -6818,7 +7614,7 @@ Return `true` if `sum` is divisible by `10`, `false` otherwise.
 
 使用`String.prototype.split('')`, `Array.prototype.reverse()`和`Array.prototype.map()`结合`parseInt()`来获取一个十进制数的数组。使用`Array.prototype.splice(0,1)`来获取十进制数的最后一位。使用`Array.prototype.reduce()`来实行Luhn算法。如果`sum`可以被`10`整除则返回`true`，否则返回`false`。
 
-```[object Object]
+<!-- ```[object Object]
 const luhnCheck = num => {
   let arr = (num + '')
     .split('')
@@ -6835,9 +7631,19 @@ const luhnCheck = num => {
 <summary>Examples</summary>
 
 ```[object Object]
-luhnCheck('4485275742308327'); // true
-luhnCheck(6011329933655299); //  false
-luhnCheck(123456789); // false
+const luhnCheck = num => {
+  let arr = (num + '')
+    .split('')
+    .reverse()
+    .map(x => parseInt(x));
+  let lastDigit = arr.splice(0, 1)[0];
+  let sum = arr.reduce(
+    (acc, val, i) => (i % 2 !== 0 ? acc + val : acc + (val * 2 > 9 ? val * 2 - 9 : val * 2)),
+    0
+  );
+  sum += lastDigit;
+  return sum % 10 === 0;
+};
 ```
 </details>
 
@@ -6973,6 +7779,49 @@ minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 2
 
 <br>[⬆ Back to top](#contents)
 
+### not
+
+Returns the logical inverse of the given value.
+
+Use the logical not (`!`) operator to return the inverse of the given value.
+
+```[object Object]
+const not = a => !a;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+not(true); // false
+not(false); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### or
+
+Returns `true` if at least one of the arguments is `true`, `false` otherwise.
+
+Use the logical or (`||`) operator on the two given values.
+
+```[object Object]
+const or = (a, b) => a || b;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+or(true, true); // true
+or(true, false); // true
+or(false, false); // false
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### percentile
 
 Uses the percentile formula to calculate how many numbers in the given array are less or equal to the given value.
@@ -7071,6 +7920,34 @@ const radsToDegrees = rad => (rad * 180.0) / Math.PI;
 
 ```[object Object]
 radsToDegrees(Math.PI / 2); // 90
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### randomHexColorCode
+
+Generates a random hexadecimal color code.
+
+生成一个随机的十六进制颜色码。
+
+Use `Math.random` to generate a random 24-bit(6x4bits) hexadecimal number.
+Use bit shifting and then convert it to an hexadecimal String using `toString(16)`.
+
+使用`Math.random`来生成一个随机的24-bit(6x4bits)十六进制数字。使用位移，然后使用`toString(16)`把它转换为一个十六进制的String。
+
+```[object Object]
+const randomHexColorCode = () => {
+  let n = (Math.random() * 0xfffff * 1000000).toString(16);
+  return '#' + n.slice(0, 6);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+randomHexColorCode(); // "#e34155"
 ```
 </details>
 
@@ -7321,6 +8198,92 @@ sumPower(10, 3, 5); // 2925
 
 <br>[⬆ Back to top](#contents)
 
+### toCurrency
+
+Take a number and return specified currency formatting.
+
+接受一个数字，返回指定的货币化格式。
+
+Use `Intl.NumberFormat` to enable country / currency sensitive formatting.
+
+使用`Intl.NumberFormat`来打开国家/货币（country / currenc）敏感格式。
+
+```[object Object]
+const toCurrency = (n, curr, LanguageFormat = undefined) =>
+  Intl.NumberFormat(LanguageFormat, { style: 'currency', currency: curr }).format(n);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+toCurrency(123456.789, 'EUR'); // €123,456.79  | currency: Euro | currencyLangFormat: Local
+toCurrency(123456.789, 'USD', 'en-us'); // $123,456.79  | currency: US Dollar | currencyLangFormat: English (United States)
+toCurrency(123456.789, 'USD', 'fa'); // ۱۲۳٬۴۵۶٫۷۹ ؜$ | currency: US Dollar | currencyLangFormat: Farsi
+toCurrency(322342436423.2435, 'JPY'); // ¥322,342,436,423 | currency: Japanese Yen | currencyLangFormat: Local
+toCurrency(322342436423.2435, 'JPY', 'fi'); // 322 342 436 423 ¥ | currency: Japanese Yen | currencyLangFormat: Finnish
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### toDecimalMark
+
+Converts a number to a decimal mark formatted string.
+
+Use `Number.prototype.toLocaleString()` to convert the numbre to decimal mark format.
+
+使用`toLocaleString()`来把一个浮点数转换为[Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark)格式。它从数字创建一个用逗号分隔的字符串。
+
+ ```[object Object]
+const toDecimalMark = num => num.toLocaleString('en-US');
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+toDecimalMark(12305030388.9087); // "12,305,030,388.909"
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### toOrdinalSuffix
+
+Adds an ordinal suffix to a number.
+
+给一个数字添加一个序数后缀。
+
+Use the modulo operator (`%`) to find values of single and tens digits.
+Find which ordinal pattern digits match.
+If digit is found in teens pattern, use teens ordinal.
+
+使用取模操作符(`%`)来找到个位和十位。找到它匹配哪个序数标识。如果某一位在十位数标志中找到，则使用十位数序数后缀。
+
+```[object Object]
+const toOrdinalSuffix = num => {
+  const int = parseInt(num),
+    digits = [int % 10, int % 100],
+    ordinals = ['st', 'nd', 'rd', 'th'],
+    oPattern = [1, 2, 3, 4],
+    tPattern = [11, 12, 13, 14, 15, 16, 17, 18, 19];
+  return oPattern.includes(digits[0]) && !tPattern.includes(digits[1])
+    ? int + ordinals[digits[0] - 1]
+    : int + ordinals[3];
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+toOrdinalSuffix('123'); // "123rd"
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### toSafeInteger
 
 Converts a value to a safe integer.
@@ -7348,19 +8311,45 @@ toSafeInteger(Infinity); // 9007199254740991
 
 <br>[⬆ Back to top](#contents)
 
-### vectorDistance
+### validateNumber
 
-Returns the distance between two vectors.
+Returns `true` if the given value is a number, `false` otherwise.
 
-Use `Array.prototype.reduce()`, `Math.pow()` and `Math.sqrt()` to calculate the Euclidean distance between two vectors.
+如果给出的值是一个数字则返回`true`，否则返回`false`。
+
+Use `!isNaN()` in combination with `parseFloat()` to check if the argument is a number.
+Use `isFinite()` to check if the number is finite.
+Use `Number()` to check if the coercion holds.
+
+使用`!isNaN()`和`parseFloat()`来检查这个参数是否是一个数字。使用`isFinite()`来检查这个数字是否是有穷尽的。使用`Number()`来检查是否强制持有（是否为转换后为`Number`？）。
 
 ```[object Object]
-const vectorDistance = (...coords) => {
-  let pointLength = Math.trunc(coords.length / 2);
-  let sum = coords
-    .slice(0, pointLength)
-    .reduce((acc, val, i) => acc + Math.pow(val - coords[pointLength + i], 2), 0);
-  return Math.sqrt(sum);
+const validateNumber = n => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) == n;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+validateNumber('10'); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### vectorAngle
+
+Returns the angle (theta) between two vectors.
+
+Use `Array.prototype.reduce()`, `Math.pow()` and `Math.sqrt()` to calculate the magnitude of each vector and the scalar product of the two vectors.
+Use `Math.acos()` to calculate the arccos and get the theta value.
+
+
+```[object Object]
+const vectorAngle = (x, y) => {
+  let mX = Math.sqrt(x.reduce((acc, n) => acc + Math.pow(n, 2), 0));
+  let mY = Math.sqrt(y.reduce((acc, n) => acc + Math.pow(n, 2), 0));
+  return Math.acos(x.reduce((acc, n, i) => acc + n * y[i], 0) / (mX * mY));
 };
 ```
 
@@ -7368,7 +8357,28 @@ const vectorDistance = (...coords) => {
 <summary>Examples</summary>
 
 ```[object Object]
-vectorDistance(10, 0, 5, 20, 0, 10); // 11.180339887498949
+vectorAngle([3, 4], [4, 3]); // 0.283794109208328
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### vectorDistance
+
+Returns the distance between two vectors.
+
+Use `Array.prototype.reduce()`, `Math.pow()` and `Math.sqrt()` to calculate the Euclidean distance between two vectors.
+
+```[object Object]
+const vectorDistance = (x, y) =>
+  Math.sqrt(x.reduce((acc, val, i) => acc + Math.pow(val - y[i], 2), 0));
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+vectorDistance([10, 0, 5], [20, 0, 10]); // 11.180339887498949
 ```
 </details>
 
@@ -7890,8 +8900,8 @@ const deepClone = obj => {
   return Array.isArray(obj) && obj.length
     ? (clone.length = obj.length) && Array.from(clone)
     : Array.isArray(obj)
-      ? Array.from(obj)
-      : clone;
+    ? Array.from(obj)
+    : clone;
 };
 ```
 
@@ -7913,14 +8923,22 @@ Deep freezes an object.
 深层冻结一个对象。
 
 Calls `Object.freeze(obj)` recursively on all unfrozen properties of passed object that are `instanceof` object.
+Use `Object.keys()` to get all the properties of the passed object, `Array.prototype.forEach()` to iterate over them.
+Call `Object.freeze(obj)` recursively on all properties, checking if each one is frozen using `Object.isFrozen()` and applying `deepFreeze()` as necessary.
+Finally, use `Object.freeze()` to freeze the given object.
 
-递归的对传入的是对象（通过`instanceof`判断是否是对象）实例的所有没有冻结的属性调用`Object.freeze(obj)`。
+在一个传入的属于Object实例的对象上，递归的对它的所有未冻结属性调用`Object.freeze(obj)`。
+使用`Object.freeze(obj)`来递归的获取传入对象的所有属性，使用`Array.prototype.forEach()`来迭代它们。
+对所有属性递归的调用`Object.freeze(obj)`，使用`Object.isFrozen()`来检查每个属性是否已经冻结，如果需要则调用`deepFreeze()`来冻结它。
+最终，使用`Object.freeze()`来冻结给出的对象。
 
 ```[object Object]
-const deepFreeze = obj =>
-  Object.keys(obj).forEach(prop =>
-    !(obj[prop] instanceof Object) || Object.isFrozen(obj[prop]) ? null : deepFreeze(obj[prop])
-  ) || Object.freeze(obj);
+const deepFreeze = obj => {
+  Object.keys(obj).forEach(prop => {
+    if (obj[prop] === 'object' && !Object.isFrozen(obj[prop])) deepFreeze(v[prop]);
+  });
+  return Object.freeze(obj);
+};
 ```
 
 <details>
@@ -7980,23 +8998,23 @@ Creates an object with the same values as the provided object and keys generated
 
 用和给出的对象相同的值和对每个键应用给出的函数后的新键，创建一个对象。
 
-Use `Object.keys(obj)` to iterate over the object's keys. 
+Use `Object.keys(obj)` to iterate over the object's keys.
 Use `Array.prototype.reduce()` to create a new object with the same values and mapped keys using `fn`.
 
 使用`Object.keys(obj)`来遍历对象的键列表。使用`Array.prototype.reduce()`来用相同的值和用`fn`映射后的键来创建一个新对象。
 
 ```[object Object]
-const deepMapKeys = (obj, f) =>
+const deepMapKeys = (obj, fn) =>
   Array.isArray(obj)
-    ? obj.map(val => deepMapKeys(val, f))
+    ? obj.map(val => deepMapKeys(val, fn))
     : typeof obj === 'object'
-      ? Object.keys(obj).reduce((acc, current) => {
+    ? Object.keys(obj).reduce((acc, current) => {
+        const key = fn(current);
         const val = obj[current];
-        acc[f(current)] =
-          val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
+        acc[key] = val !== null && typeof val === 'object' ? deepMapKeys(val, fn) : val;
         return acc;
       }, {})
-      : obj;
+    : obj;
 ```
 
 <details>
@@ -8075,9 +9093,9 @@ const dig = (obj, target) =>
   target in obj
     ? obj[target]
     : Object.values(obj).reduce((acc, val) => {
-      if (acc !== undefined) return acc;
-      if (typeof val === 'object') return dig(val, target);
-    }, undefined);
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
 ```
 
 <details>
@@ -8127,6 +9145,7 @@ const equals = (a, b) => {
 
 ```[object Object]
 equals({ a: [2, { e: 3 }], b: [4], c: 'foo' }, { a: [2, { e: 3 }], b: [4], c: 'foo' }); // true
+equals([1, 2, 3], { 0: 1, 1: 2, 2: 3 }); // true
 ```
 </details>
 
@@ -8641,7 +9660,7 @@ Omit the third argument, `link`, to use `'parent_id'` as the default property wh
 const nest = (items, id = null, link = 'parent_id') =>
   items
     .filter(item => item[link] === id)
-    .map(item => ({ ...item, children: nest(items, item.id) }));
+    .map(item => ({ ...item, children: nest(items, item.id, link) }));
 ```
 
 <details>
@@ -8689,18 +9708,38 @@ objectFromPairs([
 
 <br>[⬆ Back to top](#contents)
 
+### objectToEntries
+
+Creates an array of key-value pair arrays from an object.
+
+Use `Object.keys()` and `Array.prototype.map()` to iterate over the object's keys and produce an array with key-value pairs.
+
+```[object Object]
+const objectToEntries = obj => Object.keys(obj).map(k => [k, obj[k]]);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+objectToEntries({ a: 1, b: 2 }); // [ ['a', 1], ['b', 2] ]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### objectToPairs
 
 Creates an array of key-value pair arrays from an object.
 
 从一个对象创建一个键值对数组。
 
-Use `Object.keys()` and `Array.prototype.map()` to iterate over the object's keys and produce an array with key-value pairs.
+Use `Object.entries()` to get an array of key-value pair arrays from the given object.
 
-使用`Object.keys()`和`Array.prototype.map()`来遍历对象的键来生成一个键值对数组。
+使用`Object.entries()`来从给出的对象中获取一个“键-值”对数组。
 
 ```[object Object]
-const objectToPairs = obj => Object.keys(obj).map(k => [k, obj[k]]);
+const objectToPairs = obj => Object.entries(obj);
 ```
 
 <details>
@@ -8708,6 +9747,36 @@ const objectToPairs = obj => Object.keys(obj).map(k => [k, obj[k]]);
 
 ```[object Object]
 objectToPairs({ a: 1, b: 2 }); // [ ['a', 1], ['b', 2] ]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### objectToQueryString
+
+Returns a query string generated from the key-value pairs of the given object.
+
+Use `Array.prototype.reduce()` on `Object.entries(queryParameters)` to create the query string.
+Determine the `symbol` to be either `?` or `&` based on the `length` of `queryString` and concatenate `val` to `queryString` only if it's a string.
+Return the `queryString` or an empty string when the `queryParameters` are falsy.
+
+```[object Object]
+const objectToQueryString = queryParameters => {
+  return queryParameters
+    ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {
+        const symbol = queryString.length === 0 ? '?' : '&';
+        queryString += typeof val === 'string' ? `${symbol}${key}=${val}` : '';
+        return queryString;
+      }, '')
+    : '';
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+objectToQueryString({ page: '1', size: '2kg', key: undefined }); // '?page=1&size=2kg'
 ```
 </details>
 
@@ -8939,10 +10008,10 @@ const size = val =>
   Array.isArray(val)
     ? val.length
     : val && typeof val === 'object'
-      ? val.size || val.length || Object.keys(val).length
-      : typeof val === 'string'
-        ? new Blob([val]).size
-        : 0;
+    ? val.size || val.length || Object.keys(val).length
+    : typeof val === 'string'
+    ? new Blob([val]).size
+    : 0;
 ```
 
 <details>
@@ -8952,6 +10021,33 @@ const size = val =>
 size([1, 2, 3, 4, 5]); // 5
 size('size'); // 4
 size({ one: 1, two: 2, three: 3 }); // 3
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### toPairs
+
+Creates an array of key-value pair arrays from an object or other iterable (object, array, string, set etc.).
+
+Check if `Symbol.iterator` is defined and, if so, use `Array.prototype.entries()` to get an iterator for the given iterable, `Array.from()` to convert the result to an array of key-value pair arrays.
+If `Symbol.iterator` is not defined for `obj`, use `Object.entries()` instead.
+
+```[object Object]
+const toPairs = obj =>
+  obj[Symbol.iterator] instanceof Function && obj.entries instanceof Function
+    ? Array.from(obj.entries())
+    : Object.entries(obj);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+toPairs({ a: 1, b: 2 }); // [ ['a', 1], ['b', 2] ]
+toPairs([2, 4, 8]); // [ [0, 2], [1, 4], [2, 8] ]
+toPairs('shy'); // [ ['0', 's'], ['1', 'h'], ['2', 'y'] ]
+toPairs(new Set(['a', 'b', 'c', 'a'])); // [ ['a', 'a'], ['b', 'b'], ['c', 'c'] ]
 ```
 </details>
 
@@ -9167,6 +10263,27 @@ compactWhitespace('Lorem \n Ipsum'); // 'Lorem Ipsum'
 
 <br>[⬆ Back to top](#contents)
 
+### containsWhitespace
+
+Returns `true` if the given string contains any whitespace characters, `false` otherwise.
+
+Use `RegExp.prototype.test()` with an appropriate regular expression to check if the given string contains any whitespace characters.
+
+```[object Object]
+const containsWhitespace = str => /\s/.test(str);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+containsWhitespace('lorem'); // false
+containsWhitespace('lorem ipsum'); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### CSVToArray
 
 Converts a comma-separated values (CSV) string to a 2D array.
@@ -9324,6 +10441,38 @@ escapeRegExp('(test)'); // \\(test\\)
 
 <br>[⬆ Back to top](#contents)
 
+### extendHex
+
+Extends a 3-digit color code to a 6-digit color code.
+
+把3位的颜色码扩充到6位颜色码。
+
+Use `Array.prototype.map()`, `String.prototype.split()` and `Array.prototype.join()` to join the mapped array for converting a 3-digit RGB notated hexadecimal color-code to the 6-digit form.
+`Array.prototype.slice()` is used to remove `#` from string start since it's added once.
+
+使用`Array.prototype.map()`, `String.prototype.split()`和`Array.prototype.join()`来把映射的数组连结起来，用来把3位的RGB形式的十六进制颜色码转为6位格式。
+
+```[object Object]
+const extendHex = shortHex =>
+  '#' +
+  shortHex
+    .slice(shortHex.startsWith('#') ? 1 : 0)
+    .split('')
+    .map(x => x + x)
+    .join('');
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+extendHex('#03f'); // '#0033ff'
+extendHex('05a'); // '#0055aa'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### fromCamelCase
 
 Converts a string from camelcase.
@@ -9350,6 +10499,50 @@ const fromCamelCase = (str, separator = '_') =>
 fromCamelCase('someDatabaseFieldName', ' '); // 'some database field name'
 fromCamelCase('someLabelThatNeedsToBeCamelized', '-'); // 'some-label-that-needs-to-be-camelized'
 fromCamelCase('someJavascriptProperty', '_'); // 'some_javascript_property'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### hexToRGB ![advanced](/advanced.svg)
+
+Converts a color code to a `rgb()` or `rgba()` string if alpha value is provided.
+
+则把一个颜色码转换为一个`rgb()`字符串，或者提供了alpha值时转换为`rgba()`字符串。
+
+Use bitwise right-shift operator and mask bits with `&` (and) operator to convert a hexadecimal color code (with or without prefixed with `#`) to a string with the RGB values. If it's 3-digit color code, first convert to 6-digit version. If an alpha value is provided alongside 6-digit hex, give `rgba()` string in return.
+
+使用向右位移操作符和掩码位还有`&`(相与)操作符来把十六进制的颜色码（有没有前缀的`#`都可以）转换为一个RGB值字符串。如果它是一个3位的颜色码，先转换为6位版本。如果随着6位十六进制提供了一个alpha值，则返回`rgba()`字符串。
+
+```[object Object]
+const hexToRGB = hex => {
+  let alpha = false,
+    h = hex.slice(hex.startsWith('#') ? 1 : 0);
+  if (h.length === 3) h = [...h].map(x => x + x).join('');
+  else if (h.length === 8) alpha = true;
+  h = parseInt(h, 16);
+  return (
+    'rgb' +
+    (alpha ? 'a' : '') +
+    '(' +
+    (h >>> (alpha ? 24 : 16)) +
+    ', ' +
+    ((h & (alpha ? 0x00ff0000 : 0x00ff00)) >>> (alpha ? 16 : 8)) +
+    ', ' +
+    ((h & (alpha ? 0x0000ff00 : 0x0000ff)) >>> (alpha ? 8 : 0)) +
+    (alpha ? `, ${h & 0x000000ff}` : '') +
+    ')'
+  );
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+hexToRGB('#27ae60ff'); // 'rgba(39, 174, 96, 255)'
+hexToRGB('27ae60'); // 'rgb(39, 174, 96)'
+hexToRGB('#fff'); // 'rgb(255, 255, 255)'
 ```
 </details>
 
@@ -9557,10 +10750,10 @@ Pads a string on both sides with the specified character, if it's shorter than t
 
 如果字符串的长度比指定的长度短，则用指定的字符填充它的两端。
 
-Use `String.padStart()` and `String.padEnd()` to pad both sides of the given string.
+Use `String.prototype.padStart()` and `String.prototype.padEnd()` to pad both sides of the given string.
 Omit the third argument, `char`, to use the whitespace character as the default padding character.
 
-使用`String.padStart()`和`String.padEnd()`来用指定字符串填充两端。如果不传第三个参数`char`，使用空白字符作为默认的填充字符。
+使用`String.prototype.padStart()`和`String.prototype.padEnd()`来用指定字符串填充两端。如果不传第三个参数`char`，使用空白字符作为默认的填充字符。
 
 ```[object Object]
 const pad = (str, length, char = ' ') =>
@@ -9646,6 +10839,42 @@ autoPluralize(2, 'person'); // 'people'
 
 <br>[⬆ Back to top](#contents)
 
+### prettyBytes ![advanced](/advanced.svg)
+
+Converts a number in bytes to a human-readable string.
+
+把一个字节形式的数字转换为一个人类可读字符串。
+
+Use an array dictionary of units to be accessed based on the exponent.
+Use `Number.toPrecision()` to truncate the number to a certain number of digits.
+Return the prettified string by building it up, taking into account the supplied options and whether it is negative or not.
+Omit the second argument, `precision`, to use a default precision of `3` digits.
+Omit the third argument, `addSpace`, to add space between the number and unit by default.
+
+使用一个根据指数来判断单位的字典数组。使用`Number.toPrecision()`来把数字截断为一个特定的位数。根据提供的选项还有它是否为负数来创建一个易读的字符串并返回。如果不传第二个参数`precision`，则使用`3`位精度作为默认值。如果不传第三个参数`addSpace`，则默认在数字和单位中间添加一个空格。
+
+```[object Object]
+const prettyBytes = (num, precision = 3, addSpace = true) => {
+  const UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  if (Math.abs(num) < 1) return num + (addSpace ? ' ' : '') + UNITS[0];
+  const exponent = Math.min(Math.floor(Math.log10(num < 0 ? -num : num) / 3), UNITS.length - 1);
+  const n = Number(((num < 0 ? -num : num) / 1000 ** exponent).toPrecision(precision));
+  return (num < 0 ? '-' : '') + n + (addSpace ? ' ' : '') + UNITS[exponent];
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+prettyBytes(1000); // "1 KB"
+prettyBytes(-27145424323.5821, 5); // "-27.145 GB"
+prettyBytes(123456789, 3, false); // "123MB"
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### removeNonASCII
 
 Removes non-printable ASCII characters.
@@ -9690,6 +10919,30 @@ const reverseString = str => [...str].reverse().join('');
 
 ```[object Object]
 reverseString('foobar'); // 'raboof'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### RGBToHex
+
+Converts the values of RGB components to a color code.
+
+把一个RGB组合值转换为颜色码。
+
+Convert given RGB parameters to hexadecimal string using bitwise left-shift operator (`<<`) and `toString(16)`, then `String.padStart(6,'0')` to get a 6-digit hexadecimal value.
+
+使用向左位移操作符(`<<`)和`toString(16)`来把RGB参数转换为十六进制字符串，然后使用`String.padStart(6,'0')`来获取一个6位的十六进制值。
+
+```[object Object]
+const RGBToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+RGBToHex(255, 165, 1); // 'ffa501'
 ```
 </details>
 
@@ -9901,7 +11154,7 @@ const toSnakeCase = str =>
 toSnakeCase('camelCase'); // 'camel_case'
 toSnakeCase('some text'); // 'some_text'
 toSnakeCase('some-mixed_string With spaces_underscores-and-hyphens'); // 'some_mixed_string_with_spaces_underscores_and_hyphens'
-toSnakeCase('AllThe-small Things'); // "all_the_smal_things"
+toSnakeCase('AllThe-small Things'); // "all_the_small_things"
 toSnakeCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML'); // "i_am_listening_to_fm_while_loading_different_url_on_my_browser_and_also_editing_some_xml_and_html"
 ```
 </details>
@@ -10058,10 +11311,138 @@ words('python, javaScript & coffee'); // ["python", "javaScript", "coffee"]
 
 <br>[⬆ Back to top](#contents)
 
+### yesNo
+
+Returns `true` if the string is `y`/`yes` or `false` if the string is `n`/`no`.
+
+如果一个字符串是`y`/`yes`则返回`true`，或者是`n`/`no`则返回`false`。
+
+Use `RegExp.test()` to check if the string evaluates to `y/yes` or `n/no`.
+Omit the second argument, `def` to set the default answer as `no`.
+
+使用`RegExp.test()`来检查这个字符串是否是`y/yes`或者`n/no`。如果不传第二个参数`def`，则把默认的回答设置为`no`。
+
+```[object Object]
+const yesNo = (val, def = false) =>
+  /^(y|yes)$/i.test(val) ? true : /^(n|no)$/i.test(val) ? false : def;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+yesNo('Y'); // true
+yesNo('yes'); // true
+yesNo('No'); // false
+yesNo('Foo', true); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ---
 
 ## 📃 Type
 
+
+### castArray
+
+Casts the provided value as an array if it's not one.
+
+如果给出的值不是一个数组，则把它放到一个数组中。（统一化的返回一个数组）
+
+Use `Array.prototype.isArray()` to determine if `val` is an array and return it as-is or encapsulated in an array accordingly.
+
+使用`Array.prototype.isArray()`来判定`val`是否是一个数组，并根据情况返回它本身或者包裹在一个数组中后的结果。
+
+```[object Object]
+const castArray = val => (Array.isArray(val) ? val : [val]);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+castArray('foo'); // ['foo']
+castArray([1]); // [1]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### cloneRegExp
+
+Clones a regular expression.
+
+复制一个正则表达式。
+
+Use `new RegExp()`, `RegExp.source` and `RegExp.flags` to clone the given regular expression.
+
+使用`new RegExp()`, `RegExp.source`和`RegExp.flags`来复制给出的正则表达式。
+
+```[object Object]
+const cloneRegExp = regExp => new RegExp(regExp.source, regExp.flags);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const regExp = /lorem ipsum/gi;
+const regExp2 = cloneRegExp(regExp); // /lorem ipsum/gi
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### coalesce
+
+Returns the first defined, non-null argument.
+
+返回第一个不是null/undefined的参数。
+
+Use `Array.prototype.find()` and `Array.prototype.includes()` to find the first value that is not equal to `undefined` or `null`.
+
+使用`Array.prototype.find()`和`Array.prototype.includes()`来找到第一个不等于`null`或`undefined`的值。
+
+```[object Object]
+const coalesce = (...args) => args.find(v => ![undefined, null].includes(v));
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+coalesce(null, undefined, '', NaN, 'Waldo'); // ''
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### coalesceFactory
+
+Returns a customized coalesce function that returns the first argument that returns `true` from the provided argument validation function.
+
+返回一个自定义联合函数，它从返回参数中第一个被验证函数`valid`返回`true`的参数。
+
+Use `Array.prototype.find()` to return the first argument that returns `true` from the provided argument validation function.
+
+使用`Array.prototype.find()`来从给出的验证函数参数中返回第一个返回`true`的参数。
+
+```[object Object]
+const coalesceFactory = valid => (...args) => args.find(valid); // 建立了一个找到第一符合条件元素的通用方法
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const customCoalesce = coalesceFactory(_ => ![null, undefined, '', NaN].includes(_));
+customCoalesce(undefined, null, NaN, '', 'Waldo'); // "Waldo"
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
 
 ### getType
 
@@ -10069,20 +11450,20 @@ Returns the native type of a value.
 
 返回值的原生类型。
 
-Returns lowercased constructor name of value, `"undefined"` or `"null"` if value is `undefined` or `null`.
+Return `'undefined'` or `'null'` if the value is `undefined` or `null`.
+Otherwise, use `Object.prototype.constructor.name` to get the name of the constructor.
 
-返回值的小写形式的构造器名称，如果值是`undefined`或`null`则返回`"undefined"`或`"null"`。
+如果值是`undefined`或`null`，则返回`'undefined'`或`'null'`。否则使用`Object.prototype.constructor.name`来获取构造器的名称。
 
 ```[object Object]
-const getType = v =>
-  v === undefined ? 'undefined' : v === null ? 'null' : v.constructor.name.toLowerCase();
+const getType = v => (v === undefined ? 'undefined' : v === null ? 'null' : v.constructor.name);
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```[object Object]
-getType(new Set([1, 2, 3])); // 'set'
+getType(new Set([1, 2, 3])); // 'Set'
 ```
 </details>
 
@@ -10142,6 +11523,7 @@ const isArrayLike = obj => obj != null && typeof obj[Symbol.iterator] === 'funct
 <summary>Examples</summary>
 
 ```[object Object]
+isArrayLike([1, 2, 3]); // true
 isArrayLike(document.querySelectorAll('.className')); // true
 isArrayLike('abc'); // true
 isArrayLike(null); // false
@@ -10237,7 +11619,7 @@ Returns `true` if the specified value is `null` or `undefined`, `false` otherwis
 
 如果指定的值是`null`或者`undefined`则返回`true`，否则返回`false`。
 
-Use the strict equality operator to check if the value and of `val` are equal to `null` or `undefined`.
+Use the strict equality operator to check if the value of `val` is equal to `null` or `undefined`.
 
 使用严格相等操作符来检查`val`的值是否等于`null`或者`undefined`。
 
@@ -10251,6 +11633,7 @@ const isNil = val => val === undefined || val === null;
 ```[object Object]
 isNil(null); // true
 isNil(undefined); // true
+isNil(''); // false
 ```
 </details>
 
@@ -10262,7 +11645,7 @@ Returns `true` if the specified value is `null`, `false` otherwise.
 
 如果指定的值是`null`则返回`true`，否则返回`false`。
 
-Use the strict equality operator to check if the value and of `val` are equal to `null`.
+Use the strict equality operator to check if the value of `val` is equal to `null`.
 
 使用严格相等操作符来检查`val`的值是否等于`null`。
 
@@ -10408,11 +11791,13 @@ const isPrimitive = val => Object(val) !== val;
 
 ```[object Object]
 isPrimitive(null); // true
+isPrimitive(undefined); // true
 isPrimitive(50); // true
 isPrimitive('Hello!'); // true
 isPrimitive(false); // true
 isPrimitive(Symbol()); // true
 isPrimitive([]); // false
+isPrimitive({}); // false
 ```
 </details>
 
@@ -10505,7 +11890,7 @@ Returns `true` if the specified value is `undefined`, `false` otherwise.
 
 如果指定的值是`undefined`则返回`true`，否则返回`false`。
 
-Use the strict equality operator to check if the value and of `val` are equal to `undefined`.
+Use the strict equality operator to check if `val` is equal to `undefined`.
 
 使用严格相等操作符来检查`val`的值是否等于`undefined`。
 
@@ -10551,761 +11936,6 @@ const isValidJSON = str => {
 isValidJSON('{"name":"Adam","age":20}'); // true
 isValidJSON('{"name":"Adam",age:"20"}'); // false
 isValidJSON(null); // true
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
----
-
-## 🔧 Utility
-
-
-### castArray
-
-Casts the provided value as an array if it's not one.
-
-如果给出的值不是一个数组，则把它放到一个数组中。（统一化的返回一个数组）
-
-Use `Array.prototype.isArray()` to determine if `val` is an array and return it as-is or encapsulated in an array accordingly.
-
-使用`Array.prototype.isArray()`来判定`val`是否是一个数组，并根据情况返回它本身或者包裹在一个数组中后的结果。
-
-```[object Object]
-const castArray = val => (Array.isArray(val) ? val : [val]);
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-castArray('foo'); // ['foo']
-castArray([1]); // [1]
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### cloneRegExp
-
-Clones a regular expression.
-
-复制一个正则表达式。
-
-Use `new RegExp()`, `RegExp.source` and `RegExp.flags` to clone the given regular expression.
-
-使用`new RegExp()`, `RegExp.source`和`RegExp.flags`来复制给出的正则表达式。
-
-```[object Object]
-const cloneRegExp = regExp => new RegExp(regExp.source, regExp.flags);
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-const regExp = /lorem ipsum/gi;
-const regExp2 = cloneRegExp(regExp); // /lorem ipsum/gi
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### coalesce
-
-Returns the first non-null/undefined argument.
-
-返回第一个不是null/undefined的参数。
-
-Use `Array.prototype.find()` to return the first non `null`/`undefined` argument.
-
-使用`Array.prototype.find()`来返回第一个非`null`/`undefined`参数。
-
-```[object Object]
-const coalesce = (...args) => args.find(_ => ![undefined, null].includes(_));
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-coalesce(null, undefined, '', NaN, 'Waldo'); // ""
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### coalesceFactory
-
-Returns a customized coalesce function that returns the first argument that returns `true` from the provided argument validation function.
-
-返回一个自定义联合函数，它从返回参数中第一个被验证函数`valid`返回`true`的参数。
-
-Use `Array.prototype.find()` to return the first argument that returns `true` from the provided argument validation function.
-
-使用`Array.prototype.find()`来从给出的验证函数参数中返回第一个返回`true`的参数。
-
-```[object Object]
-const coalesceFactory = valid => (...args) => args.find(valid); // 建立了一个找到第一符合条件元素的通用方法
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-const customCoalesce = coalesceFactory(_ => ![null, undefined, '', NaN].includes(_));
-customCoalesce(undefined, null, NaN, '', 'Waldo'); // "Waldo"
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### extendHex
-
-Extends a 3-digit color code to a 6-digit color code.
-
-把3位的颜色码扩充到6位颜色码。
-
-Use `Array.prototype.map()`, `String.prototype.split()` and `Array.prototype.join()` to join the mapped array for converting a 3-digit RGB notated hexadecimal color-code to the 6-digit form.
-`Array.prototype.slice()` is used to remove `#` from string start since it's added once.
-
-使用`Array.prototype.map()`, `String.prototype.split()`和`Array.prototype.join()`来把映射的数组连结起来，用来把3位的RGB形式的十六进制颜色码转为6位格式。
-
-```[object Object]
-const extendHex = shortHex =>
-  '#' +
-  shortHex
-    .slice(shortHex.startsWith('#') ? 1 : 0)
-    .split('')
-    .map(x => x + x)
-    .join('');
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-extendHex('#03f'); // '#0033ff'
-extendHex('05a'); // '#0055aa'
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### getURLParameters
-
-Returns an object containing the parameters of the current URL.
-
-返回一个包含当前URL的参数的对象。
-
-Use `String.match()` with an appropriate regular expression to get all key-value pairs, `Array.prototype.reduce()` to map and combine them into a single object.
-Pass `location.search` as the argument to apply to the current `url`.
-
-使用`String.match()`和一个合适的正则表达式来获取所有键值对，使用`Array.prototype.reduce()`来映射并把它们组合成一个单一对象。把`location.search`作为参数传入以应用到当前的`url`参数。
-
-```[object Object]
-const getURLParameters = url =>
-  (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
-    (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
-    {}
-  );
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-getURLParameters('http://url.com/page?name=Adam&surname=Smith'); // {name: 'Adam', surname: 'Smith'}
-getURLParameters('google.com'); // {}
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### hexToRGB ![advanced](/advanced.svg)
-
-Converts a color code to a `rgb()` or `rgba()` string if alpha value is provided.
-
-则把一个颜色码转换为一个`rgb()`字符串，或者提供了alpha值时转换为`rgba()`字符串。
-
-Use bitwise right-shift operator and mask bits with `&` (and) operator to convert a hexadecimal color code (with or without prefixed with `#`) to a string with the RGB values. If it's 3-digit color code, first convert to 6-digit version. If an alpha value is provided alongside 6-digit hex, give `rgba()` string in return.
-
-使用向右位移操作符和掩码位还有`&`(相与)操作符来把十六进制的颜色码（有没有前缀的`#`都可以）转换为一个RGB值字符串。如果它是一个3位的颜色码，先转换为6位版本。如果随着6位十六进制提供了一个alpha值，则返回`rgba()`字符串。
-
-```[object Object]
-const hexToRGB = hex => {
-  let alpha = false,
-    h = hex.slice(hex.startsWith('#') ? 1 : 0);
-  if (h.length === 3) h = [...h].map(x => x + x).join('');
-  else if (h.length === 8) alpha = true;
-  h = parseInt(h, 16);
-  return (
-    'rgb' +
-    (alpha ? 'a' : '') +
-    '(' +
-    (h >>> (alpha ? 24 : 16)) +
-    ', ' +
-    ((h & (alpha ? 0x00ff0000 : 0x00ff00)) >>> (alpha ? 16 : 8)) +
-    ', ' +
-    ((h & (alpha ? 0x0000ff00 : 0x0000ff)) >>> (alpha ? 8 : 0)) +
-    (alpha ? `, ${h & 0x000000ff}` : '') +
-    ')'
-  );
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-hexToRGB('#27ae60ff'); // 'rgba(39, 174, 96, 255)'
-hexToRGB('27ae60'); // 'rgb(39, 174, 96)'
-hexToRGB('#fff'); // 'rgb(255, 255, 255)'
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### httpGet
-
-Makes a `GET` request to the passed URL.
-
-创建一个到传入URL的`GET`请求。
-
-Use [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) web api to make a `get` request to the given `url`.
-Handle the `onload` event, by calling the given `callback` the `responseText`.
-Handle the `onerror` event, by running the provided `err` function.
-Omit the third argument, `err`, to log errors to the console's `error` stream by default.
-
-使用[`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)网络api来创建一个给出`url`的`get`请求。通过对`responseText`调用给出的`callback`来处理`onload`事件，通过执行提供的`err`函数来处理`onerror`事件。如果不传第三个参数`err`，则把错误打印到默认的控制台`error`流中。
-
-```[object Object]
-const httpGet = (url, callback, err = console.error) => {
-  const request = new XMLHttpRequest();
-  request.open('GET', url, true);
-  request.onload = () => callback(request.responseText);
-  request.onerror = () => err(request);
-  request.send();
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-httpGet(
-  'https://jsonplaceholder.typicode.com/posts/1',
-  console.log
-); /*
-Logs: {
-  "userId": 1,
-  "id": 1,
-  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-}
-*/
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### httpPost
-
-Makes a `POST` request to the passed URL.
-
-创建一个到传入URL的`POST`请求。
-
-Use [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) web api to make a `post` request to the given `url`.
-Set the value of an `HTTP` request header with `setRequestHeader` method.
-Handle the `onload` event, by calling the given `callback` the `responseText`.
-Handle the `onerror` event, by running the provided `err` function.
-Omit the third argument, `data`, to send no data to the provided `url`.
-Omit the fourth argument, `err`, to log errors to the console's `error` stream by default.
-
-使用[`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)网络api来创建一个给出`url`的`post`请求。用`setRequestHeader`方法来设置`HTTP`请求头。通过对`responseText`调用给出的`callback`来处理`onload`事件，通过执行提供的`err`函数来处理`onerror`事件。如果不传第三个参数`data`，则不向给出的`url`发送数据。如果不传第四个参数`err`，则把错误打印到默认的控制台`error`流中。
-
-```[object Object]
-const httpPost = (url, data, callback, err = console.error) => {
-  const request = new XMLHttpRequest();
-  request.open('POST', url, true);
-  request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-  request.onload = () => callback(request.responseText);
-  request.onerror = () => err(request);
-  request.send(data);
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-const newPost = {
-  userId: 1,
-  id: 1337,
-  title: 'Foo',
-  body: 'bar bar bar'
-};
-const data = JSON.stringify(newPost);
-httpPost(
-  'https://jsonplaceholder.typicode.com/posts',
-  data,
-  console.log
-); /*
-Logs: {
-  "userId": 1,
-  "id": 1337,
-  "title": "Foo",
-  "body": "bar bar bar"
-}
-*/
-httpPost(
-  'https://jsonplaceholder.typicode.com/posts',
-  null, // does not send a body
-  console.log
-); /*
-Logs: {
-  "id": 101
-}
-*/
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### isBrowser
-
-Determines if the current runtime environment is a browser so that front-end modules can run on the server (Node) without throwing errors.
-
-判定当前的执行环境是否是浏览器，以判断是否前端的模块可以不报错的在server上运行（Node）。
-
-Use `Array.prototype.includes()` on the `typeof` values of both `window` and `document` (globals usually only available in a browser environment unless they were explicitly defined), which will return `true` if one of them is `undefined`.
-`typeof` allows globals to be checked for existence without throwing a `ReferenceError`.
-If both of them are not `undefined`, then the current environment is assumed to be a browser.
-
-对`window`和`docoment`（通常除了显示定义，只在浏览器中才可用的全局变量）的`typeof`值使用`Array.prototype.includes()`，如果它们中有一个是`undefined`则返回`true`。`typeof`运行在不报`ReferenceError`错误的情况下检查全局变量的存在性。如果它们都不是`undefined`，则当前的环境被当做一个浏览器环境。
-
-```[object Object]
-const isBrowser = () => ![typeof window, typeof document].includes('undefined');
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-isBrowser(); // true (browser)
-isBrowser(); // false (Node)
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### mostPerformant
-
-Returns the index of the function in an array of functions which executed the fastest.
-
-返回一个函数数组中执行的最快的函数的序号。
-
-Use `Array.prototype.map()` to generate an array where each value is the total time taken to execute the function after `iterations` times. Use the difference in `performance.now()` values before and after to get the total time in milliseconds to a high degree of accuracy.
-Use `Math.min()` to find the minimum execution time, and return the index of that shortest time which corresponds to the index of the most performant function.
-Omit the second argument, `iterations`, to use a default of 10,000 iterations. The more iterations, the more reliable the result but the longer it will take.
-
-使用`Array.prototype.map()`来生成一个元素是每个函数执行`iterations`次后的总时间的数组。使用执行前后的`performance.now()`差值来获取毫秒为单位的总时间，以获取更高精度。使用`Math.min()`来找到最小执行时间，并把相应最高效的函数的序号（即最短的执行时间的序号）返回。如果不传第二个参数`iterations`，则使用默认的10,000次循环。循环次数越多，结果越可靠，但是花费的时间越长。
-
-```[object Object]
-const mostPerformant = (fns, iterations = 10000) => {
-  const times = fns.map(fn => {
-    const before = performance.now();
-    for (let i = 0; i < iterations; i++) fn();
-    return performance.now() - before;
-  });
-  return times.indexOf(Math.min(...times));
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-mostPerformant([
-  () => {
-    // Loops through the entire array before returning `false`
-    [1, 2, 3, 4, 5, 6, 7, 8, 9, '10'].every(el => typeof el === 'number');
-  },
-  () => {
-    // Only needs to reach index `1` before returning false
-    [1, '2', 3, 4, 5, 6, 7, 8, 9, 10].every(el => typeof el === 'number');
-  }
-]); // 1
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### nthArg
-
-Creates a function that gets the argument at index `n`. If `n` is negative, the nth argument from the end is returned.
-
-创建一个获取序号`n`位置上的参数的函数。如果`n`是负数，则返回倒数第n个参数。
-
-Use `Array.prototype.slice()` to get the desired argument at index `n`.
-
-使用`Array.prototype.slice()`来获取序号`n`位置上的所需的参数。
-
-```[object Object]
-const nthArg = n => (...args) => args.slice(n)[0];
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-const third = nthArg(2);
-third(1, 2, 3); // 3
-third(1, 2); // undefined
-const last = nthArg(-1);
-last(1, 2, 3, 4, 5); // 5
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### objectToQueryString
-
-Returns a query string generated from the key-value pairs of the given object.
-
-Use `Array.prototype.reduce()` on `Object.entries(queryParameters)` to create the query string.
-Determine the `symbol` to be either `?` or `&` based on the `length` of `queryString` and concatenate `val` to `queryString` only if it's a string.
-Return the `queryString` or an empty string when the `queryParameters` are falsy.
-
-```[object Object]
-const objectToQueryString = queryParameters => {
-  return queryParameters
-    ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {
-      const symbol = queryString.length === 0 ? '?' : '&';
-      queryString += typeof val === 'string' ? `${symbol}${key}=${val}` : '';
-      return queryString;
-    }, '')
-    : '';
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-objectToQueryString({ page: '1', size: '2kg', key: undefined }); // '?page=1&size=2kg'
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### parseCookie
-
-Parse an HTTP Cookie header string and return an object of all cookie name-value pairs.
-
-解析一个HTTP Cookie头字符串，并返回一个包含所有cookie键值对的对象。
-
-Use `String.prototype.split(';')` to separate key-value pairs from each other.
-Use `Array.prototype.map()` and `String.prototype.split('=')` to separate keys from values in each pair.
-Use `Array.prototype.reduce()` and `decodeURIComponent()` to create an object with all key-value pairs.
-
-使用`String.prototype.split(';')`来把每个键值对分隔开。使用`Array.prototype.map()`和`String.prototype.split('=')`来从每个对中分隔键和值。使用`Array.prototype.reduce()`和`decodeURIComponent()`来创建一个包含所有键值对的对象。
-
-```[object Object]
-const parseCookie = str =>
-  str
-    .split(';')
-    .map(v => v.split('='))
-    .reduce((acc, v) => {
-      acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
-      return acc;
-    }, {});
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-parseCookie('foo=bar; equation=E%3Dmc%5E2'); // { foo: 'bar', equation: 'E=mc^2' }
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### prettyBytes ![advanced](/advanced.svg)
-
-Converts a number in bytes to a human-readable string.
-
-把一个字节形式的数字转换为一个人类可读字符串。
-
-Use an array dictionary of units to be accessed based on the exponent.
-Use `Number.toPrecision()` to truncate the number to a certain number of digits.
-Return the prettified string by building it up, taking into account the supplied options and whether it is negative or not.
-Omit the second argument, `precision`, to use a default precision of `3` digits.
-Omit the third argument, `addSpace`, to add space between the number and unit by default.
-
-使用一个根据指数来判断单位的字典数组。使用`Number.toPrecision()`来把数字截断为一个特定的位数。根据提供的选项还有它是否为负数来创建一个易读的字符串并返回。如果不传第二个参数`precision`，则使用`3`位精度作为默认值。如果不传第三个参数`addSpace`，则默认在数字和单位中间添加一个空格。
-
-```[object Object]
-const prettyBytes = (num, precision = 3, addSpace = true) => {
-  const UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-  if (Math.abs(num) < 1) return num + (addSpace ? ' ' : '') + UNITS[0];
-  const exponent = Math.min(Math.floor(Math.log10(num < 0 ? -num : num) / 3), UNITS.length - 1);
-  const n = Number(((num < 0 ? -num : num) / 1000 ** exponent).toPrecision(precision));
-  return (num < 0 ? '-' : '') + n + (addSpace ? ' ' : '') + UNITS[exponent];
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-prettyBytes(1000); // "1 KB"
-prettyBytes(-27145424323.5821, 5); // "-27.145 GB"
-prettyBytes(123456789, 3, false); // "123MB"
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### randomHexColorCode
-
-Generates a random hexadecimal color code.
-
-生成一个随机的十六进制颜色码。
-
-Use `Math.random` to generate a random 24-bit(6x4bits) hexadecimal number. Use bit shifting and then convert it to an hexadecimal String using `toString(16)`.
-
-使用`Math.random`来生成一个随机的24-bit(6x4bits)十六进制数字。使用位移，然后使用`toString(16)`把它转换为一个十六进制的String。
-
-```[object Object]
-const randomHexColorCode = () => {
-  let n = (Math.random() * 0xfffff * 1000000).toString(16);
-  return '#' + n.slice(0, 6);
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-randomHexColorCode(); // "#e34155"
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### RGBToHex
-
-Converts the values of RGB components to a color code.
-
-把一个RGB组合值转换为颜色码。
-
-Convert given RGB parameters to hexadecimal string using bitwise left-shift operator (`<<`) and `toString(16)`, then `String.padStart(6,'0')` to get a 6-digit hexadecimal value.
-
-使用向左位移操作符(`<<`)和`toString(16)`来把RGB参数转换为十六进制字符串，然后使用`String.padStart(6,'0')`来获取一个6位的十六进制值。
-
-```[object Object]
-const RGBToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-RGBToHex(255, 165, 1); // 'ffa501'
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### serializeCookie
-
-Serialize a cookie name-value pair into a Set-Cookie header string.
-
-把一个cookie键值对序列化为一个Set-Cookie HTTP头字符串。
-
-Use template literals and `encodeURIComponent()` to create the appropriate string.
-
-使用模板字面量和`encodeURIComponent()`来创建一个合适的字符串。
-
-```[object Object]
-const serializeCookie = (name, val) => `${encodeURIComponent(name)}=${encodeURIComponent(val)}`;
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-serializeCookie('foo', 'bar'); // 'foo=bar'
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### timeTaken
-
-Measures the time taken by a function to execute.
-
-测量函数执行所花费的时间。
-
-Use `console.time()` and `console.timeEnd()` to measure the difference between the start and end times to determine how long the callback took to execute.
-
-使用`console.time()`和`console.timeEnd()`来测量开始和结束时间的差值来确定函数花费了多少时间来执行。
-
-```[object Object]
-const timeTaken = callback => {
-  console.time('timeTaken');
-  const r = callback();
-  console.timeEnd('timeTaken');
-  return r;
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-timeTaken(() => Math.pow(2, 10)); // 1024, (logged): timeTaken: 0.02099609375ms
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### toCurrency
-
-Take a number and return specified currency formatting.
-
-接受一个数字，返回指定的货币化格式。
-
-Use `Intl.NumberFormat` to enable country / currency sensitive formatting.
-
-使用`Intl.NumberFormat`来打开国家/货币（country / currenc）敏感格式。
-
-```[object Object]
-const toCurrency = (n, curr, LanguageFormat = undefined) =>
-  Intl.NumberFormat(LanguageFormat, { style: 'currency', currency: curr }).format(n);
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-toCurrency(123456.789, 'EUR'); // €123,456.79  | currency: Euro | currencyLangFormat: Local
-toCurrency(123456.789, 'USD', 'en-us'); // $123,456.79  | currency: US Dollar | currencyLangFormat: English (United States)
-toCurrency(123456.789, 'USD', 'fa'); // ۱۲۳٬۴۵۶٫۷۹ ؜$ | currency: US Dollar | currencyLangFormat: Farsi
-toCurrency(322342436423.2435, 'JPY'); // ¥322,342,436,423 | currency: Japanese Yen | currencyLangFormat: Local
-toCurrency(322342436423.2435, 'JPY', 'fi'); // 322 342 436 423 ¥ | currency: Japanese Yen | currencyLangFormat: Finnish
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### toDecimalMark
-
-Use `toLocaleString()` to convert a float-point arithmetic to the [Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark) form. It makes a comma separated string from a number.
-
-使用`toLocaleString()`来把一个浮点数转换为[Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark)格式。它从数字创建一个用逗号分隔的字符串。
-
- ```[object Object]
-const toDecimalMark = num => num.toLocaleString('en-US');
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-toDecimalMark(12305030388.9087); // "12,305,030,388.909"
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### toOrdinalSuffix
-
-Adds an ordinal suffix to a number.
-
-给一个数字添加一个序数后缀。
-
-Use the modulo operator (`%`) to find values of single and tens digits.
-Find which ordinal pattern digits match.
-If digit is found in teens pattern, use teens ordinal.
-
-使用取模操作符(`%`)来找到个位和十位。找到它匹配哪个序数标识。如果某一位在十位数标志中找到，则使用十位数序数后缀。
-
-```[object Object]
-const toOrdinalSuffix = num => {
-  const int = parseInt(num),
-    digits = [int % 10, int % 100],
-    ordinals = ['st', 'nd', 'rd', 'th'],
-    oPattern = [1, 2, 3, 4],
-    tPattern = [11, 12, 13, 14, 15, 16, 17, 18, 19];
-  return oPattern.includes(digits[0]) && !tPattern.includes(digits[1])
-    ? int + ordinals[digits[0] - 1]
-    : int + ordinals[3];
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-toOrdinalSuffix('123'); // "123rd"
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### validateNumber
-
-Returns `true` if the given value is a number, `false` otherwise.
-
-如果给出的值是一个数字则返回`true`，否则返回`false`。
-
-Use `!isNaN()` in combination with `parseFloat()` to check if the argument is a number.
-Use `isFinite()` to check if the number is finite.
-Use `Number()` to check if the coercion holds.
-
-使用`!isNaN()`和`parseFloat()`来检查这个参数是否是一个数字。使用`isFinite()`来检查这个数字是否是有穷尽的。使用`Number()`来检查是否强制持有（是否为转换后为`Number`？）。
-
-```[object Object]
-const validateNumber = n => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) == n;
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-validateNumber('10'); // true
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
-### yesNo
-
-Returns `true` if the string is `y`/`yes` or `false` if the string is `n`/`no`.
-
-如果一个字符串是`y`/`yes`则返回`true`，或者是`n`/`no`则返回`false`。
-
-Use `RegExp.test()` to check if the string evaluates to `y/yes` or `n/no`.
-Omit the second argument, `def` to set the default answer as `no`.
-
-使用`RegExp.test()`来检查这个字符串是否是`y/yes`或者`n/no`。如果不传第二个参数`def`，则把默认的回答设置为`no`。
-
-```[object Object]
-const yesNo = (val, def = false) =>
-  /^(y|yes)$/i.test(val) ? true : /^(n|no)$/i.test(val) ? false : def;
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-yesNo('Y'); // true
-yesNo('yes'); // true
-yesNo('No'); // false
-yesNo('Foo', true); // true
 ```
 </details>
 

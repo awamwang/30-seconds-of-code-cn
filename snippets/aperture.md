@@ -10,9 +10,7 @@ If `n` is greater than the length of `arr`, return an empty array.
 
 ```js
 const aperture = (n, arr) =>
-  n > arr.length
-    ? []
-    : arr.slice(n - 1).map((v, i) => [...arr.slice(i, i + n - 1), v]);
+  n > arr.length ? [] : arr.slice(n - 1).map((v, i) => [...arr.slice(i, i + n - 1), v]);
 ```
 
 ```js
