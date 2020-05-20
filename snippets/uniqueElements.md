@@ -3,13 +3,13 @@ title: uniqueElements
 tags: array,beginner
 ---
 
-Returns all unique values of an array.
+Returns all unique values in an array.
 
 返回数组中所有唯一的元素。
 
-Use ES6 `Set` and the `...rest` operator to discard all duplicated values.
+Create a `Set` from the given array to discard duplicated values, then use the spread operator (`...`) to convert it back to an array.
 
-使用ES6的`Set`和`...rest`操作符来去除所有重复元素。
+从给出的数组创建一个`Set`，用来去除重复值，然后使用展开操作符(`...`)来把它转换回数组形式。
 
 ```js
 const uniqueElements = arr => [...new Set(arr)];

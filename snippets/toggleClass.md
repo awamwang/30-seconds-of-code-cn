@@ -3,7 +3,7 @@ title: toggleClass
 tags: browser,beginner
 ---
 
-Toggle a class for an element.
+Toggles a class for an HTML element.
 
 开关一个元素的class。
 
@@ -16,5 +16,6 @@ const toggleClass = (el, className) => el.classList.toggle(className);
 ```
 
 ```js
-toggleClass(document.querySelector('p.special'), 'special'); // The paragraph will not have the 'special' class anymore
+toggleClass(document.querySelector('p.special'), 'special');
+// The paragraph will not have the 'special' class anymore
 ```

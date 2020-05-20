@@ -11,20 +11,21 @@ Creates an object with the same values as the provided object and keys generated
 
 用和给出的对象相同的值和对每个键应用给出的函数后的新键，创建一个对象。
 
-Use `Object.keys(obj)` to iterate over the object's keys. 
+Use `Object.keys(obj)` to iterate over the object's keys.
 Use `Array.prototype.reduce()` to create a new object with the same values and mapped keys using `fn`.
 
 使用`Object.keys(obj)`来遍历对象的键列表。使用`Array.prototype.reduce()`来用相同的值和用`fn`映射后的键来创建一个新对象。
 
 ```js
-const deepMapKeys = (obj, f) =>
+const deepMapKeys = (obj, fn) =>
   Array.isArray(obj)
-    ? obj.map(val => deepMapKeys(val, f))
+    ? obj.map(val => deepMapKeys(val, fn))
     : typeof obj === 'object'
     ? Object.keys(obj).reduce((acc, current) => {
+        const key = fn(current);
         const val = obj[current];
-        acc[f(current)] =
-          val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
+        acc[key] =
+          val !== null && typeof val === 'object' ? deepMapKeys(val, fn) : val;
         return acc;
       }, {})
     : obj;

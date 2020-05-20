@@ -1,6 +1,6 @@
 ---
 title: arrayToCSV
-tags: array,string,utility,intermediate
+tags: array,string,intermediate
 ---
 
 Converts a 2D array to a comma-separated values (CSV) string.
@@ -21,19 +21,7 @@ const arrayToCSV = (arr, delimiter = ',') =>
 ```
 
 ```js
-arrayToCSV([
-  ['a', 'b'],
-  ['c', 'd']
-]); // '"a","b"\n"c","d"'
-arrayToCSV(
-  [
-    ['a', 'b'],
-    ['c', 'd']
-  ],
-  ';'
-); // '"a";"b"\n"c";"d"'
-arrayToCSV([
-  ['a', '"b" great'],
-  ['c', 3.1415]
-]); // '"a","""b"" great"\n"c",3.1415'
+arrayToCSV([['a', 'b'], ['c', 'd']]); // '"a","b"\n"c","d"'
+arrayToCSV([['a', 'b'], ['c', 'd']], ';'); // '"a";"b"\n"c";"d"'
+arrayToCSV([['a', '"b" great'], ['c', 3.1415]]); // '"a","""b"" great"\n"c",3.1415'
 ```

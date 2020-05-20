@@ -3,7 +3,7 @@ title: remove
 tags: array,intermediate
 ---
 
-Removes elements from an array for which the given function returns `false`.
+Mutates an array by removing elements for which the given function returns `false`.
 
 把数组中给定函数作用后返回`false`的元素删除。
 

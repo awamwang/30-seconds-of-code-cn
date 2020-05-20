@@ -7,12 +7,12 @@ Creates an array of key-value pair arrays from an object.
 
 从一个对象创建一个键值对数组。
 
-Use `Object.keys()` and `Array.prototype.map()` to iterate over the object's keys and produce an array with key-value pairs.
+Use `Object.entries()` to get an array of key-value pair arrays from the given object.
 
-使用`Object.keys()`和`Array.prototype.map()`来遍历对象的键来生成一个键值对数组。
+使用`Object.entries()`来从给出的对象中获取一个“键-值”对数组。
 
 ```js
-const objectToPairs = obj => Object.keys(obj).map(k => [k, obj[k]]);
+const objectToPairs = obj => Object.entries(obj);
 ```
 
 ```js
