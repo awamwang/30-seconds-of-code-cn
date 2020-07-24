@@ -2,7 +2,7 @@
 
 # 30 seconds of code
 
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/30-seconds/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Known Vulnerabilities](https://snyk.io/test/github/30-seconds/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/30-seconds/30-seconds-of-code?targetFile=package.json) [![Travis Build](https://travis-ci.org/keepgoingwm/30-seconds-of-code-cn.svg?branch=master)](https://travis-ci.org/keepgoingwm/30-seconds-of-code) <br/>
+[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/30-seconds/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Known Vulnerabilities](https://snyk.io/test/github/30-seconds/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/30-seconds/30-seconds-of-code?targetFile=package.json) [![Build Status](https://www.travis-ci.com/keepgoingwm/vue-autonumeric-directive.svg?branch=master)](https://www.travis-ci.com/keepgoingwm/vue-autonumeric-directive) <br/>
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 > Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
@@ -118,6 +118,7 @@ _30s.average(1, 2, 3);
 * [`initializeArrayWithRangeRight`](#initializearraywithrangeright)
 * [`initializeArrayWithValues`](#initializearraywithvalues)
 * [`initializeNDArray`](#initializendarray)
+* [`insertAt`](#insertat)
 * [`intersection`](#intersection)
 * [`intersectionBy`](#intersectionby)
 * [`intersectionWith`](#intersectionwith)
@@ -125,6 +126,7 @@ _30s.average(1, 2, 3);
 * [`isSorted`](#issorted)
 * [`join`](#join)
 * [`JSONtoCSV`](#jsontocsv-)
+* [`juxt`](#juxt-)
 * [`last`](#last)
 * [`longestItem`](#longestitem)
 * [`mapObject`](#mapobject)
@@ -136,6 +138,7 @@ _30s.average(1, 2, 3);
 * [`nthElement`](#nthelement)
 * [`offset`](#offset)
 * [`partition`](#partition)
+* [`partitionBy`](#partitionby-)
 * [`permutations`](#permutations-)
 * [`pull`](#pull)
 * [`pullAtIndex`](#pullatindex-)
@@ -216,6 +219,7 @@ _30s.average(1, 2, 3);
 * [`insertBefore`](#insertbefore)
 * [`isBrowser`](#isbrowser)
 * [`isBrowserTabFocused`](#isbrowsertabfocused)
+* [`listenOnce`](#listenonce)
 * [`nodeListToArray`](#nodelisttoarray)
 * [`observeMutations`](#observemutations-)
 * [`off`](#off)
@@ -467,6 +471,7 @@ _30s.average(1, 2, 3);
 * [`decapitalize`](#decapitalize)
 * [`escapeHTML`](#escapehtml)
 * [`escapeRegExp`](#escaperegexp)
+* [`expandTabs`](#expandtabs)
 * [`extendHex`](#extendhex)
 * [`fromCamelCase`](#fromcamelcase)
 * [`hexToRGB`](#hextorgb-)
@@ -1252,14 +1257,14 @@ Executes a provided function once for each array element, starting from the arra
 
 从数组中最后一个元素开始，对数组中每个元素执行给定的函数。
 
-Use `Array.prototype.slice(0)` to clone the given array, `Array.prototype.reverse()` to reverse it and `Array.prototype.forEach()` to iterate over the reversed array.
+Use `Array.prototype.slice()` to clone the given array, `Array.prototype.reverse()` to reverse it and `Array.prototype.forEach()` to iterate over the reversed array.
 
-使用`Array.prototype.slice(0)`来克隆给定的数组，使用`Array.prototype.reverse()`来翻转数组，使用`Array.prototype.forEach()`遍历翻转后的数组。
+使用`Array.prototype.slice()`来克隆给定的数组，使用`Array.prototype.reverse()`来翻转数组，使用`Array.prototype.forEach()`遍历翻转后的数组。
 
 ```[object Object]
 const forEachRight = (arr, callback) =>
   arr
-    .slice(0)
+    .slice()
     .reverse()
     .forEach(callback);
 ```
@@ -1613,6 +1618,33 @@ initializeNDArray(5, 2, 2, 2); // [[[5,5],[5,5]],[[5,5],[5,5]]]
 
 <br>[⬆ Back to top](#contents)
 
+### insertAt
+
+Mutates the original array to insert the given values at the specified index.
+
+Use `Array.prototype.splice()` with an appropriate index and a delete count of `0`, spreading the given values to be inserted.
+
+```[object Object]
+const insertAt = (arr, i, ...v) => {
+  arr.splice(i + 1, 0, ...v);
+  return arr;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+let myArray = [1, 2, 3, 4];
+insertAt(myArray, 2, 5); // myArray = [1, 2, 3, 5, 4]
+
+let otherArray = [2, 10];
+insertAt(otherArray, 0, 4, 6, 8); // otherArray = [2, 4, 6, 8, 10]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### intersection
 
 Returns a list of elements that exist in both arrays.
@@ -1824,6 +1856,36 @@ const JSONtoCSV = (arr, columns, delimiter = ',') =>
 ```[object Object]
 JSONtoCSV([{ a: 1, b: 2 }, { a: 3, b: 4, c: 5 }, { a: 6 }, { b: 7 }], ['a', 'b']); // 'a,b\n"1","2"\n"3","4"\n"6",""\n"","7"'
 JSONtoCSV([{ a: 1, b: 2 }, { a: 3, b: 4, c: 5 }, { a: 6 }, { b: 7 }], ['a', 'b'], ';'); // 'a;b\n"1";"2"\n"3";"4"\n"6";""\n"";"7"'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### juxt ![advanced](/advanced.svg)
+
+Takes several functions as argument and returns a function that is the juxtaposition of those functions.
+
+Use `Array.prototype.map()` to return a `fn` that can take a variable number of `args`.
+When `fn` is called, return an array containing the result of applying each `fn` to the `args`.
+
+```[object Object]
+const juxt = (...fns) => (...args) => [...fns].map(fn => [...args].map(fn));
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+juxt(
+  x => x + 1,
+  x => x - 1,
+  x => x * 10
+)(1, 2, 3); // [[2,3,4],[0,1,2],[10,20,30]]
+
+juxt(
+  s => s.length,
+  s => s.split(' ').join('-')
+)('30 seconds of code'); // [[18],['30-seconds-of-code']]
 ```
 </details>
 
@@ -2131,6 +2193,38 @@ const users = [
   { user: 'fred', age: 40, active: true }
 ];
 partition(users, o => o.active); // [[{ 'user': 'fred',    'age': 40, 'active': true }],[{ 'user': 'barney',  'age': 36, 'active': false }]]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### partitionBy ![advanced](/advanced.svg)
+
+Applies `fn` to each value in `arr`, splitting it each time `fn` returns a new value.
+
+Use `Array.prototype.reduce()` with an accumulator object that will hold the resulting array and the last value returned from `fn`.
+Use `Array.prototype.push()` to add each value in `arr` to the appropriate partition in the accumulator array.
+
+```[object Object]
+const partitionBy = (arr, fn) =>
+  arr.reduce(
+    ({ res, last }, v, i, a) => {
+      const next = fn(v, i, a);
+      if (next !== last) res.push([v]);
+      else res[res.length - 1].push(v);
+      return { res, last: next };
+    },
+    { res: [] }
+  ).res;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const numbers = [1, 1, 3, 3, 4, 5, 5, 5];
+partitionBy(numbers, n => n % 2 === 0); // [[1, 1, 3, 3], [4], [5, 5, 5]]
+partitionBy(numbers, n => n); // [[1, 1], [3, 3], [4], [5, 5, 5]]
 ```
 </details>
 
@@ -4402,6 +4496,37 @@ isBrowserTabFocused(); // true
 
 <br>[⬆ Back to top](#contents)
 
+### listenOnce
+
+Adds an event listener to an element that will only run the callback the first time the event is triggered.
+
+Use `EventTarget.addEventListener()` to add an event listener to an element, storing the reference in a variable.
+Use  a condition to call `fn` only the first time the listener is triggered. 
+
+```[object Object]
+const listenOnce = (el, evt, fn) => {
+  let fired = false;
+  el.addEventListener(evt, e => {
+    if (!fired) fn(e);
+    fired = true;
+  });
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+listenOnce(
+  document.getElementById('my-id),
+  'click',
+  () => console.log('Hello world')
+); // 'Hello world' will only be logged on the first click
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### nodeListToArray
 
 Converts a `NodeList` to an array.
@@ -4503,11 +4628,15 @@ Adds an event listener to an element with the ability to use event delegation.
 
 给一个元素添加一个带有事件委托能力的事件监听。
 
-Use `EventTarget.addEventListener()` to add an event listener to an element. If there is a `target` property supplied to the options object, ensure the event target matches the target specified and then invoke the callback by supplying the correct `this` context.
+Use `EventTarget.addEventListener()` to add an event listener to an element.
+If there is a `target` property supplied to the options object, ensure the event target matches the target specified and then invoke the callback by supplying the correct `this` context.
 Returns a reference to the custom delegator function, in order to be possible to use with [`off`](#off).
 Omit `opts` to default to non-delegation behavior and event bubbling.
 
-使用`EventTarget.addEventListener()`给指定的元素添加一个事件监听。如果options对象中有一个`target`属性，先确保事件目标与给定的目标匹配，然后再提供正确`this`上下文给回调函数，并调用它。返回自定义委托函数的一个引用，用来使用 [`off`](#off)来删除监听时使用。`opts`参数的默认值是不启动委托行为（non-delegation）和事件冒泡传递（非捕获）。
+使用`EventTarget.addEventListener()`给指定的元素添加一个事件监听。
+如果options(`opts`)对象中有一个`target`属性，先确保事件目标与给定的目标匹配，然后再提供正确`this`上下文给回调函数，并调用它。
+返回自定义委托函数的一个引用，以便可以使用 [`off`](#off)（取消监听）。
+不传`opts`参数，则默认不启用委托行为（non-delegation）和事件冒泡传递（非捕获）。
 
 ```[object Object]
 const on = (el, evt, fn, opts = {}) => {
@@ -7523,7 +7652,7 @@ isOdd(3); // true
 
 Returns `true` if the given number is a power of `2`, `false` otherwise.
 
-Use the bitwise binary AND operator (`&`) to determine if `n is a power of `2. 
+Use the bitwise binary AND operator (`&`) to determine if `n` is a power of `2`. 
 Additionally, check that `n` is not falsy.
 
 ```[object Object]
@@ -8722,14 +8851,14 @@ Writes a JSON object to a file.
 
 把一个JSON对象写到文件中。
 
-Use `fs.writeFile()`, template literals and `JSON.stringify()` to write a `json` object to a `.json` file.
+Use `fs.writeFileSync()`, template literals and `JSON.stringify()` to write a `json` object to a `.json` file.
 
-使用`fs.writeFile()`、模板字面量和`JSON.stringify()`来把这个`json`对象写到一个`.json`文件中。
+使用`fs.writeFileSync()`、模板字面量和`JSON.stringify()`来把这个`json`对象写到一个`.json`文件中。
 
 ```[object Object]
 const fs = require('fs');
 const JSONToFile = (obj, filename) =>
-  fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2));
+  fs.writeFileSync(`${filename}.json`, JSON.stringify(obj, null, 2));
 ```
 
 <details>
@@ -8935,7 +9064,7 @@ Finally, use `Object.freeze()` to freeze the given object.
 ```[object Object]
 const deepFreeze = obj => {
   Object.keys(obj).forEach(prop => {
-    if (obj[prop] === 'object' && !Object.isFrozen(obj[prop])) deepFreeze(v[prop]);
+    if (typeof obj[prop] === 'object' && !Object.isFrozen(obj[prop])) deepFreeze(obj[prop]);
   });
   return Object.freeze(obj);
 };
@@ -10436,6 +10565,26 @@ const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 ```[object Object]
 escapeRegExp('(test)'); // \\(test\\)
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### expandTabs
+
+Convert tabs to spaces, where each tab corresponds to `count` spaces.
+
+Use `String.prototype.replace()` with a regular expression and `String.prototype.repeat()` to replace each tab character with `count` spaces.
+
+```[object Object]
+const expandTabs = (str, count) => str.replace(/\t/g, ' '.repeat(count));
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+expandTabs('\t\tlorem', 3); // '      lorem'
 ```
 </details>
 

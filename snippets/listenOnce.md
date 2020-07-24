@@ -11,7 +11,7 @@ Use  a condition to call `fn` only the first time the listener is triggered.
 ```js
 const listenOnce = (el, evt, fn) => {
   let fired = false;
-  el.addEventListener(evt, (e) => {
+  el.addEventListener(evt, e => {
     if (!fired) fn(e);
     fired = true;
   });
@@ -19,6 +19,7 @@ const listenOnce = (el, evt, fn) => {
 ```
 
 ```js
+
 listenOnce(
   document.getElementById('my-id),
   'click',
