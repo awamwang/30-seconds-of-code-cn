@@ -20,6 +20,7 @@ const listenOnce = (el, evt, fn) => {
 
 ```js
 
+
 listenOnce(
   document.getElementById('my-id),
   'click',
