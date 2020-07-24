@@ -21,6 +21,6 @@ juxt(
 
 juxt(
   s => s.length,
-  s => s.split(" ").join("-")
-)("30 seconds of code"); // [[18],['30-seconds-of-code']]
+  s => s.split(' ').join('-')
+)('30 seconds of code'); // [[18],['30-seconds-of-code']]
 ```
