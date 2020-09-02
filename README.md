@@ -200,11 +200,14 @@ _30s.average(1, 2, 3);
 * [`currentURL`](#currenturl)
 * [`detectDeviceType`](#detectdevicetype)
 * [`elementContains`](#elementcontains)
+* [`elementIsFocused`](#elementisfocused)
 * [`elementIsVisibleInViewport`](#elementisvisibleinviewport-)
 * [`formToObject`](#formtoobject)
 * [`getBaseURL`](#getbaseurl)
 * [`getImages`](#getimages)
 * [`getScrollPosition`](#getscrollposition)
+* [`getSelectedText`](#getselectedtext)
+* [`getSiblings`](#getsiblings)
 * [`getStyle`](#getstyle)
 * [`getURLParameters`](#geturlparameters)
 * [`hasClass`](#hasclass)
@@ -256,6 +259,7 @@ _30s.average(1, 2, 3);
 * [`getColonTimeFromDate`](#getcolontimefromdate)
 * [`getDaysDiffBetweenDates`](#getdaysdiffbetweendates)
 * [`getMeridiemSuffixOfInteger`](#getmeridiemsuffixofinteger)
+* [`getMonthsDiffBetweenDates`](#getmonthsdiffbetweendates)
 * [`isAfterDate`](#isafterdate)
 * [`isBeforeDate`](#isbeforedate)
 * [`isLeapYear`](#isleapyear)
@@ -403,6 +407,7 @@ _30s.average(1, 2, 3);
 * [`isWritableStream`](#iswritablestream)
 * [`JSONToFile`](#jsontofile)
 * [`readFileLines`](#readfilelines)
+* [`requireUncached`](#requireuncached-)
 * [`untildify`](#untildify)
 * [`UUIDGeneratorNode`](#uuidgeneratornode)
 
@@ -473,6 +478,7 @@ _30s.average(1, 2, 3);
 * [`escapeRegExp`](#escaperegexp)
 * [`expandTabs`](#expandtabs)
 * [`extendHex`](#extendhex)
+* [`formatNumber`](#formatnumber)
 * [`fromCamelCase`](#fromcamelcase)
 * [`hexToRGB`](#hextorgb-)
 * [`indentString`](#indentstring)
@@ -517,9 +523,11 @@ _30s.average(1, 2, 3);
 * [`getType`](#gettype)
 * [`is`](#is)
 * [`isArrayLike`](#isarraylike)
+* [`isAsyncFunction`](#isasyncfunction)
 * [`isBoolean`](#isboolean)
 * [`isEmpty`](#isempty)
 * [`isFunction`](#isfunction)
+* [`isGeneratorFunction`](#isgeneratorfunction)
 * [`isNil`](#isnil)
 * [`isNull`](#isnull)
 * [`isNumber`](#isnumber)
@@ -841,6 +849,7 @@ const countBy = (arr, fn) =>
 ```[object Object]
 countBy([6.1, 4.2, 6.3], Math.floor); // {4: 1, 6: 2}
 countBy(['one', 'two', 'three'], 'length'); // {3: 2, 5: 1}
+countBy([{ count: 5 }, { count: 10 }, { count: 5 }], x => x.count); // {5: 2, 10: 1}
 ```
 </details>
 
@@ -1694,6 +1703,11 @@ const intersectionBy = (a, b, fn) => {
 
 ```[object Object]
 intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [2.1]
+intersectionBy(
+  [{ title: 'Apple' }, { title: 'Orange' }],
+  [{ title: 'Orange' }, { title: 'Melon' }],
+  x => x.title
+); // [{ title: 'Orange' }]
 ```
 </details>
 
@@ -2924,6 +2938,11 @@ const symmetricDifferenceBy = (a, b, fn) => {
 
 ```[object Object]
 symmetricDifferenceBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [ 1.2, 3.4 ]
+symmetricDifferenceBy(
+  [{ id: 1 }, { id: 2 }, { id: 3 }],
+  [{ id: 1 }, { id: 2 }, { id: 4 }],
+  i => i.id
+); // [{ id: 3 }, { id: 4 }]
 ```
 </details>
 
@@ -3182,6 +3201,7 @@ const unionBy = (a, b, fn) => {
 
 ```[object Object]
 unionBy([2.1], [1.2, 2.3], Math.floor); // [2.1, 1.2]
+unionBy([{ id: 1 }, { id: 2 }], [{ id: 2 }, { id: 3 }], x => x.id); // [{ id: 1 }, { id: 2 }, { id: 3 }]
 ```
 </details>
 
@@ -3911,6 +3931,26 @@ elementContains(document.querySelector('body'), document.querySelector('body'));
 
 <br>[⬆ Back to top](#contents)
 
+### elementIsFocused
+
+Returns `true` if the given element is focused, `false` otherwise.
+
+Use `document.activeElement` to determine if the given element is focused.
+
+```[object Object]
+const elementIsFocused = el => el === document.activeElement;
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+elementIsFocused(el); // true if the element is focused
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### elementIsVisibleInViewport ![advanced](/advanced.svg)
 
 Returns `true` if the element specified is visible in the viewport, `false` otherwise.
@@ -4046,6 +4086,47 @@ const getScrollPosition = (el = window) => ({
 
 ```[object Object]
 getScrollPosition(); // {x: 0, y: 200}
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### getSelectedText
+
+Get the currently selected text.
+
+Use `window.getSelection()` and `Selection.prototype.toString()` to get the currently selected text.
+
+```[object Object]
+const getSelectedText = () => window.getSelection().toString();
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+getSelectedText(); // 'Lorem ipsum'
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### getSiblings
+
+Returns an array containing all the siblings of the given element.
+
+Use `Node.prototype.parentNode` and `Node.prototype.childNodes` to get a `NodeList` of all the elements contained in the element's parent.
+Use the spread operator (`...`) and `Array.prototype.filter()` to convert to an array and remove the given element from it.
+
+```[object Object]
+const getSiblings = el => [...el.parentNode.childNodes].filter(node => node !== el);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+getSiblings(document.querySelector('head')); // ['body']
 ```
 </details>
 
@@ -4500,28 +4581,17 @@ isBrowserTabFocused(); // true
 
 Adds an event listener to an element that will only run the callback the first time the event is triggered.
 
-Use `EventTarget.addEventListener()` to add an event listener to an element, storing the reference in a variable.
-Use  a condition to call `fn` only the first time the listener is triggered. 
+Use `EventTarget.addEventListener()` to add an event listener to an element, using `{ once: true }` as options to only run the given callback once.
 
 ```[object Object]
-const listenOnce = (el, evt, fn) => {
-  let fired = false;
-  el.addEventListener(evt, e => {
-    if (!fired) fn(e);
-    fired = true;
-  });
-};
+const listenOnce = (el, evt, fn) => el.addEventListener(evt, fn, { once: true });
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```[object Object]
-listenOnce(
-  document.getElementById('my-id),
-  'click',
-  () => console.log('Hello world')
-); // 'Hello world' will only be logged on the first click
+listenOnce(document.getElementById('my-id'), 'click', () => console.log('Hello world')); // 'Hello world' will only be logged on the first click
 ```
 </details>
 
@@ -5398,6 +5468,32 @@ getMeridiemSuffixOfInteger(0); // "12am"
 getMeridiemSuffixOfInteger(11); // "11am"
 getMeridiemSuffixOfInteger(13); // "1pm"
 getMeridiemSuffixOfInteger(25); // "1pm"
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### getMonthsDiffBetweenDates
+
+Returns the difference (in months) between two dates.
+
+Use `Date.prototype.getFullYear()` and `Date.prototype.getMonth()` to calculate the difference (in months) between two `Date` objects.
+
+```[object Object]
+const getMonthsDiffBetweenDates = (dateInitial, dateFinal) =>
+  Math.max(
+    (dateFinal.getFullYear() - dateInitial.getFullYear()) * 12 +
+      dateFinal.getMonth() -
+      dateInitial.getMonth(),
+    0
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+getMonthsDiffBetweenDates(new Date('2017-12-13'), new Date('2018-04-29')); // 4
 ```
 </details>
 
@@ -8910,6 +9006,30 @@ console.log(arr); // ['line1', 'line2', 'line3']
 
 <br>[⬆ Back to top](#contents)
 
+### requireUncached ![advanced](/advanced.svg)
+
+Loads a module after removing it from the cache (if exists).
+
+Use `delete` to remove the module from the cache (if exists).
+Use `require()` to load the module again.
+
+```[object Object]
+const requireUncached = module => {
+  delete require.cache[require.resolve(module)];
+  return require(module);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+const fs = requireUncached('fs'); // 'fs' will be loaded fresh every time
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### untildify
 
 Converts a tilde path to an absolute path.
@@ -9364,8 +9484,9 @@ You should always omit the second argument, `prefix`, unless you want every key 
 ```[object Object]
 const flattenObject = (obj, prefix = '') =>
   Object.keys(obj).reduce((acc, k) => {
-    const pre = prefix.length ? prefix + '.' : '';
-    if (typeof obj[k] === 'object') Object.assign(acc, flattenObject(obj[k], pre + k));
+    const pre = prefix.length ? `${prefix}.` : '';
+    if (typeof obj[k] === 'object' && obj[k] !== null && Object.keys(obj[k]).length > 0)
+      Object.assign(acc, flattenObject(obj[k], pre + k));
     else acc[pre + k] = obj[k];
     return acc;
   }, {});
@@ -10622,6 +10743,27 @@ extendHex('05a'); // '#0055aa'
 
 <br>[⬆ Back to top](#contents)
 
+### formatNumber
+
+Returns a number using the local number format order.
+
+Use `Number.prototype.toLocaleString()` to convert a number to using the local number format separators.
+
+```[object Object]
+const formatNumber = num => num.toLocaleString();
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+formatNumber(123456); // '123,456' in `en-US`
+formatNumber(15675436903); // '15.675.436.903' in `de-DE`
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### fromCamelCase
 
 Converts a string from camelcase.
@@ -11681,6 +11823,27 @@ isArrayLike(null); // false
 
 <br>[⬆ Back to top](#contents)
 
+### isAsyncFunction
+
+Checks if the given argument is an `async` function.
+
+Use `Object.prototype.toString()` and `Function.call()` and check if the result is `'[object AsyncFunction]'`.
+
+```[object Object]
+const isAsyncFunction = val => Object.prototype.toString.call(val) === '[object AsyncFunction]';
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+isAsyncFunction(function() {}); // false
+isAsyncFunction(async function() {}); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### isBoolean
 
 Checks if the given argument is a native boolean element.
@@ -11757,6 +11920,28 @@ const isFunction = val => typeof val === 'function';
 ```[object Object]
 isFunction('x'); // false
 isFunction(x => x); // true
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### isGeneratorFunction
+
+Checks if the given argument is a generator function.
+
+Use `Object.prototype.toString()` and `Function.call()` and check if the result is `'[object GeneratorFunction]'`.
+
+```[object Object]
+const isGeneratorFunction = val =>
+  Object.prototype.toString.call(val) === '[object GeneratorFunction]';
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+isGeneratorFunction(function() {}); // false
+isGeneratorFunction(function*() {}); // true
 ```
 </details>
 

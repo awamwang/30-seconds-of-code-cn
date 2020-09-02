@@ -9,8 +9,7 @@ Use `Node.prototype.parentNode` and `Node.prototype.childNodes` to get a `NodeLi
 Use the spread operator (`...`) and `Array.prototype.filter()` to convert to an array and remove the given element from it.
 
 ```js
-const getSiblings = el =>
-  [...el.parentNode.childNodes].filter(node => node !== el);
+const getSiblings = el => [...el.parentNode.childNodes].filter(node => node !== el);
 ```
 
 ```js

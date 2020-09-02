@@ -8,8 +8,7 @@ Checks if the given argument is an `async` function.
 Use `Object.prototype.toString()` and `Function.call()` and check if the result is `'[object AsyncFunction]'`.
 
 ```js
-const isAsyncFunction = val =>
-  Object.prototype.toString.call(val) === '[object AsyncFunction]';
+const isAsyncFunction = val => Object.prototype.toString.call(val) === '[object AsyncFunction]';
 ```
 
 ```js
