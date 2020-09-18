@@ -110,7 +110,6 @@ const readSnippets = snippetsPath => {
       };
     }
   } catch (err) {
-    console.log(`${red('ERROR!')} During snippet loading: ${err}`);
     process.exit(1);
   }
   return snippets;

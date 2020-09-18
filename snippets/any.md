@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2020-09-17 22:51:14
- * @LastEditTime: 2020-09-17 22:55:55
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: /30-seconds-of-code-cn/snippets/any.md
--->
 ---
 title: any
 tags: array,function,beginner
