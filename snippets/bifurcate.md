@@ -7,7 +7,7 @@ Splits values into two groups. If an element in `filter` is truthy, the correspo
 
 把一组值分为两组。如果一个元素在`filter`中为真（对应位置的布尔值为真，filter为一个布尔值列表），它被归到第一组；否则，它被归到第二组。
 
-Use `Array.prototype.reduce()` and `Array.prototype.push()` to add elements to groups, based on `filter`.
+- Use `Array.prototype.reduce()` and `Array.prototype.push()` to add elements to groups, based on `filter`.
 
 使用`Array.prototype.reduce()` 和 `Array.prototype.push()`来对所有元素作用`filter`，并且基于其返回值分组。
 

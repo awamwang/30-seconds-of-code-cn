@@ -7,10 +7,10 @@ Makes a `GET` request to the passed URL.
 
 创建一个到传入URL的`GET`请求。
 
-Use [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) web api to make a `get` request to the given `url`.
-Handle the `onload` event, by calling the given `callback` the `responseText`.
-Handle the `onerror` event, by running the provided `err` function.
-Omit the third argument, `err`, to log errors to the console's `error` stream by default.
+- Use [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) web api to make a `get` request to the given `url`.
+- Handle the `onload` event, by calling the given `callback` the `responseText`.
+- Handle the `onerror` event, by running the provided `err` function.
+- Omit the third argument, `err`, to log errors to the console's `error` stream by default.
 
 使用[`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)网络api来创建一个给出`url`的`get`请求。通过对`responseText`调用给出的`callback`来处理`onload`事件，通过执行提供的`err`函数来处理`onerror`事件。如果不传第三个参数`err`，则把错误打印到默认的控制台`error`流中。
 

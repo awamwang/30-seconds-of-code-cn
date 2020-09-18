@@ -7,8 +7,8 @@ Create a n-dimensional array with given value.
 
 使用给定值创建一个n维数组。
 
-Use recursion.
-Use `Array.prototype.map()` to generate rows where each is a new array initialized using `initializeNDArray`.
+- Use recursion.
+- Use `Array.prototype.map()` to generate rows where each is a new array initialized using `initializeNDArray`.
 
 使用递归。使用`Array.prototype.map()`来生成由`initializeNDArray`初始化的每一行。
 

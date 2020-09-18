@@ -7,7 +7,7 @@ Filters out the elements of an array, that have one of the specified values.
 
 过滤掉包含某个指定的值列表中的值的数组元素。
 
-Use `Array.prototype.filter()` to create an array excluding(using `!Array.includes()`) all given values.
+- Use `Array.prototype.filter()` to create an array excluding(using `!Array.includes()`) all given values.
 
 使用`Array.prototype.filter()`来构造一个排除(使用`!Array.includes()`)所有给出的值后的数组。
 

@@ -7,7 +7,7 @@ Creates a hash for a value using the [SHA-256](https://en.wikipedia.org/wiki/SHA
 
 使用[SHA-256](https://en.wikipedia.org/wiki/SHA-2)算法创建一个hash。返回一个promise。
 
-Use the [SubtleCrypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) API to create a hash for the given value.
+- Use the [SubtleCrypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) API to create a hash for the given value.
 
 使用[SubtleCrypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)API来创建给定值的hash。
 

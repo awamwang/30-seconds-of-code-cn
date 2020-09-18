@@ -7,7 +7,7 @@ Returns the distance between two points.
 
 返回两个点之间的距离。
 
-Use `Math.hypot()` to calculate the Euclidean distance between two points.
+- Use `Math.hypot()` to calculate the Euclidean distance between two points.
 
 使用`Math.hypot()`来计算两个点之间的欧式距离。
 

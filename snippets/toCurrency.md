@@ -7,7 +7,7 @@ Take a number and return specified currency formatting.
 
 接受一个数字，返回指定的货币化格式。
 
-Use `Intl.NumberFormat` to enable country / currency sensitive formatting.
+- Use `Intl.NumberFormat` to enable country / currency sensitive formatting.
 
 使用`Intl.NumberFormat`来打开国家/货币（country / currenc）敏感格式。
 

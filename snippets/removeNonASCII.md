@@ -7,7 +7,7 @@ Removes non-printable ASCII characters.
 
 删除非打印ASCII字符。
 
-Use a regular expression to remove non-printable ASCII characters.
+- Use a regular expression to remove non-printable ASCII characters.
 
 使用一个正则表达式来删除非打印ASCII字符。
 

@@ -7,7 +7,7 @@ Toggles a class for an HTML element.
 
 开关一个元素的class。
 
-Use `element.classList.toggle()` to toggle the specified class for the element.
+- Use `element.classList.toggle()` to toggle the specified class for the element.
 
 使用`element.classList.toggle()`来开关指定元素的class。
 

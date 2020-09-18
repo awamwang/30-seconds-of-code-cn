@@ -7,9 +7,9 @@ Runs a function in a separate thread by using a [Web Worker](https://developer.m
 
 使用[Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)在单独的线程中运行一个函数，支持持续运行的函数不阻塞UI。
 
-Create a new `Worker` using a `Blob` object URL, the contents of which should be the stringified version of the supplied function.
-Immediately post the return value of calling the function back.
-Return a promise, listening for `onmessage` and `onerror` events and resolving the data posted back from the worker, or throwing an error.
+- Create a new `Worker` using a `Blob` object URL, the contents of which should be the stringified version of the supplied function.
+- Immediately post the return value of calling the function back.
+- Return a promise, listening for `onmessage` and `onerror` events and resolving the data posted back from the worker, or throwing an error.
 
 用`Blob`对象URL来创建一个新的`Worker`，它的内容应该是给出函数的序列化版本。立即发送包含函数的返回值的请求。监听`onmessage`和`onerror`来返回一个promise，并把从worker返回的请求数据resovle，或者抛出一个错误。
 

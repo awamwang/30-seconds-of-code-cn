@@ -7,7 +7,7 @@ Returns `true` if the bottom of the page is visible, `false` otherwise.
 
 如果当前页面的底部可见（已经显示在视窗中）则返回`true`，否则返回`false`
 
-Use `scrollY`, `scrollHeight` and `clientHeight` to determine if the bottom of the page is visible.
+- Use `scrollY`, `scrollHeight` and `clientHeight` to determine if the bottom of the page is visible.
 
 使用`scrollY`, `scrollHeight` 和 `clientHeight`来判断当前页面的底部是否可见。
 

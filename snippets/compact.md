@@ -7,7 +7,7 @@ Removes falsy values from an array.
 
 把数组中所有假值移除掉。
 
-Use `Array.prototype.filter()` to filter out falsy values (`false`, `null`, `0`, `""`, `undefined`, and `NaN`).
+- Use `Array.prototype.filter()` to filter out falsy values (`false`, `null`, `0`, `""`, `undefined`, and `NaN`).
 
 使用`Array.prototype.filter()`来过滤掉假值(`false`, `null`, `0`, `""`, `undefined`, and `NaN`)。
 

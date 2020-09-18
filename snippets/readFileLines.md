@@ -7,11 +7,13 @@ Returns an array of lines from the specified file.
 
 返回一个从指定文件中读取的行数组。
 
-Use `readFileSync` function in `fs` node package to create a `Buffer` from a file.
-convert buffer to string using `toString(encoding)` function.
-creating an array from contents of file by `split`ing file content line by line (each `\n`).
+- Use `readFileSync` function in `fs` node package to create a `Buffer` from a file.
+- Convert buffer to string using `toString(encoding)` function.
+- Use `split(\n)` to create an array of lines from the contents of the file.
 
-使用`fs`node包中的`readFileSync`函数从文件创建一个`Buffer`。用`toString(encoding)`函数把buffer转到字符串。通过把文件内容一行一行（每`\n`）的`split`开，创建一个文件内容的数组。
+- 使用`fs`node包中的`readFileSync`函数从文件创建一个`Buffer`。
+- 用`toString(encoding)`函数把buffer转到字符串。
+- 使用`split(\n)`从文件内容创建一个行数组。
 
 ```js
 const fs = require('fs');

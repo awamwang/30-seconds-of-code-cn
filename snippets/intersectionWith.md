@@ -7,7 +7,7 @@ Returns a list of elements that exist in both arrays, using a provided comparato
 
 返回两个数组公共元素组成的元素列表，通过给定的比较函数`comp`来判断元素是否相同。
 
-Use `Array.prototype.filter()` and `Array.prototype.findIndex()` in combination with the provided comparator to determine intersecting values.
+- Use `Array.prototype.filter()` and `Array.prototype.findIndex()` in combination with the provided comparator to determine intersecting values.
 
 使用`Array.prototype.filter()` 和 `Array.prototype.findIndex()`，结合给定的比较函数判断是否公共值。
 

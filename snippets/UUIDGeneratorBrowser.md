@@ -7,7 +7,7 @@ Generates a UUID in a browser.
 
 在浏览器环境中生成一个UUID。
 
-Use `crypto` API to generate a UUID, compliant with [RFC4122](https://www.ietf.org/rfc/rfc4122.txt) version 4.
+- Use `crypto` API to generate a UUID, compliant with [RFC4122](https://www.ietf.org/rfc/rfc4122.txt) version 4.
 
 使用`crypto`来生成遵从[RFC4122](https://www.ietf.org/rfc/rfc4122.txt)第4版本的UUID。
 

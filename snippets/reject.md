@@ -5,7 +5,7 @@ tags: array,beginner
 
 Filters an array's values based on a predicate function, returning only values for which the predicate function returns `false`.
 
-Use `Array.prototype.filter()` in combination with the predicate function, `pred`, to return only the values for which `pred()` returns `false`.
+- Use `Array.prototype.filter()` in combination with the predicate function, `pred`, to return only the values for which `pred()` returns `false`.
 
 接受一个断言函数和数组，有点类似`Array.prototype.filter()`，但在`pred(x) === false`时保留`x`（就是过滤掉pred(x)为真的`x`）。
 

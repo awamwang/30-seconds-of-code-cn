@@ -7,7 +7,7 @@ Converts a string to kebab case.
 
 把字符串转换为中划线形式。
 
-Break the string into words and combine them adding `-` as a separator, using a regexp.
+- Break the string into words and combine them adding `-` as a separator, using a regexp.
 
 使用正则表达式把字符串拆分为单词列表，并在添加`-`作为分隔符后合并它们。
 

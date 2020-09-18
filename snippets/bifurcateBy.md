@@ -7,7 +7,7 @@ Splits values into two groups according to a predicate function, which specifies
 
 根据给定的断言函数`fn`（决定一个元素属于哪个分组的函数）把一组值分成两组。如果这个断言函数返回真值，这个元素被归到第一组；否则，它被归到第二组。
 
-Use `Array.prototype.reduce()` and `Array.prototype.push()` to add elements to groups, based on the value returned by `fn` for each element.
+- Use `Array.prototype.reduce()` and `Array.prototype.push()` to add elements to groups, based on the value returned by `fn` for each element.
 
 使用`Array.prototype.reduce()` 和 `Array.prototype.push()`来对所有元素作用`fn`，并且基于其返回值分组。`fn`有两个参数`val`, `i`。
 

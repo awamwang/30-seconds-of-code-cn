@@ -7,8 +7,8 @@ Clamps `num` within the inclusive range specified by the boundary values `a` and
 
 把`num`限制在通过边界值`a`和`b`指定的包含区间内。
 
-If `num` falls within the range, return `num`.
-Otherwise, return the nearest number in the range.
+- If `num` falls within the range, return `num`.
+- Otherwise, return the nearest number in the range.
 
 如果`num`落在区间内，则返回`num`。否则，返回区间内最接近它的数。
 

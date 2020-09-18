@@ -7,7 +7,7 @@ Negates a predicate function.
 
 否定化一个断言函数。
 
-Take a predicate function and apply the not operator (`!`) to it with its arguments.
+- Take a predicate function and apply the not operator (`!`) to it with its arguments.
 
 接收一个断言函数并把否定操作符(`!`)和参数应用给它。
 

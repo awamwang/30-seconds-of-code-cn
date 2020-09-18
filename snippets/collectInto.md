@@ -7,8 +7,8 @@ Changes a function that accepts an array into a variadic function.
 
 把一个接受数组参数的函数改造成接受可变数目参数的函数。
 
-Given a function, return a closure that collects all inputs into an array-accepting function.
-
+- Given a function, return a closure that collects all inputs into an array-accepting function.
+  
 传入一个接受数组参数的函数，返回一个把所有参数收集到一个array后传给这个函数调用的闭包。
 
 ```js

@@ -7,7 +7,7 @@ Reduces a given Array-like into a value hash (keyed data store).
 
 把给定的Array-like转换为一个hash对象（有键值的数据存储形式）。
 
-Given an Iterable or Array-like structure, call `Array.prototype.reduce.call()` on the provided object to step over it and return an Object, keyed by the reference value.
+- Given an Iterable or Array-like structure, call `Array.prototype.reduce.call()` on the provided object to step over it and return an Object, keyed by the reference value.
 
 给定Iterable或者Array-like结构，对给定的对象使用`Array.prototype.reduce.call()`来遍历它，并返回一个用引用的值作为键值的对象。
 

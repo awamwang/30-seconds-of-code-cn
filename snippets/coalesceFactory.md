@@ -7,7 +7,7 @@ Returns a customized coalesce function that returns the first argument that retu
 
 返回一个自定义联合函数，它从返回参数中第一个被验证函数`valid`返回`true`的参数。
 
-Use `Array.prototype.find()` to return the first argument that returns `true` from the provided argument validation function.
+- Use `Array.prototype.find()` to return the first argument that returns `true` from the provided argument validation function.
 
 使用`Array.prototype.find()`来从给出的验证函数参数中返回第一个返回`true`的参数。
 

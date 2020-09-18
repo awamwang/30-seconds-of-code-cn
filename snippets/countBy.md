@@ -7,8 +7,8 @@ Groups the elements of an array based on the given function and returns the coun
 
 根据给定的函数对数组中元素分组，返回每组中元素的个数。
 
-Use `Array.prototype.map()` to map the values of an array to a function or property name.
-Use `Array.prototype.reduce()` to create an object, where the keys are produced from the mapped results.
+- Use `Array.prototype.map()` to map the values of an array to a function or property name.
+- Use `Array.prototype.reduce()` to create an object, where the keys are produced from the mapped results.
 
 使用`Array.prototype.map()`对数组中每个元素调用`fn`或取出`fn`的属性值（支持两种用法）。使用`Array.prototype.reduce()`来建立一个属性键值来自map结果的计数对象。
 

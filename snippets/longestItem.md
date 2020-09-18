@@ -9,7 +9,7 @@ Returns `undefined` if no arguments are provided.
 
 接收任意数量的可迭代对象（或有`length`属性的对象）并返回最长的一个。如果其中多个对象有相同的长度，将返回第一个。如果没有传入参数，返回`undefined`。
 
-Use `Array.prototype.reduce()`, comparing the `length` of objects to find the longest one.
+- Use `Array.prototype.reduce()`, comparing the `length` of objects to find the longest one.
 
 使用`Array.prototype.reduce()`来比较项目的`length`来找到最长的一个。
 

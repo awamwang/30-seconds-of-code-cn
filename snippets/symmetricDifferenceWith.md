@@ -7,7 +7,7 @@ Returns the symmetric difference between two arrays, using a provided function a
 
 使用给定的函数作为比较器，返回两个数组中全部的差异（每个数组中不存在在对方中的元素合集）。
 
-Use `Array.prototype.filter()` and `Array.prototype.findIndex()` to find the appropriate values.
+- Use `Array.prototype.filter()` and `Array.prototype.findIndex()` to find the appropriate values.
 
 使用`Array.prototype.filter()` 和 `Array.prototype.findIndex()`来找到合适的元素。
 
