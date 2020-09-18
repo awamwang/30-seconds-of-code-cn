@@ -11,10 +11,7 @@ Returns the target value in a nested JSON object, based on the `keys` array.
 
 ```js
 const deepGet = (obj, keys) =>
-  keys.reduce(
-    (xs, x) => (xs && xs[x] !== null && xs[x] !== undefined ? xs[x] : null),
-    obj
-  );
+  keys.reduce((xs, x) => (xs && xs[x] !== null && xs[x] !== undefined ? xs[x] : null), obj);
 ```
 
 ```js

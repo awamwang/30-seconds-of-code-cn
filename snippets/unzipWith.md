@@ -26,5 +26,11 @@ const unzipWith = (arr, fn) =>
 ```
 
 ```js
-unzipWith([[1, 10, 100], [2, 20, 200]], (...args) => args.reduce((acc, v) => acc + v, 0)); // [3, 30, 300]
+unzipWith(
+  [
+    [1, 10, 100],
+    [2, 20, 200]
+  ],
+  (...args) => args.reduce((acc, v) => acc + v, 0)
+); // [3, 30, 300]
 ```

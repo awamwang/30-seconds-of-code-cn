@@ -16,5 +16,11 @@ const truthCheckCollection = (collection, pre) => collection.every(obj => obj[pr
 ```
 
 ```js
-truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex: 'male' }], 'sex'); // true
+truthCheckCollection(
+  [
+    { user: 'Tinky-Winky', sex: 'male' },
+    { user: 'Dipsy', sex: 'male' }
+  ],
+  'sex'
+); // true
 ```

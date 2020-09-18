@@ -12,10 +12,8 @@ Converts the given array elements into `<li>` tags and appends them to the list 
 - 使用`Array.prototype.map()`，`document.querySelector()`来创建一个html的list标签。
 
 ```js
-const arrayToHtmlList = (arr, listID) => 
-  document.querySelector(`#${listID}`).innerHTML += arr
-    .map(item => `<li>${item}</li>`)
-    .join('');
+const arrayToHtmlList = (arr, listID) =>
+  (document.querySelector(`#${listID}`).innerHTML += arr.map(item => `<li>${item}</li>`).join(''));
 ```
 
 ```js

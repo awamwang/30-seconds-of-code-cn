@@ -12,9 +12,7 @@ Checks if an object is deeply frozen
 ```js
 const isDeepFrozen = obj =>
   Object.isFrozen(obj) &&
-  Object.keys(obj).every(
-    prop => typeof obj[prop] !== 'object' || isDeepFrozen(obj[prop])
-  );
+  Object.keys(obj).every(prop => typeof obj[prop] !== 'object' || isDeepFrozen(obj[prop]));
 ```
 
 ```js
