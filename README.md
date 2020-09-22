@@ -360,6 +360,7 @@ _30s.average(1, 2, 3);
 * [`gcd`](#gcd)
 * [`geometricProgression`](#geometricprogression)
 * [`hammingDistance`](#hammingdistance)
+* [`HSBToRGB`](#hsbtorgb)
 * [`inRange`](#inrange)
 * [`isDivisible`](#isdivisible)
 * [`isEven`](#iseven)
@@ -384,6 +385,8 @@ _30s.average(1, 2, 3);
 * [`randomIntArrayInRange`](#randomintarrayinrange)
 * [`randomIntegerInRange`](#randomintegerinrange)
 * [`randomNumberInRange`](#randomnumberinrange)
+* [`reverseNumber`](#reversenumber)
+* [`RGBToHSB`](#rgbtohsb)
 * [`round`](#round)
 * [`sdbm`](#sdbm)
 * [`standardDeviation`](#standarddeviation)
@@ -421,15 +424,6 @@ _30s.average(1, 2, 3);
 * [`requireUncached`](#requireuncached-)
 * [`untildify`](#untildify)
 * [`UUIDGeneratorNode`](#uuidgeneratornode)
-
-</details>
-
-###  Number
-
-<details>
-<summary>View contents</summary>
-
-* [`reverseNumber`](#reversenumber)
 
 </details>
 
@@ -7669,6 +7663,34 @@ hammingDistance(2, 3); // 1
 
 <br>[⬆ Back to top](#contents)
 
+### HSBToRGB
+
+Converts a HSB color tuple to RGB format.
+
+- Use the [HSB to RGB conversion formula](https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_RGB) to convert to the appropriate format.
+- The range of the input parameters is H: [0, 360], S: [0, 100], B: [0, 100].
+- The range of all output values is [0, 255].
+
+```[object Object]
+const HSBToRGB = (h, s, b) => {
+  s /= 100;
+  b /= 100;
+  const k = n => (n + h / 60) % 6;
+  const f = n => b * (1 - s * Math.max(0, Math.min(k(n), 4 - k(n), 1)));
+  return [255 * f(5), 255 * f(3), 255 * f(1)];
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+HSBToRGB(18, 81, 99); // [252.45, 109.31084999999996, 47.965499999999984]
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### inRange
 
 Checks if the given number falls within the given range.
@@ -8298,6 +8320,67 @@ const randomNumberInRange = (min, max) => Math.random() * (max - min) + min;
 
 ```[object Object]
 randomNumberInRange(2, 10); // 6.0211363285087005
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### reverseNumber
+
+Reverses a number.
+
+- Use `Object.prototype.toString()` to convert `n` to a string.
+- Use `String.prototype.split('')`, `Array.prototype.reverse()` and `String.prototype.join('')` to get the reversed value of `n` as a string.
+- Use `parseFloat()` to convert the string to a number and `Math.sign()` to preserve its sign.
+
+```[object Object]
+const reverseNumber = n =>
+  parseFloat(
+    `${n}`
+      .split('')
+      .reverse()
+      .join('')
+  ) * Math.sign(n);
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+reverseNumber(981); // 189
+reverseNumber(-500); // -5
+reverseNumber(73.6); // 6.37
+reverseNumber(-5.23); // -32.5
+```
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### RGBToHSB
+
+Converts a RGB color tuple to HSB format.
+
+- Use the [RGB to HSB conversion formula](https://en.wikipedia.org/wiki/HSL_and_HSV#From_RGB) to convert to the appropriate format.
+- The range of all input parameters is [0, 255].
+- The range of the resulting values is H: [0, 360], S: [0, 100], B: [0, 100].
+
+```[object Object]
+const RGBToHSB = (r, g, b) => {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const v = Math.max(r, g, b),
+    n = v - Math.min(r, g, b);
+  const h = n && v === r ? (g - b) / n : v === g ? 2 + (b - r) / n : 4 + (r - g) / n;
+  return [60 * (h < 0 ? h + 6 : h), v && (n / v) * 100, v * 100];
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```[object Object]
+RGBToHSB(252, 111, 48); // [18.529411764705856, 80.95238095238095, 98.82352941176471]
 ```
 </details>
 
@@ -9131,42 +9214,6 @@ const UUIDGeneratorNode = () =>
 
 ```[object Object]
 UUIDGeneratorNode(); // '79c7c136-60ee-40a2-beb2-856f1feabefc'
-```
-</details>
-
-<br>[⬆ Back to top](#contents)
-
----
-
-##  Number
-
-
-### reverseNumber
-
-Reverses a number.
-
-- Use `Object.prototype.toString()` to convert `n` to a string.
-- Use `String.prototype.split('')`, `Array.prototype.reverse()` and `String.prototype.join('')` to get the reversed value of `n` as a string.
-- Use `parseFloat()` to convert the string to a number and `Math.sign()` to preserve its sign.
-
-```[object Object]
-const reverseNumber = n =>
-  parseFloat(
-    `${n}`
-      .split('')
-      .reverse()
-      .join('')
-  ) * Math.sign(n);
-```
-
-<details>
-<summary>Examples</summary>
-
-```[object Object]
-reverseNumber(981); // 189
-reverseNumber(-500); // -5
-reverseNumber(73.6); // 6.37
-reverseNumber(-5.23); // -32.5
 ```
 </details>
 
